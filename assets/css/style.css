@@ -1,0 +1,57 @@
+/* Page default styles */
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, 'Times New Roman', Roboto;
+  line-height: 1.6;
+  background-color: #000000;
+  color: #f0f0f0;
+}
+
+/* Content Container */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Header */
+header {
+  max-width: 640px;
+  width: 100%;
+}
+
+/* Text Blocks */
+.text-block {
+  max-width: 640px;
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* Asset Blocks */
+.asset-block {
+  max-width: 960px;
+  width: 100%;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.asset-block img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  height: auto;
+}
+
+/* Full-Width Assets */
+.asset-block.wide {
+  max-width: 100%;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .text-block,
+  .asset-block {
+    max-width: 100%;
+  }
+}
