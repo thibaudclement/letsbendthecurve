@@ -1,0 +1,5 @@
+﻿task,emissions_per_unit,unit,reference
+flying,24176,mile_flown,https://blueskymodel.org/air-mile
+driving,411,mile_driven,https://nepis.epa.gov/Exe/ZyNET.exe/P100JPPH.TXT?ZyActionD=ZyDocument&Client=EPA&Index=2011+Thru+2015&Docs=&Query=&Time=&EndTime=&SearchMethod=1&TocRestrict=n&Toc=&TocEntry=&QField=&QFieldYear=&QFieldMonth=&QFieldDay=&IntQFieldOp=0&ExtQFieldOp=0&XmlQuery=&File=D%3A%5Czyfiles%5CIndex%20Data%5C11thru15%5CTxt%5C00000011%5CP100JPPH.txt&User=ANONYMOUS&Password=anonymous&SortMethod=h%7C-&MaximumDocuments=1&FuzzyDegree=0&ImageQuality=r75g8/r75g8/x150y150g16/i425&Display=hpfr&DefSeekPage=x&SearchBack=ZyActionL&Back=ZyActionS&BackDesc=Results%20page&MaximumPages=1&ZyEntry=1&SeekPage=x&ZyPURL
+charging_smartphone,4.6,smartphone_charge,https://www.epa.gov/energy/greenhouse-gases-equivalencies-calculator-calculations-and-references
+beef_serving,12475,steak_eaten,https://www.bbc.com/future/article/20221214-what-is-the-lowest-carbon-protein
