@@ -4,6 +4,7 @@ import { displayEquivalentsInList } from './charts/equivalents.js';
 import { initializeUserInput } from './charts/userInput.js';
 import { calculateEmissions } from './utils/calculations.js';
 import { drawInternetUsersChart } from './charts/internetUsersChart.js';
+import { drawInternetTrafficChart } from './charts/internetTrafficChart.js'; 
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
@@ -50,4 +51,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Draw Internet Users Chart
   drawInternetUsersChart('#internet-users', internetUsageData);
+
+  // Draw Internet Traffic Chart
+  drawInternetTrafficChart('#internet-traffic', internetUsageData);
 });

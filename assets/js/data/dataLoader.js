@@ -40,6 +40,9 @@ export async function loadInternetUsageData() {
     return data.map(d => ({
       year: +d.Year,
       internetUsers: +d['Internet Users'].replace(/,/g, ''),
+      internetTraffic: +d['Internet Traffic (Exabytes per Year)'],
+      linearSimulation: +d['Internet Traffic - Linear Simulation (Exabytes per Year)'],
+      logarithmicSimulation: +d['Internet Traffic - Logarithmic Simulation (Exabytes per Year)'], // Convert GB to EB
     }));
   } catch (error) {
     console.error('Error loading internet usage data:', error);
