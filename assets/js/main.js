@@ -1,16 +1,18 @@
-import { loadDigitalTasks, loadNonDigitalTasks, loadDrivingDistances } from './data/dataLoader.js';
+import { loadDigitalTasks, loadNonDigitalTasks, loadDrivingDistances, loadInternetUsageData } from './data/dataLoader.js';
 import { drawEmissionsChart } from './charts/emissionsChart.js';
 import { displayEquivalentsInList } from './charts/equivalents.js';
 import { initializeUserInput } from './charts/userInput.js';
 import { calculateEmissions } from './utils/calculations.js';
+import { drawInternetUsersChart } from './charts/internetUsersChart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
   const digitalTasks = await loadDigitalTasks();
   const nonDigitalTasks = await loadNonDigitalTasks();
   const drivingDistances = await loadDrivingDistances();
+  const internetUsageData = await loadInternetUsageData();
 
-  if (!digitalTasks.length || !nonDigitalTasks.length || !drivingDistances.length) {
+  if (!digitalTasks.length || !nonDigitalTasks.length || !drivingDistances.length || !internetUsageData.length) {
     console.error('Failed to load necessary data.');
     return;
   }
@@ -45,4 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Initialize user input section
   initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistances);
+
+  // Draw Internet Users Chart
+  drawInternetUsersChart('#internet-users', internetUsageData);
 });

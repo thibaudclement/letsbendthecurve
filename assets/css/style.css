@@ -71,6 +71,10 @@ header {
   fill: #74c476;
 }
 
+.dot {
+  fill: #74c476;
+}
+
 /* Sliders */
 .sliders-container {
   border: 2px solid #74c476;

@@ -33,3 +33,16 @@ export async function loadDrivingDistances() {
     distance: +d.Distance || +d.distance,
   }));
 }
+
+export async function loadInternetUsageData() {
+  try {
+    const data = await d3.csv('assets/data/internet_usage.csv');
+    return data.map(d => ({
+      year: +d.Year,
+      internetUsers: +d['Internet Users'].replace(/,/g, ''),
+    }));
+  } catch (error) {
+    console.error('Error loading internet usage data:', error);
+    return [];
+  }
+}
