@@ -1,0 +1,261 @@
+﻿Country,Year,Power Consumption (TWh)
+Argentina,2010,116
+Argentina,2011,120
+Argentina,2012,121
+Argentina,2013,126
+Argentina,2014,129
+Argentina,2015,129
+Argentina,2016,129
+Argentina,2017,129
+Argentina,2018,126
+Argentina,2019,125
+Argentina,2020,129
+Argentina,2021,124
+Argentina,2022,127
+Australia,2010,226
+Australia,2011,223
+Australia,2012,223
+Australia,2013,223
+Australia,2014,227
+Australia,2015,231
+Australia,2016,232
+Australia,2017,236
+Australia,2018,239
+Australia,2019,240
+Australia,2020,239
+Australia,2021,244
+Australia,2022,245
+Brazil,2010,475
+Brazil,2011,492
+Brazil,2012,509
+Brazil,2013,526
+Brazil,2014,516
+Brazil,2015,514
+Brazil,2016,520
+Brazil,2017,531
+Brazil,2018,538
+Brazil,2019,534
+Brazil,2020,563
+Brazil,2021,576
+Brazil,2022,594
+Canada,2010,509
+Canada,2011,505
+Canada,2012,516
+Canada,2013,523
+Canada,2014,522
+Canada,2015,517
+Canada,2016,536
+Canada,2017,546
+Canada,2018,552
+Canada,2019,540
+Canada,2020,548
+Canada,2021,556
+Canada,2022,558
+China,2010,4049
+China,2011,4320
+China,2012,4702
+China,2013,5034
+China,2014,5059
+China,2015,5323
+China,2016,5762
+China,2017,6262
+China,2018,6583
+China,2019,6850
+China,2020,7572
+China,2021,7852
+China,2022,8392
+France,2010,440
+France,2011,454
+France,2012,459
+France,2013,434
+France,2014,443
+France,2015,451
+France,2016,448
+France,2017,446
+France,2018,441
+France,2019,420
+France,2020,442
+France,2021,426
+France,2022,411
+Germany,2010,540
+Germany,2011,538
+Germany,2012,536
+Germany,2013,525
+Germany,2014,528
+Germany,2015,531
+Germany,2016,531
+Germany,2017,522
+Germany,2018,508
+Germany,2019,493
+Germany,2020,510
+Germany,2021,489
+Germany,2022,463
+India,2010,773
+India,2011,785
+India,2012,897
+India,2013,956
+India,2014,1034
+India,2015,1071
+India,2016,1135
+India,2017,1164
+India,2018,1297
+India,2019,1187
+India,2020,1212
+India,2021,1318
+India,2022,1407
+Indonesia,2010,160
+Indonesia,2011,174
+Indonesia,2012,197
+Indonesia,2013,198
+Indonesia,2014,213
+Indonesia,2015,216
+Indonesia,2016,245
+Indonesia,2017,252
+Indonesia,2018,258
+Indonesia,2019,250
+Indonesia,2020,259
+Indonesia,2021,275
+Indonesia,2022,289
+Italy,2010,314
+Italy,2011,307
+Italy,2012,297
+Italy,2013,291
+Italy,2014,297
+Italy,2015,296
+Italy,2016,302
+Italy,2017,303
+Italy,2018,302
+Italy,2019,284
+Italy,2020,301
+Italy,2021,296
+Italy,2022,286
+Japan,2010,1012
+Japan,2011,1007
+Japan,2012,1005
+Japan,2013,989
+Japan,2014,965
+Japan,2015,966
+Japan,2016,980
+Japan,2017,961
+Japan,2018,942
+Japan,2019,927
+Japan,2020,946
+Japan,2021,926
+Japan,2022,909
+Republic of Korea,2010,481
+Republic of Korea,2011,493
+Republic of Korea,2012,498
+Republic of Korea,2013,499
+Republic of Korea,2014,507
+Republic of Korea,2015,530
+Republic of Korea,2016,538
+Republic of Korea,2017,545
+Republic of Korea,2018,538
+Republic of Korea,2019,528
+Republic of Korea,2020,552
+Republic of Korea,2021,565
+Republic of Korea,2022,557
+Mexico,2010,239
+Mexico,2011,253
+Mexico,2012,247
+Mexico,2013,257
+Mexico,2014,262
+Mexico,2015,274
+Mexico,2016,276
+Mexico,2017,304
+Mexico,2018,284
+Mexico,2019,304
+Mexico,2020,298
+Mexico,2021,311
+Mexico,2022,324
+Russia,2010,856
+Russia,2011,875
+Russia,2012,872
+Russia,2013,877
+Russia,2014,877
+Russia,2015,898
+Russia,2016,905
+Russia,2017,926
+Russia,2018,931
+Russia,2019,915
+Russia,2020,965
+Russia,2021,983
+Russia,2022,997
+Saudia Arabia,2010,220
+Saudia Arabia,2011,241
+Saudia Arabia,2012,257
+Saudia Arabia,2013,279
+Saudia Arabia,2014,301
+Saudia Arabia,2015,306
+Saudia Arabia,2016,331
+Saudia Arabia,2017,313
+Saudia Arabia,2018,302
+Saudia Arabia,2019,301
+Saudia Arabia,2020,315
+Saudia Arabia,2021,321
+Saudia Arabia,2022,338
+South Africa,2010,216
+South Africa,2011,209
+South Africa,2012,209
+South Africa,2013,208
+South Africa,2014,206
+South Africa,2015,219
+South Africa,2016,218
+South Africa,2017,221
+South Africa,2018,203
+South Africa,2019,202
+South Africa,2020,209
+South Africa,2021,203
+South Africa,2022,195
+Türkiye,2010,186
+Türkiye,2011,195
+Türkiye,2012,198
+Türkiye,2013,207
+Türkiye,2014,217
+Türkiye,2015,231
+Türkiye,2016,249
+Türkiye,2017,258
+Türkiye,2018,257
+Türkiye,2019,263
+Türkiye,2020,287
+Türkiye,2021,287
+Türkiye,2022,284
+United Kingdom,2010,325
+United Kingdom,2011,324
+United Kingdom,2012,323
+United Kingdom,2013,310
+United Kingdom,2014,309
+United Kingdom,2015,309
+United Kingdom,2016,305
+United Kingdom,2017,306
+United Kingdom,2018,303
+United Kingdom,2019,287
+United Kingdom,2020,293
+United Kingdom,2021,278
+United Kingdom,2022,269
+United States,2010,3885
+United States,2011,3831
+United States,2012,3873
+United States,2013,3895
+United States,2014,3895
+United States,2015,3922
+United States,2016,3887
+United States,2017,4043
+United States,2018,3964
+United States,2019,3904
+United States,2020,3957
+United States,2021,4106
+United States,2022,4065
+Internet,2010,92
+Internet,2011,192
+Internet,2012,260
+Internet,2013,321
+Internet,2014,367
+Internet,2015,385
+Internet,2016,449
+Internet,2017,496
+Internet,2018,539
+Internet,2019,560
+Internet,2020,585
+Internet,2021,757
+Internet,2022,846

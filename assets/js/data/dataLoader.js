@@ -49,3 +49,17 @@ export async function loadInternetUsageData() {
     return [];
   }
 }
+
+export async function loadElectricityConsumptionData() {
+  try {
+    const data = await d3.csv('assets/data/electricity_consumption.csv');
+    return data.map(d => ({
+      country: d.Country,
+      year: +d.Year,
+      powerConsumption: +d['Power Consumption (TWh)'],
+    }));
+  } catch (error) {
+    console.error('Error loading electricity consumption data:', error);
+    return [];
+  }
+}

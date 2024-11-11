@@ -245,6 +245,47 @@ header {
   fill: #ffffff;
 }
 
+.year-label {
+  font-size: 48px;
+  fill: #ffffff;
+  text-anchor: end;
+}
+
+/* Control Buttons */
+.control-button {
+  background-color: #006837;
+  color: #f0f0f0;
+  border: none;
+  padding: 10px 15px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 5px;
+}
+
+.control-button:hover {
+  background-color: #74c476;
+}
+
+/* Year Range Slider */
+.year-range-slider {
+  width: 200px;
+  margin: 5px;
+}
+
+/* Country Select */
+.country-select {
+  width: 200px;
+  height: 100px;
+  margin: 5px;
+}
+
+/* Labels on Bars */
+.label {
+  font-size: 12px;
+  fill: #ffffff;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .text-block,

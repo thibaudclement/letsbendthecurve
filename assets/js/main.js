@@ -1,10 +1,11 @@
-import { loadDigitalTasks, loadNonDigitalTasks, loadDrivingDistances, loadInternetUsageData } from './data/dataLoader.js';
+import { loadDigitalTasks, loadNonDigitalTasks, loadDrivingDistances, loadInternetUsageData, loadElectricityConsumptionData } from './data/dataLoader.js';
 import { drawEmissionsChart } from './charts/emissionsChart.js';
 import { displayEquivalentsInList } from './charts/equivalents.js';
 import { initializeUserInput } from './charts/userInput.js';
 import { calculateEmissions } from './utils/calculations.js';
 import { drawInternetUsersChart } from './charts/internetUsersChart.js';
-import { drawInternetTrafficChart } from './charts/internetTrafficChart.js'; 
+import { drawInternetTrafficChart } from './charts/internetTrafficChart.js';
+import { drawElectricityConsumptionChart } from './charts/electricityConsumptionChart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
@@ -12,8 +13,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   const nonDigitalTasks = await loadNonDigitalTasks();
   const drivingDistances = await loadDrivingDistances();
   const internetUsageData = await loadInternetUsageData();
+  const electricityConsumptionData = await loadElectricityConsumptionData();
 
-  if (!digitalTasks.length || !nonDigitalTasks.length || !drivingDistances.length || !internetUsageData.length) {
+  if (!digitalTasks.length || !nonDigitalTasks.length || !drivingDistances.length || !internetUsageData.length || !electricityConsumptionData.length) {
     console.error('Failed to load necessary data.');
     return;
   }
@@ -54,4 +56,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Draw Internet Traffic Chart
   drawInternetTrafficChart('#internet-traffic', internetUsageData);
+
+  // Draw Electricity Consumption Chart
+  drawElectricityConsumptionChart('#electricity-consumption-chart', electricityConsumptionData);
 });
