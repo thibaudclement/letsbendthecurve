@@ -251,6 +251,13 @@ header {
   text-anchor: end;
 }
 
+.control-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+
 /* Control Buttons */
 .control-button {
   background-color: #006837;
@@ -267,23 +274,35 @@ header {
   background-color: #74c476;
 }
 
-/* Year Range Slider */
-.year-range-slider {
-  width: 200px;
-  margin: 5px;
+/* Checkboxes Container */
+.checkboxes-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 
-/* Country Select */
-.country-select {
-  width: 200px;
-  height: 100px;
-  margin: 5px;
+.country-columns-container {
+  display: flex;
+  justify-content: center;
 }
 
-/* Labels on Bars */
-.label {
-  font-size: 12px;
-  fill: #ffffff;
+.country-column {
+  display: flex;
+  flex-direction: column;
+  margin: 0 20px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin: 5px 0;
+  color: #ffffff;
+}
+
+.checkbox-label input[type="checkbox"] {
+  margin-right: 5px;
+  accent-color: #74c476;
+  border-radius: 25px;
 }
 
 /* Mobile Responsiveness */
