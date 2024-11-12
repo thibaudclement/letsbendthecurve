@@ -63,3 +63,18 @@ export async function loadElectricityConsumptionData() {
     return [];
   }
 }
+
+export async function loadIctEmissionsData() {
+  try {
+    const data = await d3.csv('assets/data/ict_sector_emissions.csv');
+    return data.map(d => ({
+      year: +d.Year,
+      minEstimate: +d.MinEstimate,
+      maxEstimate: +d.MaxEstimate,
+      isProjection: +d.Year >= 2018, // True if year >= 2018
+    }));
+  } catch (error) {
+    console.error('Error loading ICT emissions data:', error);
+    return [];
+  }
+}

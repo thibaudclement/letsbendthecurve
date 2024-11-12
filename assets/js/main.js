@@ -1,4 +1,11 @@
-import { loadDigitalTasks, loadNonDigitalTasks, loadDrivingDistances, loadInternetUsageData, loadElectricityConsumptionData } from './data/dataLoader.js';
+import { 
+  loadDigitalTasks,
+  loadNonDigitalTasks,
+  loadDrivingDistances,
+  loadInternetUsageData,
+  loadElectricityConsumptionData,
+  loadIctEmissionsData,
+} from './data/dataLoader.js';
 import { drawEmissionsChart } from './charts/emissionsChart.js';
 import { displayEquivalentsInList } from './charts/equivalents.js';
 import { initializeUserInput } from './charts/userInput.js';
@@ -6,6 +13,7 @@ import { calculateEmissions } from './utils/calculations.js';
 import { drawInternetUsersChart } from './charts/internetUsersChart.js';
 import { drawInternetTrafficChart } from './charts/internetTrafficChart.js';
 import { drawElectricityConsumptionChart } from './charts/electricityConsumptionChart.js';
+import { drawIctEmissionsChart } from './charts/ictEmissionsChart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
@@ -14,8 +22,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   const drivingDistances = await loadDrivingDistances();
   const internetUsageData = await loadInternetUsageData();
   const electricityConsumptionData = await loadElectricityConsumptionData();
+  const ictEmissionsData = await loadIctEmissionsData();
 
-  if (!digitalTasks.length || !nonDigitalTasks.length || !drivingDistances.length || !internetUsageData.length || !electricityConsumptionData.length) {
+  if (
+    !digitalTasks.length ||
+    !nonDigitalTasks.length ||
+    !drivingDistances.length ||
+    !internetUsageData.length ||
+    !electricityConsumptionData.length ||
+    !ictEmissionsData.length
+  ) {
     console.error('Failed to load necessary data.');
     return;
   }
@@ -59,4 +75,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Draw Electricity Consumption Chart
   drawElectricityConsumptionChart('#electricity-consumption-chart', electricityConsumptionData);
+
+  // Draw ICT Emissions Chart
+  drawIctEmissionsChart('#ict-emissions', ictEmissionsData);
 });

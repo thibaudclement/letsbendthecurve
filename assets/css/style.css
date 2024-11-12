@@ -305,6 +305,46 @@ header {
   border-radius: 25px;
 }
 
+.line {
+  fill: none;
+}
+
+.line-min {
+  stroke: #74c476;
+  stroke-width: 2;
+}
+
+.line-max {
+  stroke: #31a354;
+  stroke-width: 2;
+}
+
+.projection-line {
+  stroke: #ffffff;
+  stroke-dasharray: 4;
+}
+
+.axis path,
+.axis line {
+  stroke: #ffffff;
+}
+
+.axis text {
+  fill: #ffffff;
+  font-size: 12px;
+}
+
+.chart-title {
+  font-size: 18px;
+  fill: #ffffff;
+  text-anchor: middle;
+}
+
+.legend text {
+  font-size: 12px;
+  fill: #ffffff;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .text-block,
