@@ -5,6 +5,7 @@ import {
   loadInternetUsageData,
   loadElectricityConsumptionData,
   loadIctEmissionsData,
+  loadIctEmissionsBreakdownData,
 } from './data/dataLoader.js';
 import { drawEmissionsChart } from './charts/emissionsChart.js';
 import { displayEquivalentsInList } from './charts/equivalents.js';
@@ -14,6 +15,7 @@ import { drawInternetUsersChart } from './charts/internetUsersChart.js';
 import { drawInternetTrafficChart } from './charts/internetTrafficChart.js';
 import { drawElectricityConsumptionChart } from './charts/electricityConsumptionChart.js';
 import { drawIctEmissionsCharts } from './charts/ictEmissionsChart.js';
+import { drawIctEmissionsBreakdownChart } from './charts/ictEmissionsBreakdownChart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
@@ -23,6 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const internetUsageData = await loadInternetUsageData();
   const electricityConsumptionData = await loadElectricityConsumptionData();
   const ictEmissionsData = await loadIctEmissionsData();
+  const ictEmissionsBreakdownData = await loadIctEmissionsBreakdownData();
 
   if (
     !digitalTasks.length ||
@@ -30,7 +33,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     !drivingDistances.length ||
     !internetUsageData.length ||
     !electricityConsumptionData.length ||
-    !ictEmissionsData.length
+    !ictEmissionsData.length ||
+    !ictEmissionsBreakdownData.length
   ) {
     console.error('Failed to load necessary data.');
     return;
@@ -78,4 +82,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Draw ICT Emissions Charts
   drawIctEmissionsCharts('#ict-emissions-chart1', '#ict-emissions-chart2', '#ict-emissions-legend', ictEmissionsData);
+  
+  // Draw ICT Emissions Breakdown Pie Chart
+  drawIctEmissionsBreakdownChart('#ict-emissions-breakdown', ictEmissionsBreakdownData);
 });

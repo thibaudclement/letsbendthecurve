@@ -401,6 +401,32 @@ svg {
   margin-bottom: 20px; /* Adjust as needed */
 }
 
+/* Pie Chart Title */
+.pie-chart-title {
+  font-size: 16px;
+  fill: #ffffff;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+.arc text {
+  font-size: 12px;
+  fill: #ffffff;
+  text-anchor: middle;
+}
+
+.arc tspan {
+  display: block;
+}
+
+#ict-emissions-breakdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px; /* Adjust as needed */
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .text-block,

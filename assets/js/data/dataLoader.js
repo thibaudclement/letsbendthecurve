@@ -78,3 +78,16 @@ export async function loadIctEmissionsData() {
     return [];
   }
 }
+
+export async function loadIctEmissionsBreakdownData() {
+  try {
+    const data = await d3.csv('assets/data/ict_emissions_breakdown.csv');
+    return data.map(d => ({
+      component: d['ICT Component'],
+      proportionalImpact: parseFloat(d['Proportional Impact'].replace('%', '')),
+    }));
+  } catch (error) {
+    console.error('Error loading ICT emissions breakdown data:', error);
+    return [];
+  }
+}
