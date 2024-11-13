@@ -305,6 +305,7 @@ header {
   border-radius: 25px;
 }
 
+/* Line Styles */
 .line {
   fill: none;
 }
@@ -324,6 +325,7 @@ header {
   stroke-dasharray: 4;
 }
 
+/* Axis Styles */
 .axis path,
 .axis line {
   stroke: #ffffff;
@@ -334,15 +336,69 @@ header {
   font-size: 12px;
 }
 
-.chart-title {
+/* Main Title */
+#ict-emissions .main-title {
   font-size: 18px;
+  margin-bottom: 10px;
+  color: #ffffff;
+  text-align: center;
+}
+
+#ict-emissions-title {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Chart Subtitle */
+.chart-subtitle {
+  font-size: 14px;
   fill: #ffffff;
   text-anchor: middle;
 }
 
-.legend text {
+/* Legend Styles */
+.legend-container {
+  margin-top: 5px; /* Reduced to bring legend closer */
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 50px; /* Adjust spacing between legend items */
+}
+
+.legend-item text {
   font-size: 12px;
   fill: #ffffff;
+}
+
+/* Charts Container */
+.charts-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Ensure charts appear below the title */
+#ict-emissions .charts-container > div {
+  display: block;
+}
+
+/* Adjustments for SVG elements */
+svg {
+  background-color: transparent;
+}
+
+/* Adjust margins for the asset block (Optional) */
+#ict-emissions {
+  margin-bottom: 20px; /* Adjust as needed */
 }
 
 /* Mobile Responsiveness */

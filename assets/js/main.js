@@ -13,7 +13,7 @@ import { calculateEmissions } from './utils/calculations.js';
 import { drawInternetUsersChart } from './charts/internetUsersChart.js';
 import { drawInternetTrafficChart } from './charts/internetTrafficChart.js';
 import { drawElectricityConsumptionChart } from './charts/electricityConsumptionChart.js';
-import { drawIctEmissionsChart } from './charts/ictEmissionsChart.js';
+import { drawIctEmissionsCharts } from './charts/ictEmissionsChart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
@@ -76,6 +76,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Draw Electricity Consumption Chart
   drawElectricityConsumptionChart('#electricity-consumption-chart', electricityConsumptionData);
 
-  // Draw ICT Emissions Chart
-  drawIctEmissionsChart('#ict-emissions', ictEmissionsData);
+  // Draw ICT Emissions Charts
+  drawIctEmissionsCharts('#ict-emissions-chart1', '#ict-emissions-chart2', '#ict-emissions-legend', ictEmissionsData);
 });
