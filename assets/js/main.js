@@ -7,6 +7,7 @@ import {
   loadIctEmissionsData,
   loadIctEmissionsBreakdownData,
   loadPueData,
+  loadFortune500EmissionsData
 } from './data/dataLoader.js';
 import { drawEmissionsChart } from './charts/emissionsChart.js';
 import { displayEquivalentsInList } from './charts/equivalents.js';
@@ -19,6 +20,7 @@ import { drawIctEmissionsCharts } from './charts/ictEmissionsChart.js';
 import { drawIctEmissionsBreakdownChart } from './charts/ictEmissionsBreakdownChart.js';
 import { drawPueChart } from './charts/pueChart.js';
 import { drawEnergyConsumptionChart } from './charts/energyConsumptionChart.js';
+import { drawFortune500EmissionsChart } from './charts/fortune500EmissionsChart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
@@ -30,6 +32,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const ictEmissionsData = await loadIctEmissionsData();
   const ictEmissionsBreakdownData = await loadIctEmissionsBreakdownData();
   const pueData = await loadPueData();
+  const fortune500EmissionsData = await loadFortune500EmissionsData();
+
 
   if (
     !digitalTasks.length ||
@@ -39,7 +43,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     !electricityConsumptionData.length ||
     !ictEmissionsData.length ||
     !ictEmissionsBreakdownData.length ||
-    !pueData.length
+    !pueData.length ||
+    !fortune500EmissionsData.length
   ) {
     console.error('Failed to load necessary data.');
     return;
@@ -96,4 +101,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Draw PUE Chart, passing the update function
   drawPueChart('#pue-chart', pueData, updateEnergyConsumptionChart);
+
+  // Draw Fortune 500 Emissions Chart
+  drawFortune500EmissionsChart('#fortune500-emissions-chart', fortune500EmissionsData);
 });

@@ -515,6 +515,87 @@ svg {
   background-color: #2a923f;
 }
 
+/* Chart Title */
+.chart-title {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* Chart Caption */
+.chart-caption {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  position: absolute;
+  text-align: left;
+  width: 250px;
+  padding: 10px;
+  font-size: 12px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Legend Styles */
+.legend-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.legend-color-box {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border: 1px solid #ffffff;
+}
+
+.legend-label {
+  font-size: 14px;
+  color: #ffffff;
+}
+
+/* Control Styles */
+.control-container {
+  margin-top: 10px;
+  color: #ffffff;
+}
+
+.control-container label {
+  margin-right: 5px;
+}
+
+.control-container select,
+.control-container input {
+  margin-right: 10px;
+}
+
+/* Company Name Text */
+.company-name {
+  font-size: 12px;
+  fill: #ffffff;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .text-block,

@@ -117,3 +117,55 @@ export async function loadPueData() {
     return [];
   }
 }
+
+export async function loadFortune500EmissionsData() {
+  try {
+    const data = await d3.csv('assets/data/fortune_500_websites_emissions.csv');
+
+    // Process data
+    const processedData = data.map(d => {
+      const wcCO2PerVisit = parseFloat(d['WC CO2 per Visit']);
+      const monthlyTrafficK = parseFloat(d['Monthly traffic in K']);
+      const totalEmissions = wcCO2PerVisit * monthlyTrafficK * 12 / 1000; // in tonnes of CO2 per year
+
+      return {
+        rank: parseInt(d.Rank),
+        company: d.Company,
+        ticker: d.Ticker,
+        sector: d.Sector,
+        industry: d.Industry,
+        profitable: d.Profitable === 'yes',
+        founderIsCEO: d.Founder_is_CEO === 'yes',
+        femaleCEO: d.FemaleCEO === 'yes',
+        worldsMostAdmiredCompanies: d.Worlds_Most_Admired_Companies === 'yes',
+        bestCompaniesToWorkFor: d.Best_Companies_to_Work_For === 'yes',
+        numberOfEmployees: parseInt(d.Number_of_employees),
+        country: d.Country,
+        website: d.Website,
+        ceo: d.CEO,
+        companyType: d.CompanyType,
+        wcGrade: d['WC Grade'],
+        sustainableEnergy: d['Sustainable Energy'],
+        wcCO2PerVisit,
+        monthlyTrafficK,
+        totalEmissions,
+        // Additional fields for filtering and display
+        profitableRaw: d.Profitable,
+        founderIsCEORaw: d.Founder_is_CEO,
+        femaleCEORaw: d.FemaleCEO,
+        worldsMostAdmiredCompaniesRaw: d.Worlds_Most_Admired_Companies,
+        bestCompaniesToWorkForRaw: d.Best_Companies_to_Work_For,
+      };
+    }).filter(d =>
+      !isNaN(d.wcCO2PerVisit) &&
+      !isNaN(d.monthlyTrafficK) &&
+      d.wcGrade &&
+      !isNaN(d.totalEmissions)
+    );
+
+    return processedData;
+  } catch (error) {
+    console.error('Error loading Fortune 500 Emissions data:', error);
+    return [];
+  }
+}
