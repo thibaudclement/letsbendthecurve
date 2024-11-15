@@ -3,12 +3,17 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
   const initialData = data.map(d => ({ ...d }));
 
   // Set up dimensions and margins
-  const margin = { top: 50, right: 30, bottom: 50, left: 60 };
+  const margin = { top: 50, right: 30, bottom: 80, left: 60 };
   const width = 800 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
-  // Create SVG container
-  const svg = d3.select(containerSelector)
+  // Create a container div for the chart and the button
+  const chartContainer = d3.select(containerSelector)
+    .append('div')
+    .attr('class', 'pue-chart-wrapper');
+
+  // Create SVG container inside the chart container
+  const svg = chartContainer
     .append('svg')
     .attr('class', 'pue-chart-container')
     .attr('width', width + margin.left + margin.right)
@@ -28,29 +33,24 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .range([height, 0]);
 
   // Axes
-  const xAxis = d3.axisBottom(x).tickFormat(d3.format('d'));
+  const xAxis = d3.axisBottom(x)
+    .tickValues(data.map(d => d.year)) // Tick for every year
+    .tickFormat(d => (d % 5 === 0 ? d : '')); // Label every 5 years
+
   const yAxis = d3.axisLeft(y);
 
   // Append axes
   chartArea.append('g')
     .attr('class', 'axis x-axis')
     .attr('transform', `translate(0,${height})`)
-    .call(xAxis);
+    .call(xAxis)
+    .selectAll('text')
+    .attr('transform', 'rotate(-30)')
+    .style('text-anchor', 'end');
 
   chartArea.append('g')
     .attr('class', 'axis y-axis')
     .call(yAxis);
-
-  // Line generator
-  const line = d3.line()
-    .x(d => x(d.year))
-    .y(d => y(d.pue));
-
-  // Append line path
-  const linePath = chartArea.append('path')
-    .datum(data)
-    .attr('class', 'line pue-line')
-    .attr('d', line);
 
   // Append data points
   const dots = chartArea.selectAll('.dot')
@@ -63,6 +63,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('r', 5)
     .attr('fill', '#31a354')
     .attr('opacity', d => d.pueSource === 'Actual' ? 1 : 0.5)
+    .style('pointer-events', 'all')
     .call(d3.drag()
       .on('start', dragstarted)
       .on('drag', dragged)
@@ -95,29 +96,18 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('fill', '#ffffff')
     .text('Future Data');
 
-  // Add Reset button below the chart
-  d3.select(containerSelector)
-    .append('button')
+  // Add Reset button below the chart inside the chart container
+  chartContainer.append('button')
     .attr('class', 'reset-button')
     .text('Reset')
     .on('click', resetChart);
 
   // Function to update the chart
   function updateChart() {
-    // Update line
-    chartArea.select('.pue-line')
-      .datum(data)
-      .attr('d', line);
-
     // Update dots
     chartArea.selectAll('.dot')
       .data(data)
       .attr('cy', d => y(d.pue));
-
-    // Update energy consumption chart
-    if (updateEnergyConsumptionChart) {
-      updateEnergyConsumptionChart();
-    }
   }
 
   // Drag event handlers
@@ -131,8 +121,10 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     d3.select(this)
       .attr('cy', y(d.pue));
 
-    // Update line
-    updateChart();
+    // Update energy consumption chart
+    if (updateEnergyConsumptionChart) {
+      updateEnergyConsumptionChart();
+    }
   }
 
   function dragended(event, d) {
@@ -148,5 +140,10 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
 
     // Update chart
     updateChart();
+
+    // Update energy consumption chart
+    if (updateEnergyConsumptionChart) {
+      updateEnergyConsumptionChart();
+    }
   }
 }

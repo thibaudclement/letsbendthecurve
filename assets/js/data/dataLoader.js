@@ -100,14 +100,14 @@ export async function loadPueData() {
       const year = +d.Year;
       const pue = +d.PUE;
       const energyConsumption = +d['Energy Consumption'];
-      const itEnergy = energyConsumption / pue;
+      const computingUnitsNeed = energyConsumption / pue; // Compute Computing Units Need
 
       return {
         year,
         pue,
         pueSource: d['PUE Source'],
         energyConsumption,
-        itEnergy,
+        computingUnitsNeed, // Add this property
         isProjection: d['PUE Source'] === 'Projection',
         isInterpolation: d['PUE Source'] === 'Interpolation',
       };
