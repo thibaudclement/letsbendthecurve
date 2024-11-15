@@ -34,6 +34,7 @@
       </ul>
     </section>
     <section class="text-block">
+      <h2>What About You?</h2>
       <p>If you are curious about the footprint of your own digital tasks, you can adjust the sliders below to model your usage. 
         The default values correspond to the behavior of an average internet user in the United States.</p>
     </section>
@@ -51,6 +52,7 @@
       </ul>
     </section>
     <section class="text-block">
+      <h2>The Internet Is Growing Fast</h2>
       <p>If those numbers do not seem significant in absolute, we need to keep in mind
         that they are for a single individual. To better appreciate what they represent
         on a global scale, we should consider the total number of internet users, which
@@ -61,7 +63,7 @@
       <!-- Internet users chart will be inserted here -->
     </section>
     <section class="text-block">
-      <p>The growth of internet users has been quite liner between 2000 and 2020,
+      <p>The growth of internet users has been quite linear between 2000 and 2020,
         and seems to be slowing down. This may be due to the fact that a large part
         of the world population is already connected to the internet. As we near
         a 100% global internet penetration, we should expect the growth to keep slowing
@@ -75,6 +77,7 @@
       <!-- Feedback will be inserted here -->
     </section>
     <section class="text-block">
+      <h2>Energy Consumption and Greenhouse Gas Emissions Are On The Rise</h2>
       <p>Now that you've seen how internet traffic has grown over the years, you may be wondering how that
         has influenced the electricity consumption of the web. The chart below shows the evolution of the
         electricity consumption of the internet, and in comparison to the member countries of the G20. In
@@ -111,13 +114,79 @@
       <div id="ict-emissions-legend"></div>
     </section>
     <section class="text-block">
+      <h2>Where Are Emissions Coming From?</h2>
       <p>While the ICT sector is often highly praised for enabling efficiencies that help reduce other industry 
         sectors footprint, it receives little attention as a contributor to those emissions. Yet, as the above 
         charts suggest, without attention and optimization, the contribution of the ICT sector to global emissions
         could grow from 1%-1.6% in 2007 to over 14% in 2040. So, what exactly is causing those emissions?</p>
+      <p>Estimates of emissions in the ICT sector vary according to methodology, but experts converge towards
+        the idea that the main sources of emissions are user devices, networks, and data centers.</p>
     </section>
     <section class="asset-block" id="ict-emissions-breakdown">
       <!-- Emissions breakdown chart will be inserted here -->
+    </section>
+    <section class="text-block">
+      <p>These three pillars of modern digital ecosystems interact to deliver digital services, enabling data 
+        transmission and processing:</p>
+      <ul>
+        <li>User devices (e.g., smartphones, laptops) serve as endpoints for accessing and consuming content, 
+          running applications, and interacting with services. They consume energy primarily for processing, 
+          storage, and display, with emissions depending on their energy source.</li>
+        <li>Networks, comprising wired and wireless infrastructure like fiber optics, routers, and cellular towers, 
+          transmit data between devices and data centers. They consume energy for signal transmission and maintaining 
+          connectivity, with emissions varying by network efficiency and energy grid.</li>
+        <li>Data centers process, store, and manage vast amounts of data, consuming energy for computation, storage, 
+          and cooling, often producing significant emissions if powered by non-renewable energy.</li>
+      </ul>
+      <p>Within each segment, we need to distinguish between two categories of emissions:</p>
+      <ul>
+        <li>Embodied emissions refer to the greenhouse gases produced during the manufacturing, transportation, and 
+          installation of digital hardware, such as servers, devices, and network equipment.</li>
+        <li>Operational emissions are generated during the daily use of digital systems, including powering data centers, 
+          networks, and user devices.</li>
+      </ul>
+      <p>Addressing embodied emissions is crucial, as these emissions are essentially "built into" the physical
+        infrastructure before it is used. As this pertains to the field of hardware manufacturing, it is outside 
+        the direct scope of this article. In sustainable computing and software engineering, the focus is often on 
+        reducing operational emissions because they are directly influenced by how we design, develop, and optimize 
+        software and systems—such as improving energy efficiency, minimizing data transfer, and utilizing green energy 
+        sources. Let's examine how we can decrease operational emission contributions of user devices, networks, and data 
+        centers—and bend the curve. </p>
+    </section>
+    <section class="text-block">
+      <h2>The Promise of Renewable Energy</h2>
+      <p>One of the main sources of emissions in the ICT sector is the energy consumption of data centers. One way to
+        reduce the emissions of data centers is to power them with renewable energy sources. Fortunately, the trend
+        is already moving in this direction. The largest cloud providers, such as Amazon Web Services, Google Cloud,
+        and Microsoft Azure, have committed to powering their data centers with <a href="https://www.cedara.io/post/tracking-the-transition-to-renewable-energy-in-the-data-center-industry">100%</a> 
+        renewable energy between 2025 and 2030.</p>
+        <p>In 2020, AWS reached <a href="https://aws.amazon.com/energy/transition1/">65%</a> of 
+          renewable energy usage, and as of 2023, the company was matching 
+          <a href="https://sustainability.aboutamazon.com/products-services/aws-cloud">100%</a> of its electricity consumption 
+          with renewable energy sources. Amazon is aiming to operate their data centers with 
+          <a href="https://aws.amazon.com/blogs/migration-and-modernization/embracing-modernization-with-a-sustainability-focus/">100%</a> 
+          renewable energy by 2025, with a target for net-zero status by 2040.</p>
+        <p>Google's data centers have been <a href="https://sustainability.google/reports/environmental-report-2018/#renewable-energy">carbon neutral</a> 
+          since 2007 and the company has been matching <a href="https://www.google.com/about/datacenters/cleanenergy/">100%</a> 
+          of its annual electricity consumption with renewable energy purchases since 2017. Between 2019 and 2020,
+          the share of renewable energy in Google's global electricity consumption increased from 61% to 
+          <a href="https://cloud.google.com/blog/topics/sustainability/the-year-in-carbon-free-energy-at-google">67%</a>.</p>
+        <p>Microsoft's data centers have been <a href="https://blogs.microsoft.com/wp-content/uploads/prod/sites/5/2018/04/MSFT.Map_.Final_3_28_18.pdf">carbon neutral</a>
+            since 2012, and were relying on 50% renewable energy by 2018. By 2050, the company ambitions to remove from the atmosphere
+            <a href="https://www.microsoft.com/en-us/corporate-responsibility/sustainability-journey">all the carbon</a> it has emitted since its founding in 1975.</p>
+        <p>Until all data centers are completely powered by renewable energy, sustainable software engineering practices
+          can help product development teams maximize the reliance of the cloud applications they build on renewable energy sources.</p> 
+        <p>Demand shaping  refers to adjusting computational workloads to align with the availability of low-carbon energy 
+          sources. This strategy involves increasing or decreasing application activities based on the current 
+          carbon intensity of the electricity grid. For example, when the grid is powered predominantly by renewable 
+          energy, applications can perform more energy-intensive tasks. Conversely, during periods of higher carbon intensity, 
+          applications can scale back or delay non-essential processes. This approach helps reduce the carbon footprint of software 
+          operations by synchronizing energy consumption with cleaner energy availability.</p>
+        <p>Demand shifting, on the other hand, involves rescheduling computational tasks to times or 
+          locations where the carbon intensity is lower. This might mean delaying a task until a time 
+          when renewable energy is more abundant or relocating workloads to data centers in regions with 
+          cleaner energy grids. By strategically timing and placing computational activities, demand shifting 
+          aims to minimize the environmental impact of software operations.</p>
     </section>
   </main>
 
