@@ -46,10 +46,14 @@ header {
 
 /* Asset Blocks */
 .asset-block {
-  max-width: 960px;
   width: 100%;
-  margin: 10px 0;
-  text-align: center;
+  max-width: none;
+  margin: 0 auto;
+}
+
+.asset-block svg {
+  display: block;
+  margin: 0 auto;
 }
 
 .asset-block img {
@@ -398,8 +402,10 @@ header {
   display: block;
 }
 
-/* Adjustments for SVG elements */
+/* SVG Container Styles */
 svg {
+  margin-top: 20px;
+  margin-bottom: 20px;
   background-color: transparent;
 }
 
@@ -527,7 +533,7 @@ svg {
 .chart-caption {
   font-size: 14px;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   color: #ffffff;
 }
 
@@ -553,8 +559,8 @@ svg {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .legend-item {
@@ -594,6 +600,25 @@ svg {
 .company-name {
   font-size: 12px;
   fill: #ffffff;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* Industry Label */
+.industry-label {
+  font-size: 16px;
+  fill: #ffffff;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+/* Sector Label */
+.sector-label {
+  font-size: 20px;
+  fill: #ffffff;
+  font-weight: bold;
+  text-anchor: middle;
+  pointer-events: none;
 }
 
 /* Mobile Responsiveness */

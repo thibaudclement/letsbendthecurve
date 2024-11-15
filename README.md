@@ -23,5 +23,6 @@
 - [You Draw It: How Family Income Predicts Children’s College Chances](https://www.nytimes.com/interactive/2015/05/28/upshot/you-draw-it-how-family-income-affects-childrens-college-chances.html)
 - [Tech Companies' Market Cap Over The Last 23 years](https://www.reddit.com/r/dataisbeautiful/comments/b1rgt9/market_capitalization_of_tech_companies_over_the/)
 - [Money, Race and Success: How Your School District Compares](https://www.nytimes.com/interactive/2016/04/29/upshot/money-race-and-success-how-your-school-district-compares.html)
+- [Standard and Poor's 500 index stocks categorized by sectors and industries. Size represents market cap.](https://finviz.com/map.ashx)
 
 ## Development Process
