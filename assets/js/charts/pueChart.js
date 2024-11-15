@@ -3,7 +3,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
   const initialData = data.map(d => ({ ...d }));
 
   // Set up dimensions and margins
-  const margin = { top: 50, right: 30, bottom: 80, left: 60 };
+  const margin = { top: 70, right: 30, bottom: 80, left: 80 };
   const width = 800 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
@@ -18,6 +18,16 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('class', 'pue-chart-container')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom);
+
+  // Add chart title
+  svg.append('text')
+    .attr('class', 'chart-title')
+    .attr('x', (width + margin.left + margin.right) / 2)
+    .attr('y', margin.top / 2)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .attr('font-size', '16px')
+    .text('Worldwide Data Center Average Annual Power Usage Effectiveness (2010-2050)');
 
   // Create chart area
   const chartArea = svg.append('g')
@@ -39,7 +49,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
 
   const yAxis = d3.axisLeft(y);
 
-  // Append axes
+  // Append axes before dots
   chartArea.append('g')
     .attr('class', 'axis x-axis')
     .attr('transform', `translate(0,${height})`)
@@ -52,7 +62,28 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('class', 'axis y-axis')
     .call(yAxis);
 
-  // Append data points
+  // Add x-axis title
+  chartArea.append('text')
+    .attr('class', 'axis-title')
+    .attr('x', width / 2)
+    .attr('y', height + 60)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .attr('font-size', '14px')
+    .text('Years');
+
+  // Add y-axis title
+  chartArea.append('text')
+    .attr('class', 'axis-title')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -height / 2)
+    .attr('y', -60)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .attr('font-size', '14px')
+    .text('Worldwide Average Data Center PUE');
+
+  // Append data points after axes
   const dots = chartArea.selectAll('.dot')
     .data(data)
     .enter()
@@ -69,6 +100,9 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
       .on('drag', dragged)
       .on('end', dragended)
     );
+
+  // Bring dots to the front
+  dots.raise();
 
   // Vertical dashed line between past and future data
   const separatorYear = 2024.5;
@@ -95,6 +129,39 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('y', 20)
     .attr('fill', '#ffffff')
     .text('Future Data');
+
+  // Add legend
+  const legend = chartArea.append('g')
+    .attr('class', 'legend')
+    .attr('transform', `translate(${width - 150}, 10)`);
+
+  // Actual Data Legend
+  legend.append('circle')
+    .attr('cx', 0)
+    .attr('cy', 0)
+    .attr('r', 5)
+    .attr('fill', '#31a354')
+    .attr('opacity', 1);
+
+  legend.append('text')
+    .attr('x', 15)
+    .attr('y', 5)
+    .attr('fill', '#ffffff')
+    .text('Actual Data');
+
+  // Interpolations/Projections Legend
+  legend.append('circle')
+    .attr('cx', 0)
+    .attr('cy', 20)
+    .attr('r', 5)
+    .attr('fill', '#31a354')
+    .attr('opacity', 0.5);
+
+  legend.append('text')
+    .attr('x', 15)
+    .attr('y', 25)
+    .attr('fill', '#ffffff')
+    .text('Interpolations/Projections');
 
   // Add Reset button below the chart inside the chart container
   chartContainer.append('button')

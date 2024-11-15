@@ -1,6 +1,6 @@
 export function drawEnergyConsumptionChart(containerSelector, data) {
   // Set up dimensions and margins
-  const margin = { top: 50, right: 30, bottom: 80, left: 60 };
+  const margin = { top: 70, right: 30, bottom: 80, left: 80 };
   const width = 800 - margin.left - margin.right;
   const height = 400 - margin.top - margin.bottom;
 
@@ -10,6 +10,16 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
     .attr('class', 'energy-chart-container')
     .attr('width', width + margin.left + margin.right)
     .attr('height', height + margin.top + margin.bottom);
+
+  // Add chart title
+  svg.append('text')
+    .attr('class', 'chart-title')
+    .attr('x', (width + margin.left + margin.right) / 2)
+    .attr('y', margin.top / 2)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .attr('font-size', '16px')
+    .text('Global Data Center Electricity Consumption (2010-2050)');
 
   // Create chart area
   const chartArea = svg.append('g')
@@ -45,6 +55,27 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
   chartArea.append('g')
     .attr('class', 'axis y-axis')
     .call(yAxis);
+
+  // Add x-axis title
+  chartArea.append('text')
+    .attr('class', 'axis-title')
+    .attr('x', width / 2)
+    .attr('y', height + 60)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .attr('font-size', '14px')
+    .text('Years');
+
+  // Add y-axis title
+  chartArea.append('text')
+    .attr('class', 'axis-title')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -height / 2)
+    .attr('y', -60)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .attr('font-size', '14px')
+    .text('Global Data Center Electricity Consumption (TWh)');
 
   // Append bars
   chartArea.selectAll('.bar')
