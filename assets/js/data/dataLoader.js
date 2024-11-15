@@ -91,3 +91,29 @@ export async function loadIctEmissionsBreakdownData() {
     return [];
   }
 }
+
+export async function loadPueData() {
+  try {
+    const data = await d3.csv('assets/data/data_center_efficiency.csv');
+
+    return data.map(d => {
+      const year = +d.Year;
+      const pue = +d.PUE;
+      const energyConsumption = +d['Energy Consumption'];
+      const itEnergy = energyConsumption / pue;
+
+      return {
+        year,
+        pue,
+        pueSource: d['PUE Source'],
+        energyConsumption,
+        itEnergy,
+        isProjection: d['PUE Source'] === 'Projection',
+        isInterpolation: d['PUE Source'] === 'Interpolation',
+      };
+    });
+  } catch (error) {
+    console.error('Error loading PUE data:', error);
+    return [];
+  }
+}

@@ -13,6 +13,7 @@
 - [Internet energy consumption: data, models, forecasts](https://thundersaidenergy.com/downloads/internet-energy-consumpion-data-models-forecasts/)
 - [List of Fortune 500 Companies and Their Websites](https://www.zyxware.com/articles/4344/list-of-fortune-500-companies-and-their-websites)
 - [Data center average annual Power Usage Effectiveness (PUE) worldwide from 2007 to 2024](https://www.statista.com/statistics/1229367/data-center-average-annual-pue-worldwide/)
+- [Fact Sheet on National Data Center Energy Efficiency Information Program](https://www1.eere.energy.gov/manufacturing/datacenters/pdfs/national_data_center_fact_sheet_abbrev.pdf)
 - [Website Carbon](https://www.websitecarbon.com/)
 
 ## Design Choices

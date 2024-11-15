@@ -6,6 +6,7 @@ import {
   loadElectricityConsumptionData,
   loadIctEmissionsData,
   loadIctEmissionsBreakdownData,
+  loadPueData,
 } from './data/dataLoader.js';
 import { drawEmissionsChart } from './charts/emissionsChart.js';
 import { displayEquivalentsInList } from './charts/equivalents.js';
@@ -16,6 +17,8 @@ import { drawInternetTrafficChart } from './charts/internetTrafficChart.js';
 import { drawElectricityConsumptionChart } from './charts/electricityConsumptionChart.js';
 import { drawIctEmissionsCharts } from './charts/ictEmissionsChart.js';
 import { drawIctEmissionsBreakdownChart } from './charts/ictEmissionsBreakdownChart.js';
+import { drawPueChart } from './charts/pueChart.js';
+import { drawEnergyConsumptionChart } from './charts/energyConsumptionChart.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   // Load data
@@ -26,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const electricityConsumptionData = await loadElectricityConsumptionData();
   const ictEmissionsData = await loadIctEmissionsData();
   const ictEmissionsBreakdownData = await loadIctEmissionsBreakdownData();
+  const pueData = await loadPueData();
 
   if (
     !digitalTasks.length ||
@@ -34,7 +38,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     !internetUsageData.length ||
     !electricityConsumptionData.length ||
     !ictEmissionsData.length ||
-    !ictEmissionsBreakdownData.length
+    !ictEmissionsBreakdownData.length ||
+    !pueData.length
   ) {
     console.error('Failed to load necessary data.');
     return;
@@ -85,4 +90,10 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   // Draw ICT Emissions Breakdown Pie Chart
   drawIctEmissionsBreakdownChart('#ict-emissions-breakdown', ictEmissionsBreakdownData);
+
+  // Draw Energy Consumption Chart first to get the update function
+  const updateEnergyConsumptionChart = drawEnergyConsumptionChart('#energy-consumption-chart', pueData);
+
+  // Draw PUE Chart, passing the update function
+  drawPueChart('#pue-chart', pueData, updateEnergyConsumptionChart);
 });

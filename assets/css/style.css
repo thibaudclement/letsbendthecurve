@@ -434,6 +434,78 @@ svg {
   margin-top: 20px; /* Adjust as needed */
 }
 
+/* PUE Chart Styles */
+.pue-chart-container {
+  margin: 0 auto;
+}
+
+.line.pue-line {
+  fill: none;
+  stroke: #31a354;
+  stroke-width: 2px;
+}
+
+.dot {
+  cursor: pointer;
+}
+
+.separator-line {
+  stroke: #ffffff;
+  stroke-dasharray: 4;
+}
+
+.label {
+  font-size: 12px;
+  fill: #ffffff;
+}
+
+/* Energy Consumption Chart Styles */
+.energy-chart-container {
+  margin: 0 auto;
+}
+
+.line.energy-line {
+  fill: none;
+  stroke: #74c476;
+  stroke-width: 2px;
+}
+
+/* Axis Styles */
+.axis path,
+.axis line {
+  stroke: #ffffff;
+}
+
+.axis text {
+  fill: #ffffff;
+  font-size: 12px;
+}
+
+/* Adjust cursor for draggable elements */
+.dot.active {
+  cursor: grabbing;
+}
+
+.dot:hover {
+  stroke: #ffffff;
+  stroke-width: 2px;
+}
+
+/* Reset Button Styles */
+.reset-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #31a354;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background-color: #2a923f;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .text-block,
