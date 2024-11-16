@@ -28,6 +28,10 @@ header {
   width: 100%;
 }
 
+header img {
+  margin: 50px 0;
+}
+
 /* Text Blocks */
 .text-block {
   max-width: 640px;
@@ -786,6 +790,8 @@ svg {
 .toggle-message {
   text-align: center;
 }
+
+
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
