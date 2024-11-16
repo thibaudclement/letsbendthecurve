@@ -169,3 +169,28 @@ export async function loadFortune500EmissionsData() {
     return [];
   }
 }
+
+export async function loadCountryData() {
+  try {
+    const data = await d3.csv('assets/data/country_data.csv');
+    // Parse and convert data types
+    data.forEach(d => {
+      d.Country = d.Country;
+      d.Population = +d.Population;
+      d["Human Development Index"] = +d["Human Development Index"];
+      d["GDP (Nominal)"] = +d["GDP (Nominal)"];
+      d["GDP Per Capita"] = +d["GDP Per Capita"];
+      d["Electricity Consumption"] = +d["Electricity Consumption"];
+      d["Internet Users (% of Population)"] = +d["Internet Users (% of Population)"];
+      d["Data Centers"] = +d["Data Centers"];
+      d["Supercomputer Cores"] = +d["Supercomputer Cores"];
+      d["Internet Connection Speed (Average Download Speed, Mbit/s)"] = +d["Internet Connection Speed (Average Download Speed, Mbit/s)"];
+      // Calculate Supercomputer Cores Per Million Inhabitants
+      d["Supercomputer Cores Per Million Inhabitants"] = (d["Supercomputer Cores"] / d.Population) * 1000000;
+    });
+    return data;
+  } catch (error) {
+    console.error('Error loading country data:', error);
+    return [];
+  }
+}

@@ -15,6 +15,9 @@
 - [Data center average annual Power Usage Effectiveness (PUE) worldwide from 2007 to 2024](https://www.statista.com/statistics/1229367/data-center-average-annual-pue-worldwide/)
 - [Fact Sheet on National Data Center Energy Efficiency Information Program](https://www1.eere.energy.gov/manufacturing/datacenters/pdfs/national_data_center_fact_sheet_abbrev.pdf)
 - [Website Carbon](https://www.websitecarbon.com/)
+- [Leading countries by number of data centers as of March 2024](https://www.statista.com/statistics/1228433/data-centers-worldwide-by-country/)
+- [Top500 Supercomputers Installations by Countries/Regions](https://www.top500.org/lists/top500/2024/06/highs/)
+- [List of countries by Internet connection speeds](https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds)
 
 ## Design Choices
 
