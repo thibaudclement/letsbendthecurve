@@ -110,9 +110,11 @@
         <a href="https://thundersaidenergy.com/2023/04/20/what-is-the-energy-consumption-of-the-internet/">Thunder Said Energy</a> 
         projects that by 2030, the internet’s electricity consumption will reach 2,000 TWh, 
         and by 2050, it could climb to 3,750 TWh. If these forecasts hold true, the internet alone would 
-        account for 5% to 7% of global electricity use—a remarkable share for something so integral to modern life.</p>
-      <p>What does this mean in terms of CO₂ emissions? The charts below shows the evolution of the Information
-          and Communication Technology (ICT) sector's CO₂ emissions:</p>
+        account for 5% to 7% of global electricity use—a remarkable share for something so integral to modern life.
+        What does this mean in terms of CO₂ emissions?</p>
+      <p> While the Information and Communication Technology (ICT) sector is often highly praised for enabling 
+        efficiencies that help reduce other sector's footprint, it receives little attention as a contributor 
+        to those emissions. The charts below shows the evolution of the ICT sector's CO₂ emissions:</p>
     </section>
     <section class="asset-block" id="ict-emissions">
       <!-- Main title will be inserted here -->
@@ -125,8 +127,7 @@
       <div id="ict-emissions-legend"></div>
     </section>
     <section class="text-block">
-      <p>The ICT sector’s greenhouse gas emissions (GHG) have grown significantly over time. 
-        According to <a href="https://www.sciencedirect.com/science/article/pii/S095965261733233X">Belkhir and Elmeligi</a>, 
+      <p>According to <a href="https://www.sciencedirect.com/science/article/pii/S095965261733233X">Belkhir and Elmeligi</a>, 
         between 2007 and 2020, the ICT sector’s share of global emissions more than doubled, rising from an estimated 1.06%-1.6% in 2007 
         to 3.06%-3.6% in 2020. This reflects the world’s increasing reliance on digital technology and infrastructure.</p>
       <p>By 2040, Belkhir and Elmeligi estimate that the ICT sector’s share of the global carbon footprint could range from 5.82% 
@@ -138,17 +139,9 @@
     <section class="text-block">
       <hr>
       <h2>Where Are Emissions Coming From?</h2>
-      <p>While the ICT sector is often highly praised for enabling efficiencies that help reduce other industry 
-        sectors footprint, it receives little attention as a contributor to those emissions. Yet, as the above 
-        charts suggest, without attention and optimization, the contribution of the ICT sector to global emissions
-        could grow from 1%-1.6% in 2007 to over 14% in 2040. So, what exactly is causing those emissions?</p>
-      <p>Estimates of emissions in the ICT sector vary according to methodology, but experts converge towards
-        the idea that the main sources of emissions are user devices, networks, and data centers.</p>
-    </section>
-    <section class="asset-block" id="ict-emissions-breakdown">
-      <!-- Emissions breakdown chart will be inserted here -->
-    </section>
-    <section class="text-block">
+      <p>To bend the curve of emissions from the ICT sector, we first need to understand what is causing 
+        these emissions. Estimates of emissions in the ICT sector vary according to methodology, but experts converge 
+        towards the idea that the main sources of emissions are user devices, networks, and data centers.</p>
       <p>These three pillars of modern digital ecosystems interact to deliver digital services, enabling data 
         transmission and processing:</p>
       <ul>
@@ -161,6 +154,12 @@
         <li>Data centers process, store, and manage vast amounts of data, consuming energy for computation, storage, 
           and cooling, often producing significant emissions if powered by non-renewable energy.</li>
       </ul>
+      <p><a href="https://www.cell.com/patterns/pdfExtended/S2666-3899(21)00188-4">Andrae and Edler</a> estimate ICT emissions to be distributed as follows: </p>
+    </section>
+    <section class="asset-block" id="ict-emissions-breakdown">
+      <!-- Emissions breakdown chart will be inserted here -->
+    </section>
+    <section class="text-block">
       <p>Within each segment, we need to distinguish between two categories of emissions:</p>
       <ul>
         <li>Embodied emissions refer to the greenhouse gases produced during the manufacturing, transportation, and 
@@ -168,18 +167,25 @@
         <li>Operational emissions are generated during the daily use of digital systems, including powering data centers, 
           networks, and user devices.</li>
       </ul>
-      <p>Addressing embodied emissions is crucial, as these emissions are essentially "built into" the physical
-        infrastructure before it is used. As this pertains to the field of hardware manufacturing, it is outside 
-        the direct scope of this article. In sustainable computing and software engineering, the focus is often on 
+      <p>According to the Sustainable Web Design Model, emissions are distributed as follows:</p>
+    </section>
+    <section class="asset-block" id="sustainable-web-design-model">
+      <!-- Sustainable web design model chart will be inserted here -->
+    </section>
+    <section class="text-block">
+      <p>As the chart above suggests, addressing embodied emissions is crucial, as these emissions are essentially "built into" 
+        the physical infrastructure before it is used. As this pertains to the field of hardware manufacturing, it is outside 
+        the direct scope of this article.</p>
+        <p>In sustainable computing and software engineering, the focus is often on 
         reducing operational emissions because they are directly influenced by how we design, develop, and optimize 
         software and systems—such as improving energy efficiency, minimizing data transfer, and utilizing green energy 
         sources. Let's examine how we can decrease operational emission contributions of user devices, networks, and data 
-        centers—and bend the curve. </p>
+        centers.</p>
     </section>
     <section class="text-block">
       <hr>
       <h2>The Promise of Renewable Energy</h2>
-      <p>One of the main sources of emissions in the ICT sector is the energy consumption of data centers. One way to
+      <p>One of the main sources of operational emissions in the ICT sector is the energy consumption of data centers. One way to
         reduce the emissions of data centers is to power them with renewable energy sources. Fortunately, the trend
         is already moving in this direction. The largest cloud providers, such as Amazon Web Services, Google Cloud,
         and Microsoft Azure, have committed to powering their data centers with <a href="https://www.cedara.io/post/tracking-the-transition-to-renewable-energy-in-the-data-center-industry">100%</a> 
@@ -200,17 +206,18 @@
             <a href="https://www.microsoft.com/en-us/corporate-responsibility/sustainability-journey">all the carbon</a> it has emitted since its founding in 1975.</p>
         <p>Until all data centers are completely powered by renewable energy, sustainable software engineering practices
           can help product development teams maximize the reliance of the cloud applications they build on renewable energy sources.</p> 
-        <p>Demand shaping refers to adjusting computational workloads to align with the availability of low-carbon energy 
-          sources. This strategy involves increasing or decreasing application activities based on the current 
-          carbon intensity of the electricity grid. For example, when the grid is powered predominantly by renewable 
-          energy, applications can perform more energy-intensive tasks. Conversely, during periods of higher carbon intensity, 
-          applications can scale back or delay non-essential processes. This approach helps reduce the carbon footprint of software 
-          operations by synchronizing energy consumption with cleaner energy availability.</p>
-        <p>Demand shifting, on the other hand, involves rescheduling computational tasks to times or 
-          locations where the carbon intensity is lower. This might mean delaying a task until a time 
-          when renewable energy is more abundant or relocating workloads to data centers in regions with 
-          cleaner energy grids. By strategically timing and placing computational activities, demand shifting 
-          aims to minimize the environmental impact of software operations.</p>
+        <p>Demand shifting, for instance, involves rescheduling or relocating computational tasks to take advantage of lower carbon 
+          intensity at different times or locations. This strategy can be broken down into two types: spatial shifting and temporal 
+          shifting. Spatial shifting means moving computations to regions where energy is cleaner, such as data centers powered by 
+          renewable energy. Temporal shifting involves delaying tasks to times when the grid is less carbon-intensive, such as during 
+          sunny or windy periods. For example, training machine learning models at night when wind energy is abundant or relocating workloads 
+          to another hemisphere during peak solar seasons are both examples of demand shifting.</p>
+        <p>Demand shaping, in contrast, refers to adapting computational workloads to align with the availability of low-carbon energy sources. 
+          Instead of moving tasks to a different time or location, demand shaping involves increasing or decreasing application activities in 
+          response to the current carbon intensity of the electricity grid. For instance, when the grid is powered predominantly by renewable energy, 
+          applications can scale up and perform more energy-intensive tasks. Conversely, during periods of higher carbon intensity, applications can reduce 
+          demand or prioritize essential processes. Examples of demand shaping include video conferencing software that adjusts streaming quality based on bandwidth 
+          or energy efficiency, and eco modes in applications that sacrifice performance to reduce energy consumption automatically or with user consent.</p>
     </section>
     <section class="text-block">
       <hr>
