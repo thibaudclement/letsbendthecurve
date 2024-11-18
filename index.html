@@ -258,27 +258,62 @@
       <!-- Energy consumption chart will be inserted here -->
     </section>
     <section class="text-block">
-      <p>Mention need for architecture innovation: AI/ML accelerators, supercomputers, integration.</p>
+      <p>These charts clearly highlight the critical importance of further reducing PUE over the long term to limit energy consumption as the ICT sector 
+        continues to grow. To achieve this, let's consider the factors that influence PUE, including how data centers manage energy-intensive processes 
+        like cooling.</p>
     </section>
     <section class="text-block">
       <hr>
       <h2>Taking The Heat—And Giving It Back</h2>
+      <p>At its core, a data center functions as a vast collection of information processing engines—servers—designed to perform complex computational tasks. 
+        Each server takes in electromagnetic energy as electricity, which powers its operations. This energy is then transformed into two outputs: 
+        information processing, the intended result, and heat energy, an inevitable byproduct. The illustration below demonstrates this process:</p>
       <img src="assets/images/information_processing_engine.svg" alt="Information processing Engine">
-      <p>Explain how computing works (taking electromagnetic energy as input, and 
-        providing information processing and heat as output). Introduce the idea of heat waste management, to redirect wasted heat from
-        data centers to surrounding HVAC systems. Mentions opportunities with new programming languages
-        (such as Rust) to bring data centers closers to end users and reduce data transfer distance.</p>
+      <p>Innovation in overhead efficiency, particularly in cooling systems, plays a critical role in improving PUE by ensuring a larger proportion 
+        of a data center's energy consumption is allocated to computing rather than managing heat. Cutting-edge solutions such as advanced liquid cooling, 
+        optimized airflow designs, and energy-efficient pumps have already demonstrated their potential to reduce cooling demands significantly. For instance, 
+        technologies like immersion cooling eliminate the need for traditional air conditioning, while heat recapture systems transform waste heat into a resource. 
+        As organizations aim to lower their PUE, such innovations represent a vital path forward for sustainable operations.</p>
+      <p>But what about the heat that data centers inevitably produce? Waste heat, rather than being discarded, can become a valuable resource. For instance, 
+        data centers can <a href="https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks">repurpose excess heat</a> to warm nearby 
+        residential or commercial buildings or support industrial processes, reducing reliance on other energy sources. 
+        If implemented effectively, waste heat management could even contribute to a dramatic reduction in Power Usage Effectiveness (PUE). In theory, a data center that makes 
+        full use of its waste heat could achieve a PUE below 1.0, as the energy consumed would serve dual purposes: powering computing operations and providing useful heat for 
+        external needs. This underscores the transformative potential of waste heat as a key element in building more sustainable digital infrastructure.</p>
+      <p>Looking beyond hardware, optimizing the software that powers data centers offers another critical avenue for improvement. Rust, for example, is a programming 
+        language known for its efficiency, with <a href="https://greenlab.di.uminho.pt/wp-content/uploads/2017/10/sleFinal.pdf">studies</a> showing it can halve electricity 
+        consumption compared to Java, a common language in cloud computing. Shane Miller, 
+        a leader in the Rust community, notes that this level of efficiency could enable <a href="https://www.technologyreview.com/2023/02/14/1067869/rust-worlds-fastest-growing-programming-language/">smaller data centers</a> 
+        capable of handling the same workloads as larger ones.</p>
+      <p>This creates a dual opportunity: by locating these mini data centers in urban areas—such as in the basements of residential or commercial buildings—they may be positioned closer to both heat consumers 
+        and data consumers. This proximity allows for more practical reuse of waste heat, while also reducing the network footprint—by minimizing the resources required to transmit 
+        heat and data, respectively, over long distances. These combined benefits underscore the transformative potential of sustainable software practices in addressing energy challenges.</p>
     </section>
     <section class="text-block">
       <hr>
       <h2>The Immense Power of Sustainable Software Engineering</h2>
-      <p>In February 2020, Danny Van Kooten published a blog post sharing how a simple decision in sustainable web design 
-        led to remarkable environmental benefits. As a software developer, he optimized his WordPress plugin to remove unnecessary 
-        JavaScript, reducing the data transferred with every page load on his website. This seemingly minor change had a significant 
-        impact: by shrinking the size of his site, he cut energy consumption for visitors, leading to an estimated reduction of over 
-        59,000 kilograms of CO2 emissions annually—equivalent to 85 transatlantic flights from New York to Amsterdam. Van Kooten’s story 
-        demonstrates how thoughtful design choices can create substantial environmental gains, offering a compelling model for building 
-        greener digital systems.</p>
+      <p>In February 2020, Danny Van Kooten published a <a href="https://www.dannyvankooten.com/blog/2020/website-carbon-emissions/">blog post</a> 
+        sharing how a simple decision in sustainable web design led to remarkable environmental benefits. As a software developer, 
+        he optimized his WordPress plugin to remove unnecessary JavaScript, reducing the data transferred with every page load on his website.</p>
+      <p>This seemingly minor change had a significant impact: by shrinking the size of his site, he cut energy consumption for visitors, 
+        leading to an estimated reduction of over 59,000 kilograms of CO2 emissions annually—equivalent to 85 transatlantic flights 
+        from New York to Amsterdam. Van Kooten’s story demonstrates how thoughtful design choices can create substantial environmental gains, 
+        offering a compelling model for building greener digital systems.</p>
+      <p>Van Kooten’s approach reflects broader principles of sustainable web design, which focus on minimizing the energy and resources required to build, 
+        run, and access digital services. Experts like Tom Greenwood, Tim Frick, and Anne Currie, among others, have outlined key practices for designing 
+        sustainable digital systems:</p>
+      <ul>
+        <li>Prioritize simplicity and efficiency: Reduce unnecessary features, files, and code to minimize energy consumption.</li>
+        <li>Design for performance: Optimize load times and minimize data transfer, ensuring that digital assets consume fewer resources.</li>
+        <li>Leverage green hosting: Choose hosting providers powered by renewable energy to reduce operational emissions.</li>
+        <li>Adopt user-centric sustainability: Build interfaces and features that encourage environmentally conscious behavior.</li>
+        <li>Extend system lifespans: Design software and digital tools to last longer and reduce the need for frequent upgrades.</li>
+        <li>Measure and optimize continuously: Use tools to measure the environmental impact of your digital services and identify areas for improvement.</li>
+      </ul>
+      <p>For individuals and organizations, tools like Website Carbon and EcoGrader offer a practical way to assess the sustainability of any website. By analyzing 
+        factors like data transfer size, hosting energy source, and user traffic, these tools provide actionable insights to help you reduce your digital carbon footprint.</p>
+      <p>The potential impact of sustainable software engineering becomes staggering when scaled across major organizations. Consider the websites of Fortune 500 companies, 
+        which collectively emit an estimated 105,877 tonnes of CO₂ annually. That’s equivalent to the emissions of over 23,000 passenger cars driven for an entire year. The interactive chart below allows you to explore the annual CO₂ emissions from these companies' websites:</p>
     </section>
     <section class="asset-block" id="fortune500-emissions-chart">
       <!-- Chart will be inserted here -->
