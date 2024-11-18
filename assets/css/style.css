@@ -11,8 +11,8 @@ body {
 a {
   color: #74c476;
   text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
   text-decoration-skip-ink: auto;
   font-weight: bold;
 }
@@ -46,6 +46,14 @@ header img {
 .data-point {
   font-weight: bold;
   border-bottom: 2px dotted #bcbec0;
+}
+
+/* Important Statements */
+.important-statement {
+  color: #74c476;
+  font-weight: bold;
+  padding: 1px 4px 2px 4px;
+  border: 2px solid #74c476;
 }
 
 /* Asset Blocks */
