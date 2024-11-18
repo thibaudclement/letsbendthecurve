@@ -205,14 +205,16 @@
             since 2012, and were relying on 50% renewable energy by 2018. By 2050, the company ambitions to remove from the atmosphere
             <a href="https://www.microsoft.com/en-us/corporate-responsibility/sustainability-journey">all the carbon</a> it has emitted since its founding in 1975.</p>
         <p>Until all data centers are completely powered by renewable energy, sustainable software engineering practices
-          can help product development teams maximize the reliance of the cloud applications they build on renewable energy sources.</p> 
-        <p>Demand shifting, for instance, involves rescheduling or relocating computational tasks to take advantage of lower carbon 
+          can help product development teams maximize the reliance of the cloud applications they build on renewable energy sources.
+          To that effect, the Linux Foundation's <a href="https://training.linuxfoundation.org/training/green-software-for-practitioners-lfc131/">Green Software for Practitioners</a>
+          certification advocates two fundamental approaches to make software do more when the carbon intensity of computing is lower.</p> 
+        <p><strong>Demand shifting</strong>, on the one hand, involves rescheduling or relocating computational tasks to take advantage of lower carbon 
           intensity at different times or locations. This strategy can be broken down into two types: spatial shifting and temporal 
           shifting. Spatial shifting means moving computations to regions where energy is cleaner, such as data centers powered by 
           renewable energy. Temporal shifting involves delaying tasks to times when the grid is less carbon-intensive, such as during 
           sunny or windy periods. For example, training machine learning models at night when wind energy is abundant or relocating workloads 
           to another hemisphere during peak solar seasons are both examples of demand shifting.</p>
-        <p>Demand shaping, in contrast, refers to adapting computational workloads to align with the availability of low-carbon energy sources. 
+        <p><strong>Demand shaping</strong>, on the other hand, refers to adapting computational workloads to align with the availability of low-carbon energy sources. 
           Instead of moving tasks to a different time or location, demand shaping involves increasing or decreasing application activities in 
           response to the current carbon intensity of the electricity grid. For instance, when the grid is powered predominantly by renewable energy, 
           applications can scale up and perform more energy-intensive tasks. Conversely, during periods of higher carbon intensity, applications can reduce 
@@ -221,8 +223,30 @@
     </section>
     <section class="text-block">
       <hr>
-      <h2>Efficiency Is Key</h2>
-      <p>Introducing the idea of Power Usage Effectiveness.</p>
+      <h2>Efficiency, The Cornerstone of Sustainability</h2>
+      <p>Even if the entire ICT sector were powered by renewable energy, the industry’s exponential growth 
+        means efficiency would still be critical. Without significant improvements in how energy is used, 
+        the sector risks consuming an outsized share of clean energy resources that are also essential for 
+        other sectors and societal needs.</p>
+        <p>Power Usage Effectiveness (PUE) is a key metric used to measure data center energy efficiency. 
+          Developed by Green Grid in 2006, PUE compares the total energy consumption of a data center to the energy 
+          used solely by its computing equipment. A PUE of 1.0 indicates that all energy is used for computing, 
+          with no additional overhead for cooling or power distribution. For instance, if an application consumes 10 kWh 
+          of energy and the data center’s PUE is 1.5, the actual energy drawn from the grid is 15 kWh—10 kWh for computing 
+          and 5 kWh for operational overhead like cooling and power delivery.</p>
+          <p>Fortunately, PUE has improved significantly over the years. In 2007, the global average PUE was around 2.5, 
+            meaning that data centers consumed 1.5 watts in overhead for every watt used by computing equipment. By 2020, 
+            global PUE had dropped to under 1.6, thanks to advancements in IT hardware, more efficient cooling technologies, 
+            and a shift towards hyperscale cloud data centers that are far more efficient than smaller enterprise facilities. 
+            This progress has been instrumental in keeping global data center electricity consumption relatively flat despite 
+            the exponential growth of internet traffic and workloads. For example, while internet traffic grew by a factor of 
+            20 between 2010 and 2020, data center electricity use only increased moderately, stabilizing at an estimated 
+            240-340 TWh in 2022, or roughly 1-1.3% of global electricity demand.</p>
+          <p>To understand the impact of PUE on energy consumption more deeply, explore the interactive charts below. The first chart 
+            illustrates the worldwide average annual PUE of data centers from 2010 to 2050, while the second shows global data center 
+            electricity consumption over the same period. By adjusting the PUE values in the first chart, you can see how future efficiency 
+            improvements could shape energy consumption in the coming decades. These visualizations highlight both the achievements made 
+            so far and the potential for further efficiency gains as the ICT sector continues to grow.</p>
     </section>
     <section class="asset-block" id="pue-chart">
       <!-- PUE chart will be inserted here -->
