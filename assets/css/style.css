@@ -72,6 +72,10 @@ header img {
   display: none;
 }
 
+#user-input-section .sliders-container {
+  background-color: #414042;
+}
+
 /* Charts */
 .chart-container {
   width: 100%;
@@ -99,9 +103,8 @@ header img {
 
 /* Sliders */
 .sliders-container {
-  border: 2px solid #74c476;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   margin: 10px auto;
   max-width: 640px;
 }
@@ -132,8 +135,8 @@ header img {
 .slider-input::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background: #74c476;
   cursor: pointer;
   border-radius: 50%;
@@ -143,8 +146,8 @@ header img {
 }
 
 .slider-input::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background: #74c476;
   cursor: pointer;
   border-radius: 50%;
@@ -154,8 +157,8 @@ header img {
 }
 
 .slider-input::-ms-thumb {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background: #74c476;
   cursor: pointer;
   border-radius: 50%;
