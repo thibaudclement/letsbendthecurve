@@ -99,7 +99,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
     .attr('text-anchor', 'middle')
     .style('font-size', '18px')
     .attr('fill', '#ffffff')
-    .text('Guess the Growth of Internet Traffic from 2000 to 2024');
+    .text('Global Internet Traffic from 2000 to 2024');
 
   // Annotation
   const annotationYear = 2020;
@@ -187,7 +187,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
       // Incorrect guess
       feedbackSection
         .style('display', 'block')
-        .html('<p><strong>Not quite.</strong> While the number of internet users has grown linearly from 2000 to 2024, if global internet traffic had followed a logarithmic growth pattern, it would mean the amount of data consumed per user had decreased over time. This is not the case. In fact, digital services have become integral to modern life, and technologies like streaming, artificial intelligence, and blockchain are highly data-intensive. Feel free to try again!</p>');
+        .html('<p><strong>Not quite.</strong> While the number of internet users has grown linearly from 2000 to 2024, if global internet traffic had followed a logarithmic growth pattern, it would mean the amount of data consumed per user has decreased over time. This is not the case. In fact, digital services have become integral to modern life, and technologies like streaming, artificial intelligence, and blockchain are highly data-intensive. Feel free to try again!</p>');
     }
   }
 }
