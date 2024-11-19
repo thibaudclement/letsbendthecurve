@@ -176,17 +176,22 @@ export async function loadCountryData() {
     // Parse and convert data types
     data.forEach(d => {
       d.Country = d.Country;
-      d.Population = +d.Population;
-      d["Human Development Index"] = +d["Human Development Index"];
-      d["GDP (Nominal)"] = +d["GDP (Nominal)"];
-      d["GDP Per Capita"] = +d["GDP Per Capita"];
-      d["Electricity Consumption"] = +d["Electricity Consumption"];
-      d["Internet Users (% of Population)"] = +d["Internet Users (% of Population)"];
-      d["Data Centers"] = +d["Data Centers"];
-      d["Supercomputer Cores"] = +d["Supercomputer Cores"];
-      d["Internet Connection Speed (Average Download Speed, Mbit/s)"] = +d["Internet Connection Speed (Average Download Speed, Mbit/s)"];
+      d.Population = d.Population ? +d.Population : NaN;
+      d["Human Development Index"] = d["Human Development Index"] ? +d["Human Development Index"] : NaN;
+      d["GDP (Nominal)"] = d["GDP (Nominal)"] ? +d["GDP (Nominal)"] : NaN;
+      d["GDP Per Capita"] = d["GDP Per Capita"] ? +d["GDP Per Capita"] : NaN;
+      d["Electricity Consumption"] = d["Electricity Consumption"] ? +d["Electricity Consumption"] : NaN;
+      d["Internet Users (% of Population)"] = d["Internet Users (% of Population)"] ? +d["Internet Users (% of Population)"] : NaN;
+      d["Data Centers"] = d["Data Centers"] ? +d["Data Centers"] : NaN;
+      d["Supercomputer Cores"] = d["Supercomputer Cores"] ? +d["Supercomputer Cores"] : NaN;
+      d["Internet Connection Speed (Average Download Speed, Mbit/s)"] = d["Internet Connection Speed (Average Download Speed, Mbit/s)"] ? +d["Internet Connection Speed (Average Download Speed, Mbit/s)"] : NaN;
+
       // Calculate Supercomputer Cores Per Million Inhabitants
-      d["Supercomputer Cores Per Million Inhabitants"] = (d["Supercomputer Cores"] / d.Population) * 1000000;
+      if (!isNaN(d["Supercomputer Cores"]) && !isNaN(d.Population) && d.Population !== 0) {
+        d["Supercomputer Cores Per Million Inhabitants"] = (d["Supercomputer Cores"] / d.Population) * 1000000;
+      } else {
+        d["Supercomputer Cores Per Million Inhabitants"] = NaN;
+      }
     });
     return data;
   } catch (error) {

@@ -1,18 +1,19 @@
 export function drawDigitalProsperityChart(containerSelector, data) {
   // Set up the chart dimensions and margins
-  const margin = { top: 60, right: 50, bottom: 70, left: 70 },
-        width = 800 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+  const margin = { top: 60, right: 50, bottom: 70, left: 70 };
+  const width = 960 - margin.left - margin.right; // Adjusted for full width
+  const height = 500 - margin.top - margin.bottom;
 
   // Create the SVG container
   const svg = d3.select(containerSelector)
     .append("svg")
     .attr("width", '100%')
     .attr("height", height + margin.top + margin.bottom)
-    .attr("viewBox", `0 0 800 ${height + margin.top + margin.bottom}`)
-    .attr("preserveAspectRatio", "xMidYMid meet")
-    .style("margin", "0 auto")
-    .append("g")
+    .attr("viewBox", `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+    .attr("preserveAspectRatio", "xMidYMid meet");
+
+  // Append group element
+  const chartGroup = svg.append("g")
     .attr("transform", `translate(${margin.left},${margin.top})`);
 
   // Define chart configurations
@@ -24,18 +25,16 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       xKey: "Internet Users (% of Population)",
       yKey: "Human Development Index",
       xScaleType: "linear",
-      yScaleType: "linear",
-      trendline: "linear"
+      yScaleType: "linear"
     },
     {
       title: "Human Development Index vs. Internet Connection Speed",
-      xLabel: "Internet Connection Speed (Mbit/s)",
+      xLabel: "Internet Connection Speed (Average Download Speed, Mbit/s)",
       yLabel: "Human Development Index",
       xKey: "Internet Connection Speed (Average Download Speed, Mbit/s)",
       yKey: "Human Development Index",
       xScaleType: "linear",
-      yScaleType: "linear",
-      trendline: "linear"
+      yScaleType: "linear"
     },
     {
       title: "Human Development Index vs. Supercomputer Cores Per Million Inhabitants",
@@ -44,8 +43,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       xKey: "Supercomputer Cores Per Million Inhabitants",
       yKey: "Human Development Index",
       xScaleType: "log",
-      yScaleType: "linear",
-      trendline: "linear"
+      yScaleType: "linear"
     },
     {
       title: "GDP Per Capita vs. Internet Users (% of Population)",
@@ -54,8 +52,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       xKey: "Internet Users (% of Population)",
       yKey: "GDP Per Capita",
       xScaleType: "linear",
-      yScaleType: "log",
-      trendline: "exponential"
+      yScaleType: "log"
     },
     {
       title: "GDP (Nominal) vs. Electricity Consumption",
@@ -64,8 +61,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       xKey: "Electricity Consumption",
       yKey: "GDP (Nominal)",
       xScaleType: "log",
-      yScaleType: "log",
-      trendline: "linear"
+      yScaleType: "log"
     },
     {
       title: "GDP (Nominal) vs. Supercomputer Cores",
@@ -74,8 +70,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       xKey: "Supercomputer Cores",
       yKey: "GDP (Nominal)",
       xScaleType: "log",
-      yScaleType: "log",
-      trendline: "linear"
+      yScaleType: "log"
     }
   ];
 
@@ -87,9 +82,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
   // Add Previous and Next buttons
   const buttonContainer = d3.select(containerSelector)
     .append("div")
-    .attr("class", "button-container")
-    .style("text-align", "center")
-    .style("margin-top", "20px");
+    .attr("class", "button-container");
 
   buttonContainer.append("button")
     .attr("class", "prev-button")
@@ -109,7 +102,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
 
   function updateChart() {
     // Clear the previous chart
-    svg.selectAll("*").remove();
+    chartGroup.selectAll("*").remove();
     d3.select(containerSelector).selectAll(".tooltip").remove();
 
     // Get the current chart configuration
@@ -122,7 +115,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
 
       // Check for missing or invalid data
       if (
-        xValue == null || yValue == null ||
+        xValue == null || xValue === '' || yValue == null || yValue === '' ||
         isNaN(xValue) || isNaN(yValue)
       ) {
         return false;
@@ -141,7 +134,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
 
     // Check if there is data to display
     if (filteredData.length === 0) {
-      svg.append("text")
+      chartGroup.append("text")
         .attr("class", "no-data-message")
         .attr("x", width / 2)
         .attr("y", height / 2)
@@ -165,48 +158,84 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       .domain(d3.extent(yValues))
       .nice();
 
-    // Add X axis
-    const xAxis = d3.axisBottom(xScale)
-      .ticks(10, chartConfig.xScaleType === "log" ? "~s" : null);
-
-    svg.append("g")
+    // Add grid lines
+    chartGroup.append("g")
+      .attr("class", "grid x-grid")
       .attr("transform", `translate(0, ${height})`)
-      .call(xAxis);
+      .call(
+        d3.axisBottom(xScale)
+          .ticks(10, chartConfig.xScaleType === "log" ? "~s" : null)
+          .tickSize(-height)
+          .tickFormat('')
+      );
 
-    // Add X axis label
-    svg.append("text")
-      .attr("class", "axis-label")
-      .attr("x", width / 2)
-      .attr("y", height + margin.bottom - 10)
-      .attr("text-anchor", "middle")
-      .text(chartConfig.xLabel);
+    chartGroup.append("g")
+      .attr("class", "grid y-grid")
+      .call(
+        d3.axisLeft(yScale)
+          .ticks(10, chartConfig.yScaleType === "log" ? "~s" : null)
+          .tickSize(-width)
+          .tickFormat('')
+      );
 
-    // Add Y axis
-    const yAxis = d3.axisLeft(yScale)
-      .ticks(10, chartConfig.yScaleType === "log" ? "~s" : null);
+    // Remove extra grid lines to avoid box effect
+    chartGroup.selectAll(".x-grid .tick:first-of-type line, .x-grid .tick:last-of-type line")
+      .remove();
 
-    svg.append("g")
-      .call(yAxis);
+    chartGroup.selectAll(".y-grid .tick:first-of-type line, .y-grid .tick:last-of-type line")
+      .remove();
 
-    // Add Y axis label
-    svg.append("text")
-      .attr("class", "axis-label")
-      .attr("transform", "rotate(-90)")
-      .attr("x", -height / 2)
-      .attr("y", -margin.left + 15)
-      .attr("text-anchor", "middle")
-      .text(chartConfig.yLabel);
+    // Add X axis (ticks and labels only)
+    chartGroup.append("g")
+      .attr("class", "x-axis")
+      .attr("transform", `translate(0, ${height})`)
+      .call(
+        d3.axisBottom(xScale)
+          .ticks(10, chartConfig.xScaleType === "log" ? "~s" : null)
+          .tickSize(0)
+          .tickPadding(10)
+      );
+
+    // Add Y axis (ticks and labels only)
+    chartGroup.append("g")
+      .attr("class", "y-axis")
+      .call(
+        d3.axisLeft(yScale)
+          .ticks(10, chartConfig.yScaleType === "log" ? "~s" : null)
+          .tickSize(0)
+          .tickPadding(10)
+      );
+
+    // Remove axis lines
+    chartGroup.selectAll(".x-axis .domain, .y-axis .domain").remove();
 
     // Add chart title
-    svg.append("text")
+    chartGroup.append("text")
       .attr("class", "chart-title")
       .attr("x", width / 2)
       .attr("y", -30)
       .attr("text-anchor", "middle")
       .text(chartConfig.title);
 
+    // Add X axis label
+    chartGroup.append("text")
+      .attr("class", "axis-label")
+      .attr("x", width / 2)
+      .attr("y", height + margin.bottom - 10)
+      .attr("text-anchor", "middle")
+      .text(chartConfig.xLabel);
+
+    // Add Y axis label
+    chartGroup.append("text")
+      .attr("class", "axis-label")
+      .attr("transform", "rotate(-90)")
+      .attr("x", -height / 2)
+      .attr("y", -margin.left + 20)
+      .attr("text-anchor", "middle")
+      .text(chartConfig.yLabel);
+
     // Add dots
-    svg.append("g")
+    chartGroup.append("g")
       .selectAll("circle")
       .data(filteredData)
       .enter()
@@ -214,7 +243,10 @@ export function drawDigitalProsperityChart(containerSelector, data) {
         .attr("cx", d => xScale(d[chartConfig.xKey]))
         .attr("cy", d => yScale(d[chartConfig.yKey]))
         .attr("r", 5)
-        .attr("fill", "#31a354")
+        .attr("fill", "#74c476")
+        .attr("stroke", "#74c476")
+        .attr("stroke-opacity", 1)
+        .attr("fill-opacity", 0.5)
         .on("mouseover", showTooltip)
         .on("mouseout", hideTooltip);
 
@@ -228,7 +260,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       tooltip.transition()
         .duration(200)
         .style("opacity", .9);
-      tooltip.html(`<strong>${d.Country}</strong><br/>${chartConfig.xLabel}: ${d3.format(",.2f")(d[chartConfig.xKey])}<br/>${chartConfig.yLabel}: ${d3.format(",.2f")(d[chartConfig.yKey])}`)
+      tooltip.html(`<strong>${d.Country}</strong><br/>${chartConfig.xLabel}: ${formatValue(d[chartConfig.xKey])}<br/>${chartConfig.yLabel}: ${formatValue(d[chartConfig.yKey])}`)
         .style("left", (event.pageX + 10) + "px")
         .style("top", (event.pageY - 28) + "px");
     }
@@ -239,94 +271,16 @@ export function drawDigitalProsperityChart(containerSelector, data) {
         .style("opacity", 0);
     }
 
-    // Add trendline
-    let trendlinePoints = [];
-
-    if (chartConfig.trendline === "linear") {
-      // Compute linear regression coefficients
-      const { slope, intercept } = linearRegression(filteredData, chartConfig);
-
-      // Generate trendline points
-      const xFit = d3.range(
-        d3.min(xValues),
-        d3.max(xValues),
-        (d3.max(xValues) - d3.min(xValues)) / 100
-      );
-
-      trendlinePoints = xFit.map(x => {
-        const xTransformed = chartConfig.xScaleType === "log" ? Math.log(x) : x;
-        const y = slope * xTransformed + intercept;
-        const yValue = chartConfig.yScaleType === "log" ? Math.exp(y) : y;
-        return { x: x, y: yValue };
-      });
-    } else if (chartConfig.trendline === "exponential") {
-      // Compute exponential regression coefficients
-      const { A, B } = exponentialRegression(filteredData, chartConfig);
-
-      // Generate trendline points
-      const xFit = d3.range(
-        d3.min(xValues),
-        d3.max(xValues),
-        (d3.max(xValues) - d3.min(xValues)) / 100
-      );
-
-      trendlinePoints = xFit.map(x => {
-        const y = A * Math.exp(B * x);
-        return { x: x, y: y };
-      });
+    function formatValue(value) {
+      if (value >= 1000000000) {
+        return d3.format(".2s")(value);
+      } else if (value >= 1000000) {
+        return d3.format(".2s")(value);
+      } else if (value >= 1000) {
+        return d3.format(",")(value);
+      } else {
+        return d3.format(",.2f")(value);
+      }
     }
-
-    // Draw trendline
-    svg.append("path")
-      .datum(trendlinePoints)
-      .attr("fill", "none")
-      .attr("stroke", "#ffab00")
-      .attr("stroke-width", 2)
-      .attr("d", d3.line()
-        .x(d => xScale(d.x))
-        .y(d => yScale(d.y))
-      );
-  }
-
-  // Function to compute linear regression coefficients
-  function linearRegression(data, chartConfig) {
-    let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
-    const n = data.length;
-
-    data.forEach(d => {
-      const x = chartConfig.xScaleType === "log" ? Math.log(d[chartConfig.xKey]) : d[chartConfig.xKey];
-      const y = chartConfig.yScaleType === "log" ? Math.log(d[chartConfig.yKey]) : d[chartConfig.yKey];
-      sumX += x;
-      sumY += y;
-      sumXY += x * y;
-      sumX2 += x * x;
-    });
-
-    const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
-    const intercept = (sumY - slope * sumX) / n;
-
-    return { slope, intercept };
-  }
-
-  // Function to compute exponential regression coefficients
-  function exponentialRegression(data, chartConfig) {
-    let sumX = 0, sumLnY = 0, sumXlnY = 0, sumX2 = 0;
-    const n = data.length;
-
-    data.forEach(d => {
-      const x = d[chartConfig.xKey];
-      const y = d[chartConfig.yKey];
-      const lnY = Math.log(y);
-      sumX += x;
-      sumLnY += lnY;
-      sumXlnY += x * lnY;
-      sumX2 += x * x;
-    });
-
-    const B = (n * sumXlnY - sumX * sumLnY) / (n * sumX2 - sumX * sumX);
-    const lnA = (sumLnY - B * sumX) / n;
-    const A = Math.exp(lnA);
-
-    return { A, B };
   }
 }

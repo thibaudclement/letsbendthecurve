@@ -814,7 +814,103 @@ svg {
   text-align: center;
 }
 
+/* Styles for the Digital Prosperity Chart */
+#digital-prosperity {
+  width: 100%;
+  margin: 0 auto;
+}
 
+#digital-prosperity svg {
+  width: 100%;
+  height: auto;
+}
+
+#digital-prosperity .chart-title {
+  font-size: 18px;
+  font-weight: bold;
+  fill: #ffffff;
+}
+
+#digital-prosperity .axis-label {
+  font-size: 14px;
+  fill: #ffffff;
+}
+
+#digital-prosperity .x-axis text,
+#digital-prosperity .y-axis text {
+  fill: #ffffff;
+  font-size: 12px;
+}
+
+#digital-prosperity .grid line {
+  stroke: #bcbec0;
+  stroke-opacity: 1;
+  stroke-dasharray: 3 3;
+  shape-rendering: crispEdges;
+}
+
+#digital-prosperity .grid path {
+  stroke-width: 0;
+}
+
+#digital-prosperity .x-axis .tick line,
+#digital-prosperity .y-axis .tick line {
+  display: none;
+}
+
+#digital-prosperity .x-axis .domain,
+#digital-prosperity .y-axis .domain {
+  display: none;
+}
+
+#digital-prosperity .tooltip {
+  position: absolute;
+  text-align: left;
+  width: auto;
+  padding: 10px;
+  font-size: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  border: 0px;
+  border-radius: 5px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+#digital-prosperity .button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#digital-prosperity .button-container button {
+  margin: 5px;
+  padding: 10px 20px;
+  background-color: #31a354;
+  color: #ffffff;
+  border: none;
+  border-radius: 25px; /* Pill-shaped buttons */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#digital-prosperity .button-container button:hover {
+  background-color: #2a923f;
+}
+
+#digital-prosperity .no-data-message {
+  font-size: 16px;
+  fill: #ffffff;
+}
+
+#digital-prosperity circle {
+  stroke: #74c476;
+  stroke-opacity: 1;
+  fill-opacity: 0.5;
+}
+
+#digital-prosperity .tick line {
+  opacity: 0.5;
+}
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
