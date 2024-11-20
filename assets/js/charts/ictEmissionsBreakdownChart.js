@@ -1,7 +1,7 @@
 export function drawIctEmissionsBreakdownChart(containerSelector, data) {
   // Set up dimensions and margins
-  const width = 400;
-  const height = 400;
+  const width = 500;
+  const height = 500;
   const margin = 40;
 
   // Create color scale with updated colors
