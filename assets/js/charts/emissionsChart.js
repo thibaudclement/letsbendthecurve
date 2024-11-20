@@ -4,7 +4,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
 
   // Set up dimensions and margins
   const margin = { top: 70, right: 20, bottom: 50, left: 70 };
-  const width = 800 - margin.left - margin.right;
+  const width = 960 - margin.left - margin.right; // Adjusted for full width
   const height = 500 - margin.top - margin.bottom;
 
   // Create SVG element
@@ -13,8 +13,11 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('class', 'chart-container')
     .attr('width', '100%')
     .attr('height', height + margin.top + margin.bottom)
-    .attr('viewBox', `0 0 ${800} ${height + margin.top + margin.bottom}`)
-    .append('g')
+    .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
+
+  // Append group element
+  const chartGroup = svg.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
   // X-axis scale
@@ -30,27 +33,51 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .nice()
     .range([height, 0]);
 
-  // X-axis
-  svg.append('g')
-    .attr('class', 'axis x-axis')
+  // Horizontal grid lines
+  chartGroup.append('g')
+    .attr('class', 'grid horizontal-grid')
+    .call(
+      d3.axisLeft(y)
+        .ticks(5)
+        .tickSize(-width)
+        .tickFormat('')
+    );
+
+  // X-axis (ticks and labels only)
+  chartGroup.append('g')
+    .attr('class', 'x-axis')
     .attr('transform', `translate(0,${height})`)
-    .call(d3.axisBottom(x).tickFormat(function(d) {
-      const taskObj = taskEmissions.find(task => task.task === d);
-      return taskObj ? taskObj.originalTask : d;
-    }))
+    .call(
+      d3.axisBottom(x)
+        .tickFormat(function(d) {
+          const taskObj = taskEmissions.find(task => task.task === d);
+          return taskObj ? taskObj.originalTask : d;
+        })
+        .tickSize(0)
+    )
     .selectAll('text')
     .style('text-anchor', 'middle')
     .attr('fill', '#ffffff');
 
-  // Y-axis
-  svg.append('g')
-    .attr('class', 'axis y-axis')
-    .call(d3.axisLeft(y))
+  // Remove x-axis line
+  chartGroup.selectAll('.x-axis .domain').remove();
+
+  // Y-axis (labels only)
+  chartGroup.append('g')
+    .attr('class', 'y-axis')
+    .call(
+      d3.axisLeft(y)
+        .ticks(5)
+        .tickSize(0)
+    )
     .selectAll('text')
     .attr('fill', '#ffffff');
 
+  // Remove y-axis line
+  chartGroup.selectAll('.y-axis .domain').remove();
+
   // Y-axis label
-  svg.append('text')
+  chartGroup.append('text')
     .attr('class', 'axis-label')
     .attr('transform', 'rotate(-90)')
     .attr('y', -60)
@@ -61,7 +88,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('fill', '#ffffff');
 
   // Bars
-  svg.selectAll('.bar')
+  chartGroup.selectAll('.bar')
     .data(taskEmissions)
     .enter()
     .append('rect')
@@ -73,7 +100,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('fill', isUserChart ? '#ffffcc' : '#74c476');
 
   // Labels above bars
-  svg.selectAll('.label')
+  chartGroup.selectAll('.label')
     .data(taskEmissions)
     .enter()
     .append('text')
@@ -86,7 +113,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .text(d => `${d.userValue} ${d.unit.toLowerCase()}`);
 
   // Chart title
-  svg.append('text')
+  chartGroup.append('text')
     .attr('class', 'chart-title')
     .attr('x', width / 2)
     .attr('y', -30)

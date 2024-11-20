@@ -108,11 +108,10 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     // Get the current chart configuration
     const chartConfig = charts[currentChartIndex];
 
-    // Filter data to remove entries with missing or invalid values
     const filteredData = data.filter(d => {
       const xValue = d[chartConfig.xKey];
       const yValue = d[chartConfig.yKey];
-
+    
       // Check for missing or invalid data
       if (
         xValue == null || xValue === '' || yValue == null || yValue === '' ||
@@ -120,17 +119,18 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       ) {
         return false;
       }
-
-      // For log scales, exclude non-positive values
+    
+      // Handle log scale: Exclude non-positive values
       if (chartConfig.xScaleType === "log" && xValue <= 0) {
         return false;
       }
       if (chartConfig.yScaleType === "log" && yValue <= 0) {
         return false;
       }
-
+    
       return true;
     });
+    
 
     // Check if there is data to display
     if (filteredData.length === 0) {
