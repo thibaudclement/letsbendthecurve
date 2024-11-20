@@ -8,11 +8,14 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
   const yDomain = [0, yMax];
 
   // Function to create a chart
-  function createChart(containerSelector, chartData, subtitle, xDomain) {
+  function createChart(containerSelector, chartData, subtitle, xDomain, chartId) {
     // Set up margins and dimensions
-    const margin = { top: 40, right: 30, bottom: 50, left: 60 };
-    const width = 400 - margin.left - margin.right;
-    const height = 300 - margin.top - margin.bottom;
+    const margin = { top: 40, right: 30, bottom: 60, left: 70 };
+
+    // Get container width
+    const containerWidth = d3.select(containerSelector).node().getBoundingClientRect().width;
+    const width = containerWidth - margin.left - margin.right;
+    const height = 400 - margin.top - margin.bottom;
 
     // Create scales with correct ranges
     const x = d3.scaleLinear()
@@ -28,32 +31,79 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
     const svg = d3.select(containerSelector)
       .append('svg')
       .attr('class', 'chart-container')
-      .attr('width', width + margin.left + margin.right)
-      .attr('height', height + margin.top + margin.bottom);
+      .attr('width', '100%')
+      .attr('height', height + margin.top + margin.bottom)
+      .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+      .attr('preserveAspectRatio', 'xMidYMid meet');
 
     // Create chart area
     const chartArea = svg.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
-    // Axes
-    const xAxis = d3.axisBottom(x)
-      .tickFormat(d3.format('d'))
-      .ticks(5);
+    // Add gridlines before plotting data
+    // Vertical gridlines
+    const verticalGrid = chartArea.append('g')
+      .attr('class', 'grid vertical-grid')
+      .call(
+        d3.axisBottom(x)
+          .ticks(5)
+          .tickSize(-height)
+          .tickFormat('')
+      )
+      .attr('transform', `translate(0, ${height})`);
 
-    const yAxis = d3.axisLeft(y)
-      .tickFormat(d => `${d}%`);
+    verticalGrid.selectAll('line')
+      .attr('stroke', '#bcbec0')
+      .attr('stroke-dasharray', '2 2');
 
-    // Append axes
-    chartArea.append('g')
+    // Remove rightmost vertical gridline
+    verticalGrid.select('.tick:last-of-type line').remove();
+
+    // Horizontal gridlines
+    const horizontalGrid = chartArea.append('g')
+      .attr('class', 'grid horizontal-grid')
+      .call(
+        d3.axisLeft(y)
+          .ticks(5)
+          .tickSize(-width)
+          .tickFormat('')
+      );
+
+    horizontalGrid.selectAll('line')
+      .attr('stroke', '#bcbec0')
+      .attr('stroke-dasharray', '2 2');
+
+    // Remove bottommost horizontal gridline (x-axis gridline)
+    horizontalGrid.select('.tick:last-of-type line').remove();
+
+    // Create axes
+    let tickValues;
+    if (chartId === 'chart1') {
+      tickValues = d3.range(2008, 2021, 2); // Even years from 2008 to 2020
+    } else if (chartId === 'chart2') {
+      tickValues = [2025, 2030, 2035, 2040]; // Every five years
+    }
+
+    // Add x-axis
+    const xAxis = chartArea.append('g')
       .attr('class', 'axis x-axis')
-      .attr('transform', `translate(0,${height})`)
-      .call(xAxis)
-      .selectAll('text').attr('fill', '#ffffff');
+      .attr('transform', `translate(0, ${height})`)
+      .call(d3.axisBottom(x)
+        .tickValues(tickValues)
+        .tickFormat(d3.format('d')));
 
-    chartArea.append('g')
+    xAxis.selectAll('text')
+      .attr('fill', '#ffffff')
+      .attr('font-size', '12px');
+
+    // Add y-axis
+    const yAxis = chartArea.append('g')
       .attr('class', 'axis y-axis')
-      .call(yAxis)
-      .selectAll('text').attr('fill', '#ffffff');
+      .call(d3.axisLeft(y).tickFormat(d => `${d}%`));
+
+    yAxis.selectAll('text')
+      .attr('fill', '#ffffff')
+      .attr('font-size', '12px');
 
     // Line generators
     const lineMin = d3.line()
@@ -89,18 +139,68 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
       .attr('class', 'line line-max')
       .attr('d', lineMax);
 
-    // Remove the vertical dotted line
-    // Code for adding the projection line has been removed as per the request.
-
     // Add chart subtitle
     svg.append('text')
       .attr('class', 'chart-subtitle')
       .attr('x', (width + margin.left + margin.right) / 2)
       .attr('y', margin.top / 2)
       .attr('text-anchor', 'middle')
-      .attr('font-size', '14px')
+      .attr('font-size', '18px')
       .attr('fill', '#ffffff')
       .text(subtitle);
+
+    // Add x-axis title
+    svg.append('text')
+      .attr('class', 'axis-title')
+      .attr('x', (width + margin.left + margin.right) / 2)
+      .attr('y', height + margin.top + margin.bottom - 10)
+      .attr('text-anchor', 'middle')
+      .attr('fill', '#ffffff')
+      .text('Years');
+
+    // Add y-axis title
+    svg.append('text')
+      .attr('class', 'axis-title')
+      .attr('transform', 'rotate(-90)')
+      .attr('x', -(height / 2) - margin.top)
+      .attr('y', 20)
+      .attr('text-anchor', 'middle')
+      .attr('fill', '#ffffff')
+      .text('Percentage of Global Emissions');
+
+    // Add annotation on the second chart
+    if (chartId === 'chart2') {
+      // Create a group for the annotation
+      const annotationGroup = chartArea.append('g')
+        .attr('class', 'annotation-group')
+        .attr('transform', `translate(${x(2026)}, ${y(12)})`);
+
+      // Add the text
+      const annotationText = annotationGroup.append('text')
+        .attr('class', 'annotation')
+        .attr('fill', '#74c476')
+        .text('This is the curve we want to bend.')
+        .style('font-size', '16px')
+        .attr('x', 0)
+        .attr('y', 0);
+
+      // After text is rendered, get its bounding box
+      const bbox = annotationText.node().getBBox();
+
+      // Add padding
+      const padding = { top: 2, right: 4, bottom: 2, left: 4 };
+
+      // Create a rectangle behind the text
+      annotationGroup.insert('rect', 'text')
+        .attr('class', 'annotation-rect')
+        .attr('x', bbox.x - padding.left)
+        .attr('y', bbox.y - padding.top)
+        .attr('width', bbox.width + padding.left + padding.right)
+        .attr('height', bbox.height + padding.top + padding.bottom)
+        .attr('fill', 'none')
+        .attr('stroke', '#74c476')
+        .attr('stroke-width', 2);
+    }
   }
 
   // Create both charts with adjusted x-domains
@@ -108,19 +208,21 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
     containerSelector1,
     data1,
     'Historical Trends (2007-2020)',
-    [2007, 2020]
+    [2007, 2020],
+    'chart1'
   );
 
   createChart(
     containerSelector2,
     data2,
     'Modeled Projections (2021-2040)',
-    [2021, 2040]
+    [2021, 2040],
+    'chart2'
   );
 
   // Insert main title into the #ict-emissions-title div
   d3.select('#ict-emissions-title')
-    .append('h3')
+    .append('h2')
     .attr('class', 'main-title')
     .style('text-align', 'center')
     .style('color', '#ffffff')
@@ -134,12 +236,14 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
   const svgLegend = d3.select(legendSelector)
     .append('svg')
     .attr('class', 'legend-container')
-    .attr('width', 800)
-    .attr('height', 50); // Reduced height to bring legend closer
+    .attr('width', '100%')
+    .attr('height', 50)
+    .attr('viewBox', `0 0 800 50`)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
 
   const legend = svgLegend.append('g')
     .attr('class', 'legend')
-    .attr('transform', `translate(${(800 - 300) / 2}, 10)`); // Adjusted to bring legend closer
+    .attr('transform', `translate(${(800 - 450) / 2}, 10)`);
 
   // Legend items
   const legendData = [
@@ -153,7 +257,7 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
     .enter()
     .append('g')
     .attr('class', 'legend-item')
-    .attr('transform', (d, i) => `translate(${i * 150}, 0)`); // Adjusted spacing
+    .attr('transform', (d, i) => `translate(${i * 150}, 0)`);
 
   // Legend symbols
   legendItem.each(function(d) {

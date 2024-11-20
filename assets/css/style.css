@@ -62,14 +62,6 @@ header img {
   border-bottom: 2px dotted #bcbec0;
 }
 
-/* Important Statements */
-.important-statement {
-  color: #74c476;
-  font-weight: bold;
-  padding: 1px 4px 2px 4px;
-  border: 2px solid #74c476;
-}
-
 /* Asset Blocks */
 .asset-block {
   width: 100%;
@@ -565,102 +557,124 @@ header img {
   accent-color: #74c476;
 }
 
-/* Line Styles */
-.line {
-  fill: none;
+/* Charts Container */
+#ict-emissions .charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.line-min {
-  stroke: #74c476;
-  stroke-width: 2;
+#ict-emissions .charts-container > div {
+  flex: 1 1 45%;
+  min-width: 300px;
+  margin: 10px;
 }
 
-.line-max {
-  stroke: #31a354;
-  stroke-width: 2;
+#ict-emissions .chart-container {
+  width: 100%;
+  height: auto;
 }
 
-.projection-line {
-  stroke: #ffffff;
-  stroke-dasharray: 4;
+/* Gridline Styles */
+#ict-emissions .grid line {
+  stroke: #bcbec0;
+  stroke-opacity: 1;
+  stroke-dasharray: 2 2;
+  shape-rendering: crispEdges;
+}
+
+#ict-emissions .grid path {
+  stroke-width: 0;
 }
 
 /* Axis Styles */
-.axis path,
-.axis line {
-  stroke: #ffffff;
+#ict-emissions .axis path,
+#ict-emissions .axis line {
+  stroke: none;
 }
 
-.axis text {
+#ict-emissions .axis text {
   fill: #ffffff;
   font-size: 12px;
 }
 
+/* Axis Titles */
+#ict-emissions .axis-title {
+  font-size: 14px;
+  fill: #ffffff;
+}
+
+/* Line Styles */
+#ict-emissions .line {
+  fill: none;
+}
+
+#ict-emissions .line-min {
+  stroke: #74c476;
+  stroke-width: 2;
+}
+
+#ict-emissions .line-max {
+  stroke: #31a354;
+  stroke-width: 2;
+}
+
+/* Annotation Style */
+#ict-emissions .annotation {
+  fill: #74c476;
+  font-size: 16px;
+}
+
+#ict-emissions .annotation-rect {
+  fill: #000000;
+  stroke: #74c476;
+  stroke-width: 2px;
+}
+
 /* Main Title */
 #ict-emissions .main-title {
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 10px;
   color: #ffffff;
   text-align: center;
 }
 
-#ict-emissions-title {
-  width: 100%;
-  margin-bottom: 10px;
-}
-
 /* Chart Subtitle */
-.chart-subtitle {
-  font-size: 14px;
+#ict-emissions .chart-subtitle {
+  font-size: 18px;
   fill: #ffffff;
   text-anchor: middle;
 }
 
 /* Legend Styles */
-.legend-container {
-  margin-top: 5px; /* Reduced to bring legend closer */
+#ict-emissions .legend-container {
+  width: 100%;
+  height: auto;
 }
 
-.legend {
+#ict-emissions .legend {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.legend-item {
+#ict-emissions .legend-item {
   display: flex;
   align-items: center;
-  margin-right: 50px; /* Adjust spacing between legend items */
+  margin-right: 50px;
 }
 
-.legend-item text {
+#ict-emissions .legend-item text {
   font-size: 12px;
   fill: #ffffff;
 }
 
-/* Charts Container */
-.charts-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-}
-
-/* Ensure charts appear below the title */
-#ict-emissions .charts-container > div {
-  display: block;
-}
-
-/* SVG Container Styles */
-svg {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  background-color: transparent;
-}
-
-/* Adjust margins for the asset block (Optional) */
-#ict-emissions {
-  margin-bottom: 20px; /* Adjust as needed */
+/* Important Statement */
+.important-statement {
+  color: #74c476;
+  font-size: 16px;
+  padding: 2px 4px;
+  border: 2px solid #74c476;
 }
 
 /* Pie Chart Title */
