@@ -678,20 +678,21 @@ header img {
 }
 
 /* Pie Chart Title */
-.pie-chart-title {
+#ict-emissions-breakdown .pie-chart-title {
   font-size: 22px;
+  font-weight: bold;
   fill: #ffffff;
   text-anchor: middle;
   dominant-baseline: middle;
 }
 
-.arc text {
+#ict-emissions-breakdown .arc text {
   font-size: 12px;
   fill: #ffffff;
   text-anchor: middle;
 }
 
-.arc tspan {
+#ict-emissions-breakdown .arc tspan {
   display: block;
 }
 
@@ -701,6 +702,67 @@ header img {
   align-items: center;
   flex-direction: column;
   margin-top: 20px; /* Adjust as needed */
+}
+
+/* Sustainable Web Design Model Styles */
+#sustainable-web-design-model .emission-categories-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+#sustainable-web-design-model .emission-chart {
+  flex: 1 1 30%;
+  max-width: 30%;
+  margin: 10px;
+}
+
+#sustainable-web-design-model .main-title {
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #ffffff;
+  text-align: center;
+}
+
+#sustainable-web-design-model .pie-chart-title {
+  font-size: 16px;
+  fill: #ffffff;
+  text-anchor: middle;
+  dominant-baseline: middle;
+}
+
+#sustainable-web-design-model .arc text {
+  font-size: 12px;
+  fill: #ffffff;
+  text-anchor: middle;
+}
+
+#sustainable-web-design-model .legend {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+#sustainable-web-design-model .legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+#sustainable-web-design-model .legend-color-box {
+  width: 15px;
+  height: 15px;
+  margin-right: 5px;
+}
+
+#sustainable-web-design-model .legend-label {
+  font-size: 12px;
+  color: #ffffff;
 }
 
 /* PUE Chart Styles */

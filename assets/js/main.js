@@ -6,6 +6,7 @@ import {
   loadElectricityConsumptionData,
   loadIctEmissionsData,
   loadIctEmissionsBreakdownData,
+  loadIctEmissionCategoriesData,
   loadPueData,
   loadFortune500EmissionsData,
   loadCountryData
@@ -19,6 +20,7 @@ import { drawInternetTrafficChart } from './charts/internetTrafficChart.js';
 import { drawElectricityConsumptionChart } from './charts/electricityConsumptionChart.js';
 import { drawIctEmissionsCharts } from './charts/ictEmissionsChart.js';
 import { drawIctEmissionsBreakdownChart } from './charts/ictEmissionsBreakdownChart.js';
+import { drawIctEmissionCategoriesBreakdownCharts } from './charts/ictEmissionCategoriesBreakdownChart.js';
 import { drawPueChart } from './charts/pueChart.js';
 import { drawEnergyConsumptionChart } from './charts/energyConsumptionChart.js';
 import { drawFortune500EmissionsChart } from './charts/fortune500EmissionsChart.js';
@@ -33,6 +35,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const electricityConsumptionData = await loadElectricityConsumptionData();
   const ictEmissionsData = await loadIctEmissionsData();
   const ictEmissionsBreakdownData = await loadIctEmissionsBreakdownData();
+  const ictEmissionCategoriesData = await loadIctEmissionCategoriesData();
   const pueData = await loadPueData();
   const fortune500EmissionsData = await loadFortune500EmissionsData();
   const countryData = await loadCountryData();
@@ -45,6 +48,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     !electricityConsumptionData.length ||
     !ictEmissionsData.length ||
     !ictEmissionsBreakdownData.length ||
+    !ictEmissionCategoriesData.length ||
     !pueData.length ||
     !fortune500EmissionsData.length ||
     !countryData.length
@@ -98,6 +102,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   // Draw ICT Emissions Breakdown Pie Chart
   drawIctEmissionsBreakdownChart('#ict-emissions-breakdown', ictEmissionsBreakdownData);
+
+  // Draw ICT Emission Categories Breakdown Charts
+  drawIctEmissionCategoriesBreakdownCharts('#sustainable-web-design-model', ictEmissionCategoriesData);
 
   // Draw Energy Consumption Chart first to get the update function
   const updateEnergyConsumptionChart = drawEnergyConsumptionChart('#energy-consumption-chart', pueData);

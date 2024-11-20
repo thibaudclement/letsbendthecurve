@@ -92,6 +92,21 @@ export async function loadIctEmissionsBreakdownData() {
   }
 }
 
+export async function loadIctEmissionCategoriesData() {
+  try {
+    const data = await d3.csv('assets/data/ict_sector_emission_categories.csv');
+    // Parse data
+    return data.map(d => ({
+      Segment: d['Segment'],
+      'Operational Emissions': +d['Operational Emissions'],
+      'Embodied Emissions': +d['Embodied Emissions'],
+    }));
+  } catch (error) {
+    console.error('Error loading ICT emission categories data:', error);
+    return [];
+  }
+}
+
 export async function loadPueData() {
   try {
     const data = await d3.csv('assets/data/data_center_efficiency.csv');
@@ -199,3 +214,4 @@ export async function loadCountryData() {
     return [];
   }
 }
+
