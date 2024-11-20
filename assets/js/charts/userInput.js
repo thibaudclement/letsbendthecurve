@@ -13,6 +13,11 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
 
   const form = container.append('div').attr('class', 'sliders-container');
 
+  // Add title or guidance text
+  form.append('h3')
+    .attr('class', 'sliders-title')
+    .text('Your digital activity from last week:');
+
   // Create sliders
   digitalTasks.forEach(task => {
     const sliderContainer = form.append('div')
@@ -23,7 +28,7 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
       .attr('for', `slider-${task.task}`)
       .attr('class', 'slider-label');
 
-    labelContainer.html(`${task.originalTask}: <span class="slider-value">${usage[task.task]}</span> ${task.unit.toLowerCase()}`);
+      labelContainer.html(`${task.originalTask}:<span class="slider-value">${usage[task.task]}</span>${task.unit.toLowerCase()}`);
 
     const sliderInput = sliderContainer.append('input')
       .attr('type', 'range')
@@ -53,7 +58,7 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
     const value = slider.value;
     const percentage = ((value - min) / (max - min)) * 100;
 
-    slider.style.background = `linear-gradient(to right, #31a354 0%, #31a354 ${percentage}%, #ffffff ${percentage}%, #ffffff 100%)`;
+    slider.style.background = `linear-gradient(to right, #74c476 0%, #74c476 ${percentage}%, #000000 ${percentage}%, #000000 100%)`;
   }
 
   // Initial calculation and rendering
@@ -72,7 +77,7 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
       '#weekly-emissions-viewer',
       userEmissions.taskEmissions,
       null, // Remove US average emissions
-      'One week worth of emissions from your digital tasks',
+      'One week worth of emissions from your digital activity',
       true
     );
 
