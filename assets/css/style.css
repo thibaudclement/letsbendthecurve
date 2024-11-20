@@ -431,64 +431,138 @@ header img {
   fill-opacity: 0.5;
 }
 
-.year-label {
+/* Styles for the Electricity Consumption Chart */
+#electricity-consumption {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#electricity-consumption svg {
+  width: 100%;
+  height: auto;
+}
+
+#electricity-consumption .chart-title {
+  font-size: 18px;
+  font-weight: bold;
+  fill: #ffffff;
+}
+
+#electricity-consumption .axis-label {
+  font-size: 14px;
+  fill: #ffffff;
+}
+
+#electricity-consumption .x-axis text,
+#electricity-consumption .y-axis text {
+  fill: #ffffff;
+  font-size: 12px;
+}
+
+#electricity-consumption .grid line {
+  stroke: #bcbec0;
+  stroke-opacity: 1;
+  stroke-dasharray: 2 2;
+  shape-rendering: crispEdges;
+}
+
+#electricity-consumption .grid path {
+  stroke-width: 0;
+}
+
+#electricity-consumption .x-axis .tick line,
+#electricity-consumption .y-axis .tick line {
+  display: none;
+}
+
+#electricity-consumption .x-axis .domain,
+#electricity-consumption .y-axis .domain {
+  display: none;
+}
+
+#electricity-consumption .bar {
+  stroke: none;
+}
+
+#electricity-consumption .label {
+  fill: #ffffff;
+  font-size: 12px;
+}
+
+#electricity-consumption .year-label {
   font-size: 48px;
   fill: #ffffff;
   text-anchor: end;
 }
 
-.control-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+/* Controls Container */
+#electricity-consumption .controls-container {
+  max-width: 640px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #414042;
+  border-radius: 15px;
+}
+
+#electricity-consumption .controls-title {
+  color: #ffffff;
+  text-align: center;
   margin: 10px 0;
 }
 
+/* Control Rows */
+#electricity-consumption .control-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 /* Control Buttons */
-.control-button {
-  background-color: #006837;
-  color: #f0f0f0;
+#electricity-consumption .control-button {
+  background-color: #41ab5d;
+  color: #ffffff;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 20px;
   margin: 5px;
   cursor: pointer;
   font-size: 14px;
   border-radius: 25px;
 }
 
-.control-button:hover {
+#electricity-consumption .control-button:hover {
   background-color: #74c476;
 }
 
 /* Checkboxes Container */
-.checkboxes-container {
+#electricity-consumption .checkboxes-container {
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin-top: 20px;
+  padding-bottom: 20px;
 }
 
-.country-columns-container {
+#electricity-consumption .country-columns-container {
   display: flex;
   justify-content: center;
 }
 
-.country-column {
+#electricity-consumption .country-column {
   display: flex;
   flex-direction: column;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 
-.checkbox-label {
+#electricity-consumption .checkbox-label {
   display: flex;
   align-items: center;
   margin: 5px 0;
   color: #ffffff;
 }
 
-.checkbox-label input[type="checkbox"] {
+#electricity-consumption .checkbox-label input[type="checkbox"] {
   margin-right: 5px;
   accent-color: #74c476;
-  border-radius: 25px;
 }
 
 /* Line Styles */
