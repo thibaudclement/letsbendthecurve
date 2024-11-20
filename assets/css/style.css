@@ -307,70 +307,83 @@ header img {
   background-size: 25px 25px;
 }
 
-/* Styles for the Internet Users Chart */
-#internet-users {
+/* Styles for the Internet Users and Internet Traffic Charts */
+#internet-users,
+#internet-traffic {
   width: 100%;
   margin: 0 auto;
 }
 
-#internet-users svg {
+#internet-users svg,
+#internet-traffic svg {
   width: 100%;
   height: auto;
 }
 
-#internet-users .chart-title {
+#internet-users .chart-title,
+#internet-traffic .chart-title {
   font-size: 18px;
   font-weight: bold;
   fill: #ffffff;
 }
 
-#internet-users .axis-label {
+#internet-users .axis-label,
+#internet-traffic .axis-label {
   font-size: 14px;
   fill: #ffffff;
 }
 
 #internet-users .x-axis text,
-#internet-users .y-axis text {
+#internet-users .y-axis text,
+#internet-traffic .x-axis text,
+#internet-traffic .y-axis text {
   fill: #ffffff;
   font-size: 12px;
 }
 
-#internet-users .grid line {
+#internet-users .grid line,
+#internet-traffic .grid line {
   stroke: #bcbec0;
   stroke-opacity: 1;
   stroke-dasharray: 2 2;
   shape-rendering: crispEdges;
 }
 
-#internet-users .grid path {
+#internet-users .grid path,
+#internet-traffic .grid path {
   stroke-width: 0;
 }
 
 #internet-users .x-axis .tick line,
-#internet-users .y-axis .tick line {
+#internet-users .y-axis .tick line,
+#internet-traffic .x-axis .tick line,
+#internet-traffic .y-axis .tick line {
   display: none;
 }
 
 #internet-users .x-axis .domain,
-#internet-users .y-axis .domain {
+#internet-users .y-axis .domain,
+#internet-traffic .x-axis .domain,
+#internet-traffic .y-axis .domain {
   display: none;
 }
 
-#internet-users .dot {
+#internet-users .dot,
+#internet-traffic .dot {
   stroke: #74c476;
   stroke-opacity: 1;
   fill-opacity: 0.5;
 }
 
 /* Guess Buttons */
-.button-container {
+#internet-traffic .button-container {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.traffic-option-button {
-  background-color: #006837;
-  color: #f0f0f0;
+#internet-traffic .traffic-option-button {
+  background-color: #41ab5d;
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
   margin: 0 10px;
@@ -379,19 +392,16 @@ header img {
   border-radius: 25px;
 }
 
-.traffic-option-button:hover {
-  background-color: #74c476;
-}
-
-.traffic-option-button.selected {
+#internet-traffic .traffic-option-button:hover,
+#internet-traffic .traffic-option-button.selected {
   background-color: #74c476;
 }
 
 /* Submit Button */
-#submit-guess-button {
+#internet-traffic #submit-guess-button {
   display: block;
   margin: 20px auto;
-  background-color: #006837;
+  background-color: #41ab5d;
   color: #ffffff;
   border: none;
   padding: 10px 30px;
@@ -400,7 +410,7 @@ header img {
   border-radius: 25px;
 }
 
-#submit-guess-button:hover {
+#internet-traffic #submit-guess-button:hover {
   background-color: #74c476;
 }
 
@@ -411,8 +421,14 @@ header img {
 }
 
 /* Annotation Text */
-.chart-container text {
+#internet-traffic .chart-container text {
   fill: #ffffff;
+}
+
+#internet-traffic .hint-dot {
+  stroke: #74c476;
+  stroke-opacity: 1;
+  fill-opacity: 0.5;
 }
 
 .year-label {
