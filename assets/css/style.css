@@ -15,6 +15,7 @@ a {
   text-decoration-thickness: 2px;
   text-decoration-skip-ink: auto;
   font-weight: bold;
+  cursor: pointer;
 }
 
 /* Content Container */
@@ -42,8 +43,15 @@ header img {
   margin: 10px 0;
 }
 
+.image-title {
+  font-size: 18px;
+  color: #ffffff;
+  text-align: center;
+  margin: 50px 0 10px 0;
+}
+
 .text-block img {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 .text-block blockquote {
