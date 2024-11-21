@@ -571,9 +571,8 @@ header img {
 
 /* Gridline Styles */
 #ict-emissions .grid line {
-  stroke: #bcbec0;
+  stroke: #414042;
   stroke-opacity: 1;
-  stroke-dasharray: 2 2;
   shape-rendering: crispEdges;
 }
 
@@ -630,6 +629,7 @@ header img {
   font-size: 18px;
   margin-bottom: 10px;
   color: #ffffff;
+  font-weight: normal;
   text-align: center;
 }
 
@@ -715,9 +715,10 @@ header img {
 }
 
 #sustainable-web-design-model .main-title {
-  font-size: 22px;
+  font-size: 18px;
   margin-bottom: 20px;
   color: #ffffff;
+  font-weight: normal;
   text-align: center;
 }
 
@@ -1081,9 +1082,8 @@ header img {
 }
 
 #digital-prosperity .grid line {
-  stroke: #bcbec0;
+  stroke: #414042;
   stroke-opacity: 1;
-  stroke-dasharray: 3 3;
   shape-rendering: crispEdges;
 }
 

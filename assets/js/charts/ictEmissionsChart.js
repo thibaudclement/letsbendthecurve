@@ -53,8 +53,8 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
       .attr('transform', `translate(0, ${height})`);
 
     verticalGrid.selectAll('line')
-      .attr('stroke', '#bcbec0')
-      .attr('stroke-dasharray', '2 2');
+      .attr('stroke', '#414042')
+      .attr('stroke-width', 0.5);
 
     // Remove rightmost vertical gridline
     verticalGrid.select('.tick:last-of-type line').remove();
@@ -70,8 +70,8 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
       );
 
     horizontalGrid.selectAll('line')
-      .attr('stroke', '#bcbec0')
-      .attr('stroke-dasharray', '2 2');
+      .attr('stroke', '#414042')
+      .attr('stroke-width', 0.5);
 
     // Remove bottommost horizontal gridline (x-axis gridline)
     horizontalGrid.select('.tick:last-of-type line').remove();
@@ -222,7 +222,7 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
 
   // Insert main title into the #ict-emissions-title div
   d3.select('#ict-emissions-title')
-    .append('h2')
+    .append('p')
     .attr('class', 'main-title')
     .style('text-align', 'center')
     .style('color', '#ffffff')

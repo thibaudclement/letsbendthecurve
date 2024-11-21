@@ -38,7 +38,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     },
     {
       title: "Human Development Index vs. Supercomputer Cores Per Million Inhabitants",
-      xLabel: "Supercomputer Cores Per Million Inhabitants (log scale)",
+      xLabel: "Supercomputer Cores Per Million Inhabitants (Log scale)",
       yLabel: "Human Development Index",
       xKey: "Supercomputer Cores Per Million Inhabitants",
       yKey: "Human Development Index",
@@ -48,7 +48,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     {
       title: "GDP Per Capita vs. Internet Users (% of Population)",
       xLabel: "Internet Users (% of Population)",
-      yLabel: "GDP Per Capita (log scale)",
+      yLabel: "GDP Per Capita (Log scale)",
       xKey: "Internet Users (% of Population)",
       yKey: "GDP Per Capita",
       xScaleType: "linear",
@@ -56,8 +56,8 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     },
     {
       title: "GDP (Nominal) vs. Electricity Consumption",
-      xLabel: "Electricity Consumption (log scale)",
-      yLabel: "GDP (Nominal) (log scale)",
+      xLabel: "Electricity Consumption (Log scale)",
+      yLabel: "GDP (Nominal) (Log scale)",
       xKey: "Electricity Consumption",
       yKey: "GDP (Nominal)",
       xScaleType: "log",
@@ -65,8 +65,8 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     },
     {
       title: "GDP (Nominal) vs. Supercomputer Cores",
-      xLabel: "Supercomputer Cores (log scale)",
-      yLabel: "GDP (Nominal) (log scale)",
+      xLabel: "Supercomputer Cores (Log scale)",
+      yLabel: "GDP (Nominal) (Log scale)",
       xKey: "Supercomputer Cores",
       yKey: "GDP (Nominal)",
       xScaleType: "log",
@@ -108,10 +108,11 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     // Get the current chart configuration
     const chartConfig = charts[currentChartIndex];
 
+    // Filter data to remove entries with missing or invalid values
     const filteredData = data.filter(d => {
       const xValue = d[chartConfig.xKey];
       const yValue = d[chartConfig.yKey];
-    
+
       // Check for missing or invalid data
       if (
         xValue == null || xValue === '' || yValue == null || yValue === '' ||
@@ -119,18 +120,17 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       ) {
         return false;
       }
-    
-      // Handle log scale: Exclude non-positive values
+
+      // For log scales, exclude non-positive values
       if (chartConfig.xScaleType === "log" && xValue <= 0) {
         return false;
       }
       if (chartConfig.yScaleType === "log" && yValue <= 0) {
         return false;
       }
-    
+
       return true;
     });
-    
 
     // Check if there is data to display
     if (filteredData.length === 0) {
@@ -167,7 +167,9 @@ export function drawDigitalProsperityChart(containerSelector, data) {
           .ticks(10, chartConfig.xScaleType === "log" ? "~s" : null)
           .tickSize(-height)
           .tickFormat('')
-      );
+      )
+      .selectAll('line')
+      .attr('stroke-width', 0.5);
 
     chartGroup.append("g")
       .attr("class", "grid y-grid")
@@ -176,7 +178,9 @@ export function drawDigitalProsperityChart(containerSelector, data) {
           .ticks(10, chartConfig.yScaleType === "log" ? "~s" : null)
           .tickSize(-width)
           .tickFormat('')
-      );
+      )
+      .selectAll('line')
+      .attr('stroke-width', 0.5);
 
     // Remove extra grid lines to avoid box effect
     chartGroup.selectAll(".x-grid .tick:first-of-type line, .x-grid .tick:last-of-type line")

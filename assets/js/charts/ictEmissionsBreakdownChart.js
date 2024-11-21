@@ -23,7 +23,7 @@ export function drawIctEmissionsBreakdownChart(containerSelector, data) {
     .attr('y', margin / 2) // Adjusted to position title higher
     .attr('text-anchor', 'middle')
     .attr('fill', '#ffffff')
-    .attr('font-size', '16px')
+    .attr('font-size', '18px')
     .text('Proportional Breakdown of ICT Emissions (2020)');
 
   // Adjust chart area to leave space for the title
