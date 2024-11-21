@@ -9,7 +9,14 @@ export function displayEquivalentsInList(listSelector, yearlyEmissions, nonDigit
   const closestDistance = findClosestDistance(milesDriven, drivingDistances);
 
   const drivingItem = list.append('li');
-  drivingItem.html(`Driving <span class="data-point">${milesDriven.toFixed(0)}</span> miles, approximately the distance from <strong>${closestDistance.departure}</strong> to <strong>${closestDistance.destination}</strong> and back.`);
+  drivingItem.html(`Driving <span class="data-point">${milesDriven.toFixed(0)}</span> miles.`);
+
+  // Beef servings equivalent
+  const beefTask = nonDigitalTasks.find(d => d.task === 'beef_serving');
+  const beefServings = yearlyEmissions / beefTask.emissions_per_unit;
+
+  const beefItem = list.append('li');
+  beefItem.html(`Eating <span class="data-point">${beefServings.toFixed(0)}</span> servings of beef (25 grams of protein each).`);
 
   // Smartphone charges equivalent
   const chargingTask = nonDigitalTasks.find(d => d.task === 'charging_smartphone');
@@ -20,13 +27,6 @@ export function displayEquivalentsInList(listSelector, yearlyEmissions, nonDigit
 
   const chargingItem = list.append('li');
   chargingItem.html(`Charging a smartphone every day, until the year <span class="data-point">${futureYear}</span>.`);
-
-  // Beef servings equivalent
-  const beefTask = nonDigitalTasks.find(d => d.task === 'beef_serving');
-  const beefServings = yearlyEmissions / beefTask.emissions_per_unit;
-
-  const beefItem = list.append('li');
-  beefItem.html(`Eating <span class="data-point">${beefServings.toFixed(0)}</span> servings of beef (25 grams of protein each).`);
 
   // Style list items and add images as bullets
   list.selectAll('li')
