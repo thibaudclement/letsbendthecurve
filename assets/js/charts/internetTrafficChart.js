@@ -173,11 +173,11 @@ export function drawInternetTrafficChart(containerSelector, data) {
   const annotationData = data.find(d => d.year === annotationYear);
 
   chartGroup.append('text')
-    .attr('x', x(annotationYear) - 350) // Adjusted X position
-    .attr('y', y(annotationData.internetTrafficZB) - 70) // Adjusted Y position
+    .attr('x', x(annotationYear) - 350)
+    .attr('y', y(annotationData.internetTrafficZB) - 65)
     .attr('fill', '#ffffff')
-    .text('Hint: in 2020, the internet traffic amounted to 2.7 Exabytes.')
-    .style('font-size', '14px'); // Adjusted font size for better visibility
+    .text('Hint: In 2020, the internet traffic amounted to 2.7 Zettabytes.')
+    .style('font-size', '14px');
 
   chartGroup.append('line')
     .attr('x1', x(annotationYear))

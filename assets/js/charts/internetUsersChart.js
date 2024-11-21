@@ -40,7 +40,9 @@ export function drawInternetUsersChart(containerSelector, data) {
         .ticks(10)
         .tickSize(-width)
         .tickFormat('')
-    );
+    )
+    .selectAll('line')
+    .attr('stroke-width', 0.5);
 
   // Vertical grid lines
   chartGroup.append('g')
@@ -50,13 +52,12 @@ export function drawInternetUsersChart(containerSelector, data) {
       d3.axisBottom(x)
         .tickSize(-height)
         .tickFormat('')
-    );
+    )
+    .selectAll('line')
+    .attr('stroke-width', 0.5);
 
   // Remove extra grid lines to avoid box effect
   chartGroup.selectAll(".horizontal-grid .tick:first-of-type line, .horizontal-grid .tick:last-of-type line")
-    .remove();
-
-  chartGroup.selectAll(".vertical-grid .tick:first-of-type line, .vertical-grid .tick:last-of-type line")
     .remove();
 
   // X-axis (ticks and labels only)

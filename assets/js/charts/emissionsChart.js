@@ -41,7 +41,9 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
         .ticks(5)
         .tickSize(-width)
         .tickFormat('')
-    );
+    )
+    .selectAll('line')
+    .attr('stroke-width', 0.5);
 
   // X-axis (ticks and labels only)
   chartGroup.append('g')
@@ -97,7 +99,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('width', x.bandwidth())
     .attr('y', d => y(d.emissions))
     .attr('height', d => height - y(d.emissions))
-    .attr('fill', isUserChart ? '#ffffcc' : '#74c476');
+    .attr('fill', isUserChart ? '#ffffcc' : '#41ab5d');
 
   // Labels above bars
   chartGroup.selectAll('.label')

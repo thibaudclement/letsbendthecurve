@@ -95,7 +95,6 @@ header img {
 #weekly-emissions-author .chart-title,
 #weekly-emissions-viewer .chart-title {
   font-size: 18px;
-  font-weight: bold;
   fill: #ffffff;
 }
 
@@ -115,9 +114,8 @@ header img {
 
 #weekly-emissions-author .grid line,
 #weekly-emissions-viewer .grid line {
-  stroke: #bcbec0;
+  stroke: #414042;
   stroke-opacity: 1;
-  stroke-dasharray: 2 2;
   shape-rendering: crispEdges;
 }
 
@@ -179,11 +177,11 @@ header img {
 }
 
 .bar {
-  fill: #74c476;
+  fill: #41ab5d;
 }
 
 .dot {
-  fill: #74c476;
+  fill: #41ab5d;
 }
 
 /* Sliders */
@@ -315,7 +313,6 @@ header img {
 #internet-users .chart-title,
 #internet-traffic .chart-title {
   font-size: 18px;
-  font-weight: bold;
   fill: #ffffff;
 }
 
@@ -335,9 +332,8 @@ header img {
 
 #internet-users .grid line,
 #internet-traffic .grid line {
-  stroke: #bcbec0;
+  stroke: #414042;
   stroke-opacity: 1;
-  stroke-dasharray: 2 2;
   shape-rendering: crispEdges;
 }
 
@@ -436,7 +432,6 @@ header img {
 
 #electricity-consumption .chart-title {
   font-size: 18px;
-  font-weight: bold;
   fill: #ffffff;
 }
 
@@ -452,9 +447,8 @@ header img {
 }
 
 #electricity-consumption .grid line {
-  stroke: #bcbec0;
+  stroke: #414042;
   stroke-opacity: 1;
-  stroke-dasharray: 2 2;
   shape-rendering: crispEdges;
 }
 
@@ -633,7 +627,7 @@ header img {
 
 /* Main Title */
 #ict-emissions .main-title {
-  font-size: 22px;
+  font-size: 18px;
   margin-bottom: 10px;
   color: #ffffff;
   text-align: center;
@@ -679,8 +673,7 @@ header img {
 
 /* Pie Chart Title */
 #ict-emissions-breakdown .pie-chart-title {
-  font-size: 22px;
-  font-weight: bold;
+  font-size: 18px;
   fill: #ffffff;
   text-anchor: middle;
   dominant-baseline: middle;
@@ -848,7 +841,7 @@ header img {
 
 /* Chart Title */
 .chart-title {
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   margin-bottom: 10px;
   color: #ffffff;
@@ -1073,7 +1066,6 @@ header img {
 
 #digital-prosperity .chart-title {
   font-size: 18px;
-  font-weight: bold;
   fill: #ffffff;
 }
 

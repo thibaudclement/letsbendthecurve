@@ -48,8 +48,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
     .attr('x2', 0)
     .attr('y1', 0)
     .attr('y2', height)
-    .attr('stroke', '#bcbec0')
-    .attr('stroke-dasharray', '2 2');
+    .attr('stroke', '#414042');
 
   // Create axes groups
   const xAxisGroup = svg.append('g')
@@ -97,8 +96,8 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       )
       .attr('transform', `translate(0, ${height})`)
       .selectAll('line')
-      .attr('stroke', '#bcbec0')
-      .attr('stroke-dasharray', '2 2');
+      .attr('stroke', '#414042')
+      .attr('stroke-width', 0.5);
 
     // Remove extra grid line to avoid box effect
     chartArea.selectAll(".vertical-grid .tick:first-of-type line")
@@ -106,8 +105,8 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
 
     // Ensure rightmost gridline is displayed
     chartArea.selectAll(".vertical-grid .tick:last-of-type line")
-      .attr('stroke', '#bcbec0')
-      .attr('stroke-dasharray', '2 2');
+      .attr('stroke', '#414042')
+      .attr('stroke-width', 0.5);
 
     // Update axes
     xAxisGroup.call(

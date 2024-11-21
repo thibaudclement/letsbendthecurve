@@ -77,7 +77,7 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
       '#weekly-emissions-viewer',
       userEmissions.taskEmissions,
       null, // Remove US average emissions
-      'One week worth of emissions from your digital activity',
+      'One Week Worth of Emissions from Your Digital Activity',
       true
     );
 
