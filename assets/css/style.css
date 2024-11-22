@@ -966,7 +966,6 @@ header img {
 }
 
 /* fortune500-emissions-chart Styles */
-
 #fortune500-emissions-chart .chart-title {
   font-size: 18px;
   text-align: center;
@@ -974,6 +973,7 @@ header img {
   color: #ffffff;
 }
 
+/* Chart Caption */
 #fortune500-emissions-chart .chart-caption {
   font-size: 14px;
   text-align: center;
@@ -981,6 +981,7 @@ header img {
   color: #ffffff;
 }
 
+/* Tooltip Styles */
 #fortune500-emissions-chart .tooltip {
   position: absolute;
   text-align: left;
@@ -997,6 +998,7 @@ header img {
   transition: opacity 0.3s;
 }
 
+/* Legend Styles */
 #fortune500-emissions-chart .legend-container {
   display: flex;
   justify-content: center;
@@ -1023,6 +1025,7 @@ header img {
   color: #ffffff;
 }
 
+/* Company Name Labels */
 #fortune500-emissions-chart .company-name {
   font-size: 12px;
   fill: #ffffff;
@@ -1030,13 +1033,14 @@ header img {
   pointer-events: none;
 }
 
-/* Remove industry and sector labels */
+/* Remove Industry and Sector Labels */
 #fortune500-emissions-chart .industry-label,
 #fortune500-emissions-chart .sector-label {
   display: none;
 }
 
-#fortune500-emissions-chart .control-container {
+/* Control Container Styles */
+#fortune500-emissions-chart .control-block {
   background-color: #414042;
   padding: 25px;
   border-radius: 15px;
@@ -1050,6 +1054,10 @@ header img {
   font-weight: bold;
 }
 
+#fortune500-emissions-chart .search-container label {
+  font-weight: bold;
+}
+
 #fortune500-emissions-chart .search-input {
   width: 100%;
   border-radius: 25px;
@@ -1060,13 +1068,20 @@ header img {
 }
 
 #fortune500-emissions-chart .search-input::placeholder {
-  color: #414042;
+  color: #cccccc;
 }
 
+/* Checkbox Group and Radio Group Styles */
 #fortune500-emissions-chart .checkbox-group,
-#fortune500-emissions-chart .radio-group,
-#fortune500-emissions-chart .checkbox-dropdown {
+#fortune500-emissions-chart .radio-group {
   margin-bottom: 20px;
+}
+
+#fortune500-emissions-chart .checkbox-group label,
+#fortune500-emissions-chart .radio-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
 }
 
 #fortune500-emissions-chart .options-container {
@@ -1089,6 +1104,7 @@ header img {
   margin-right: 5px;
 }
 
+/* Reset Button Styles */
 #fortune500-emissions-chart .reset-button-container {
   text-align: center;
 }
@@ -1108,6 +1124,7 @@ header img {
   background-color: #2a923f;
 }
 
+/* Toggle Button Styles */
 #fortune500-emissions-chart .toggle-button-container {
   text-align: center;
   margin-top: 10px;
@@ -1129,8 +1146,10 @@ header img {
 
 #fortune500-emissions-chart .toggle-message {
   text-align: center;
+  color: #ffffff;
 }
 
+/* Slider Styles */
 #fortune500-emissions-chart .slider-container {
   margin-bottom: 20px;
 }
@@ -1138,6 +1157,7 @@ header img {
 #fortune500-emissions-chart .slider-container label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
 }
 
 #fortune500-emissions-chart .dual-slider {
@@ -1149,25 +1169,21 @@ header img {
 #fortune500-emissions-chart .dual-slider input[type="range"] {
   -webkit-appearance: none;
   width: 48%;
-  background: transparent;
+  background: none;
+  border-radius: 5px;
+  outline: none;
+  position: relative;
 }
 
+/* Slider Thumb */
 #fortune500-emissions-chart .dual-slider input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  appearance: none;
   width: 15px;
   height: 15px;
   background: #ffffff;
   cursor: pointer;
   border-radius: 50%;
-  border: none;
-}
-
-#fortune500-emissions-chart .dual-slider input[type="range"]::-webkit-slider-runnable-track {
-  width: 100%;
-  height: 5px;
-  cursor: pointer;
-  background: #000000;
+  margin-top: -5px;
 }
 
 #fortune500-emissions-chart .dual-slider input[type="range"]::-moz-range-thumb {
@@ -1176,18 +1192,39 @@ header img {
   background: #ffffff;
   cursor: pointer;
   border-radius: 50%;
-  border: none;
+  margin-top: -5px;
 }
 
-#fortune500-emissions-chart .dual-slider input[type="range"]::-moz-range-track {
-  width: 100%;
-  height: 5px;
+#fortune500-emissions-chart .dual-slider input[type="range"]::-ms-thumb {
+  width: 15px;
+  height: 15px;
+  background: #ffffff;
   cursor: pointer;
-  background: #000000;
+  border-radius: 50%;
+  margin-top: -5px;
 }
 
-#fortune500-emissions-chart .dual-slider input[type="range"] {
-  accent-color: #74c476;
+/* Remove default styling for Firefox */
+#fortune500-emissions-chart .dual-slider input[type="range"]::-moz-range-track {
+  background: none;
+}
+
+/* For the fill before the thumb in Firefox */
+#fortune500-emissions-chart .dual-slider input[type="range"]::-moz-range-progress {
+  background-color: #74c476;
+  height: 5px;
+  border-radius: 5px;
+}
+
+/* For Chrome and Safari */
+#fortune500-emissions-chart .dual-slider input[type="range"]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #000000;
+  border-radius: 5px;
+}
+
+#fortune500-emissions-chart .dual-slider input[type="range"]:focus {
+  outline: none;
 }
 
 #fortune500-emissions-chart .slider-values {
@@ -1207,8 +1244,14 @@ header img {
   margin-bottom: 20px;
 }
 
+#fortune500-emissions-chart .sector-checkboxes label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 #fortune500-emissions-chart .sector-checkboxes .checkbox-column {
-  flex: 1 1 25%;
+  flex: 1 1 33%; /* Adjusted to three columns */
 }
 
 #fortune500-emissions-chart .sector-checkboxes .checkbox-column label {

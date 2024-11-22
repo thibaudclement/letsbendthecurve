@@ -323,6 +323,15 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Initialize filters with all values for checkboxes
     initializeFilters();
 
+    // By default, check all checkboxes
+    controlContainer.selectAll('.checkbox-group input[type="checkbox"]').property('checked', true);
+    controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
+    // Select 'All' for radio buttons
+    controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
+
+    // Apply filters on initial load
+    applyFilters();
+
     // Reset Button
     controlContainer.append('div')
       .attr('class', 'reset-button-container')
@@ -342,11 +351,10 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
         controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
         // Select 'All' for radio buttons
         controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
-        // Update slider labels
+        // Update slider labels and positions
         controlContainer.selectAll('.slider-container').each(function () {
           const sliderContainer = d3.select(this);
-          const label = sliderContainer.select('label').text();
-          const dataKey = label.toLowerCase().replace(/ /g, '');
+          const dataKey = sliderContainer.attr('data-key');
           const values = data.map(d => +d[dataKey]).filter(v => v !== null && !isNaN(v));
           const min = Math.min(...values);
           const max = Math.max(...values);
@@ -354,16 +362,15 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
           sliderContainer.select(`.${dataKey}-max-slider`).property('value', max);
           sliderContainer.select('.min-value').text(`Min: ${min}`);
           sliderContainer.select('.max-value').text(`Max: ${max}`);
+          // Reset filters for sliders
+          filters[`${dataKey}Min`] = min;
+          filters[`${dataKey}Max`] = max;
         });
+        // Re-initialize filters
+        initializeFilters();
         // Apply filters
         applyFilters();
       });
-
-    // By default, check all checkboxes
-    controlContainer.selectAll('.checkbox-group input[type="checkbox"]').property('checked', true);
-    controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
-    // Select 'All' for radio buttons
-    controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
 
     // Apply filters and update chart
     function applyFilters() {
@@ -458,7 +465,12 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     const min = Math.min(...values);
     const max = Math.max(...values);
 
-    const sliderContainer = container.append('div').attr('class', 'slider-container');
+    const sliderContainer = container.append('div').attr('class', 'slider-container')
+      .attr('data-key', dataKey); // Store dataKey for reset
+
+    // Initialize filters for sliders
+    filters[`${dataKey}Min`] = min;
+    filters[`${dataKey}Max`] = max;
 
     // Label above the sliders
     sliderContainer.append('label').text(`${labelText}: `);
@@ -469,7 +481,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Min slider
     dualSlider.append('input')
       .attr('type', 'range')
-      .attr('class', `${dataKey}-min-slider`)
+      .attr('class', `${dataKey}-min-slider slider-input`)
       .attr('min', min)
       .attr('max', max)
       .attr('value', min)
@@ -483,7 +495,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Max slider
     dualSlider.append('input')
       .attr('type', 'range')
-      .attr('class', `${dataKey}-max-slider`)
+      .attr('class', `${dataKey}-max-slider slider-input`)
       .attr('min', min)
       .attr('max', max)
       .attr('value', max)
@@ -531,13 +543,13 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
 
   function addSectorCheckboxes(container, labelText, dataKey, data, filters, applyFilters) {
     const values = Array.from(new Set(data.map(d => d[dataKey]))).sort();
-    const numColumns = 4;
+    const numColumns = 3; // Changed to 3 columns
     const numRows = Math.ceil(values.length / numColumns);
 
     const groupContainer = container.append('div').attr('class', 'sector-checkboxes');
 
     // Label above the checkboxes
-    groupContainer.append('label').text(`${labelText}: `);
+    groupContainer.append('label').text(`${labelText}: `).style('display', 'block'); // Ensure label is on its own line
 
     // Create columns
     for (let i = 0; i < numColumns; i++) {
@@ -547,10 +559,11 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Distribute checkboxes into columns
     values.forEach((value, index) => {
       const columnIndex = index % numColumns;
-      const column = groupContainer.select(`.checkbox-column:nth-child(${columnIndex + 2})`); // +2 to skip label and zero-based index
+      const column = groupContainer.selectAll('.checkbox-column').nodes()[columnIndex];
+      const columnSelection = d3.select(column);
 
       const id = `${dataKey}-${value}`;
-      const checkboxLabel = column.append('label').attr('for', id);
+      const checkboxLabel = columnSelection.append('label').attr('for', id);
       checkboxLabel.append('input')
         .attr('type', 'checkbox')
         .attr('id', id)
@@ -608,7 +621,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     });
   }
 
-  // Update chart function
+  // Update chart function remains the same
   function updateChart(filteredData) {
     // If no data, display a message
     if (filteredData.length === 0) {
