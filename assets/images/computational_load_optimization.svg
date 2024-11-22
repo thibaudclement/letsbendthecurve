@@ -129,7 +129,7 @@
       <text class="st2" transform="translate(13.4 235.5) rotate(-90)"><tspan x="0" y="0">Carbon Intensity</tspan></text>
       <text class="st2" transform="translate(632.5 248.5) rotate(-90)"><tspan x="0" y="0">Computational Load</tspan></text>
       <text class="st2" transform="translate(302.6 366.3)"><tspan x="0" y="0">Time</tspan></text>
-      <text class="st2" transform="translate(117.5 89.5)"><tspan x="0" y="0">Opportunity window: Period of lower carbon intensity </tspan><tspan x="57.2" y="18.7">suitable for increasing computational</tspan></text>
+      <text class="st2" transform="translate(117.5 89.5)"><tspan x="0" y="0">Opportunity window: Period of lower carbon intensity </tspan><tspan x="42" y="18.7">suitable for increasing computationa load</tspan></text>
       <g>
         <line class="st7" x1="496.3" y1="122.6" x2="107.4" y2="122.6"/>
         <polygon class="st3" points="495.3 119.2 501.1 122.6 495.3 125.9 495.3 119.2"/>

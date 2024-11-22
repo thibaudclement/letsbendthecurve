@@ -1,15 +1,18 @@
 export function drawEnergyConsumptionChart(containerSelector, data) {
-  // Set up dimensions and margins
+  // Set up margins and dimensions
   const margin = { top: 70, right: 30, bottom: 80, left: 80 };
-  const width = 800 - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
+  const containerWidth = d3.select(containerSelector).node().getBoundingClientRect().width;
+  const width = containerWidth - margin.left - margin.right;
+  const height = 500 - margin.top - margin.bottom; // Increased height
 
   // Create SVG container
   const svg = d3.select(containerSelector)
     .append('svg')
     .attr('class', 'energy-chart-container')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom);
+    .attr('width', '100%') // Full width
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
 
   // Add chart title
   svg.append('text')
@@ -18,7 +21,7 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
     .attr('y', margin.top / 2)
     .attr('text-anchor', 'middle')
     .attr('fill', '#ffffff')
-    .attr('font-size', '16px')
+    .attr('font-size', '22px')
     .text('Global Data Center Electricity Consumption (2010-2050)');
 
   // Create chart area
@@ -36,46 +39,51 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
     .domain([0, d3.max(data, d => d.energyConsumption) * 1.1])
     .range([height, 0]);
 
-  // Axes
+  // Define axes
   const xAxis = d3.axisBottom(x)
-    .tickValues(data.map(d => d.year)) // Tick for every year
-    .tickFormat(d => (d % 5 === 0 ? d : '')); // Label every 5 years
+    .tickValues(data.filter(d => d.year % 5 === 0).map(d => d.year))
+    .tickFormat(d => d.toString());
 
-  const yAxis = d3.axisLeft(y);
+  const yAxis = d3.axisLeft(y)
+    .ticks(5);
 
-  // Append axes
+  // Add horizontal gridlines
+  chartArea.append('g')
+    .attr('class', 'grid horizontal-grid')
+    .call(d3.axisLeft(y)
+      .ticks(5)
+      .tickSize(-width)
+      .tickFormat(''))
+    .selectAll('line')
+    .attr('stroke', '#58595b')
+    .attr('stroke-width', 0.5);
+
+  // Append x-axis labels without the axis line
   chartArea.append('g')
     .attr('class', 'axis x-axis')
     .attr('transform', `translate(0,${height})`)
-    .call(xAxis)
-    .selectAll('text')
-    .attr('transform', 'rotate(-30)')
-    .style('text-anchor', 'end');
+    .call(xAxis);
 
+  // Remove x-axis line but keep tick labels
+  chartArea.select('.x-axis path')
+    .style('display', 'none');
+
+  // Remove x-axis tick lines
+  chartArea.selectAll('.x-axis .tick line')
+    .style('display', 'none');
+
+  // Append y-axis labels without the axis line
   chartArea.append('g')
     .attr('class', 'axis y-axis')
     .call(yAxis);
 
-  // Add x-axis title
-  chartArea.append('text')
-    .attr('class', 'axis-title')
-    .attr('x', width / 2)
-    .attr('y', height + 60)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#ffffff')
-    .attr('font-size', '14px')
-    .text('Years');
+  // Remove y-axis line but keep tick labels
+  chartArea.select('.y-axis path')
+    .style('display', 'none');
 
-  // Add y-axis title
-  chartArea.append('text')
-    .attr('class', 'axis-title')
-    .attr('transform', 'rotate(-90)')
-    .attr('x', -height / 2)
-    .attr('y', -60)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#ffffff')
-    .attr('font-size', '14px')
-    .text('Global Data Center Electricity Consumption (TWh)');
+  // Remove y-axis tick lines
+  chartArea.selectAll('.y-axis .tick line')
+    .style('display', 'none');
 
   // Append bars
   chartArea.selectAll('.bar')
@@ -99,11 +107,24 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
     // Update y scale
     y.domain([0, d3.max(data, d => d.energyConsumption) * 1.1]);
 
-    // Update axes
+    // Update gridlines
+    chartArea.select('.horizontal-grid')
+      .call(d3.axisLeft(y)
+        .ticks(5)
+        .tickSize(-width)
+        .tickFormat(''));
+
+    // Update y-axis labels
     chartArea.select('.y-axis')
-      .transition()
-      .duration(500)
       .call(yAxis);
+
+    // Remove y-axis line but keep tick labels
+    chartArea.select('.y-axis path')
+      .style('display', 'none');
+
+    // Remove y-axis tick lines
+    chartArea.selectAll('.y-axis .tick line')
+      .style('display', 'none');
 
     // Update bars
     chartArea.selectAll('.bar')

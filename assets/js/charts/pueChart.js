@@ -2,10 +2,11 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
   // Make a copy of the initial data to reset later
   const initialData = data.map(d => ({ ...d }));
 
-  // Set up dimensions and margins
+  // Set up margins and dimensions
   const margin = { top: 70, right: 30, bottom: 80, left: 80 };
-  const width = 800 - margin.left - margin.right;
-  const height = 400 - margin.top - margin.bottom;
+  const containerWidth = d3.select(containerSelector).node().getBoundingClientRect().width;
+  const width = containerWidth - margin.left - margin.right;
+  const height = 500 - margin.top - margin.bottom; // Increased height for finer control
 
   // Create a container div for the chart and the button
   const chartContainer = d3.select(containerSelector)
@@ -16,8 +17,10 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
   const svg = chartContainer
     .append('svg')
     .attr('class', 'pue-chart-container')
-    .attr('width', width + margin.left + margin.right)
-    .attr('height', height + margin.top + margin.bottom);
+    .attr('width', '100%') // Full width
+    .attr('height', height + margin.top + margin.bottom)
+    .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
+    .attr('preserveAspectRatio', 'xMidYMid meet');
 
   // Add chart title
   svg.append('text')
@@ -26,7 +29,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('y', margin.top / 2)
     .attr('text-anchor', 'middle')
     .attr('fill', '#ffffff')
-    .attr('font-size', '16px')
+    .attr('font-size', '22px')
     .text('Worldwide Data Center Average Annual Power Usage Effectiveness (2010-2050)');
 
   // Create chart area
@@ -39,51 +42,67 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .range([0, width]);
 
   const y = d3.scaleLinear()
-    .domain([1.0, 2.5]) // Fixed domain for PUE values
+    .domain([0, 3.0]) // Changed to 0 - 3.0 for more amplitude
     .range([height, 0]);
 
-  // Axes
+  // Define axes
   const xAxis = d3.axisBottom(x)
-    .tickValues(data.map(d => d.year)) // Tick for every year
-    .tickFormat(d => (d % 5 === 0 ? d : '')); // Label every 5 years
+    .tickValues(data.filter(d => d.year % 5 === 0).map(d => d.year))
+    .tickFormat(d => d.toString());
 
-  const yAxis = d3.axisLeft(y);
+  const yAxis = d3.axisLeft(y)
+    .ticks(5);
 
-  // Append axes before dots
+  // Add horizontal gridlines
+  chartArea.append('g')
+    .attr('class', 'grid horizontal-grid')
+    .call(d3.axisLeft(y)
+      .ticks(5)
+      .tickSize(-width)
+      .tickFormat(''))
+    .selectAll('line')
+    .attr('stroke', '#58595b')
+    .attr('stroke-width', 0.5);
+
+  // Add vertical gridlines every 5 years
+  chartArea.append('g')
+    .attr('class', 'grid vertical-grid')
+    .call(d3.axisBottom(x)
+      .tickValues(data.filter(d => d.year % 5 === 0).map(d => d.year))
+      .tickSize(height)
+      .tickFormat(''))
+    .selectAll('line')
+    .attr('stroke', '#58595b')
+    .attr('stroke-width', 0.5);
+
+  // Append x-axis labels without the axis line
   chartArea.append('g')
     .attr('class', 'axis x-axis')
     .attr('transform', `translate(0,${height})`)
-    .call(xAxis)
-    .selectAll('text')
-    .attr('transform', 'rotate(-30)')
-    .style('text-anchor', 'end');
+    .call(xAxis);
 
+  // Remove x-axis line but keep tick labels
+  chartArea.select('.x-axis path')
+    .style('display', 'none');
+
+  // Remove x-axis tick lines
+  chartArea.selectAll('.x-axis .tick line')
+    .style('display', 'none');
+
+  // Append y-axis labels without the axis line
   chartArea.append('g')
     .attr('class', 'axis y-axis')
     .call(yAxis);
 
-  // Add x-axis title
-  chartArea.append('text')
-    .attr('class', 'axis-title')
-    .attr('x', width / 2)
-    .attr('y', height + 60)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#ffffff')
-    .attr('font-size', '14px')
-    .text('Years');
+  // Remove y-axis line but keep tick labels
+  chartArea.select('.y-axis path')
+    .style('display', 'none');
 
-  // Add y-axis title
-  chartArea.append('text')
-    .attr('class', 'axis-title')
-    .attr('transform', 'rotate(-90)')
-    .attr('x', -height / 2)
-    .attr('y', -60)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#ffffff')
-    .attr('font-size', '14px')
-    .text('Worldwide Average Data Center PUE');
+  // Remove y-axis tick lines
+  chartArea.selectAll('.y-axis .tick line')
+    .style('display', 'none');
 
-  // Append data points after axes
+  // Append data points after gridlines
   const dots = chartArea.selectAll('.dot')
     .data(data)
     .enter()
@@ -91,9 +110,11 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('class', 'dot')
     .attr('cx', d => x(d.year))
     .attr('cy', d => y(d.pue))
-    .attr('r', 5)
+    .attr('r', 6)
     .attr('fill', '#31a354')
-    .attr('opacity', d => d.pueSource === 'Actual' ? 1 : 0.5)
+    .attr('fill-opacity', d => d.pueSource === 'Actual' ? 0.5 : 0.2) // Adjusted fill opacity
+    .attr('stroke', '#31a354')
+    .attr('stroke-width', 1)
     .style('pointer-events', 'all')
     .call(d3.drag()
       .on('start', dragstarted)
@@ -130,38 +151,29 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('fill', '#ffffff')
     .text('Future Data');
 
-  // Add legend
-  const legend = chartArea.append('g')
-    .attr('class', 'legend')
-    .attr('transform', `translate(${width - 150}, 10)`);
+  // Move legend below the chart
+  const legendData = [
+    { label: 'Actual Data', opacity: 0.5 },
+    { label: 'Interpolations/Projections', opacity: 0.2 }
+  ];
 
-  // Actual Data Legend
-  legend.append('circle')
-    .attr('cx', 0)
-    .attr('cy', 0)
-    .attr('r', 5)
-    .attr('fill', '#31a354')
-    .attr('opacity', 1);
+  const legend = chartContainer.append('div')
+    .attr('class', 'legend');
 
-  legend.append('text')
-    .attr('x', 15)
-    .attr('y', 5)
-    .attr('fill', '#ffffff')
-    .text('Actual Data');
+  const legendItems = legend.selectAll('.legend-item')
+    .data(legendData)
+    .enter()
+    .append('div')
+    .attr('class', 'legend-item');
 
-  // Interpolations/Projections Legend
-  legend.append('circle')
-    .attr('cx', 0)
-    .attr('cy', 20)
-    .attr('r', 5)
-    .attr('fill', '#31a354')
-    .attr('opacity', 0.5);
+  legendItems.append('div')
+    .attr('class', 'legend-color-box')
+    .style('background-color', '#31a354')
+    .style('opacity', d => d.opacity);
 
-  legend.append('text')
-    .attr('x', 15)
-    .attr('y', 25)
-    .attr('fill', '#ffffff')
-    .text('Interpolations/Projections');
+  legendItems.append('div')
+    .attr('class', 'legend-label')
+    .text(d => d.label);
 
   // Add Reset button below the chart inside the chart container
   chartContainer.append('button')
@@ -184,7 +196,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
 
   function dragged(event, d) {
     const newY = y.invert(event.y);
-    d.pue = Math.max(1.0, Math.min(newY, 3.0)); // Limit PUE between 1.0 and 3.0
+    d.pue = Math.max(0, Math.min(newY, 3.0)); // Limit PUE between 0 and 3.0
     d3.select(this)
       .attr('cy', y(d.pue));
 
