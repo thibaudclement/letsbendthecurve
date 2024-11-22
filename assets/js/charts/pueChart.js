@@ -102,6 +102,25 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
   chartArea.selectAll('.y-axis .tick line')
     .style('display', 'none');
 
+  // Add x-axis title
+  chartArea.append('text')
+    .attr('class', 'axis-title')
+    .attr('x', width / 2)
+    .attr('y', height + 40)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .text('Years');
+
+  // Add y-axis title
+  chartArea.append('text')
+    .attr('class', 'axis-title')
+    .attr('transform', 'rotate(-90)')
+    .attr('x', -height / 2)
+    .attr('y', -50)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .text('Power Usage Effectiveness (PUE)');
+
   // Append data points after gridlines
   const dots = chartArea.selectAll('.dot')
     .data(data)
@@ -124,6 +143,27 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
 
   // Bring dots to the front
   dots.raise();
+
+  // Add tooltip
+  const tooltip = d3.select(containerSelector)
+    .append('div')
+    .attr('class', 'tooltip')
+    .style('opacity', 0);
+
+  dots.on('mouseover', function(event, d) {
+      tooltip.transition()
+        .duration(200)
+        .style('opacity', .9);
+      tooltip.html(`Year: ${d.year}<br>PUE: ${d.pue.toFixed(2)}`)
+        .style('left', (event.pageX + 10) + 'px')
+        .style('top', (event.pageY - 28) + 'px')
+        .style('max-width', '200px'); // Adjusted tooltip width
+    })
+    .on('mouseout', function(d) {
+      tooltip.transition()
+        .duration(500)
+        .style('opacity', 0);
+    });
 
   // Vertical dashed line between past and future data
   const separatorYear = 2024.5;
@@ -151,10 +191,22 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('fill', '#ffffff')
     .text('Future Data');
 
+  // Add horizontal line at y = 1.0 (theoretical limit of PUE)
+  chartArea.append('line')
+    .attr('class', 'theoretical-limit-line')
+    .attr('x1', 0)
+    .attr('y1', y(1.0))
+    .attr('x2', width)
+    .attr('y2', y(1.0))
+    .attr('stroke', '#74c476')
+    .attr('stroke-dasharray', '4');
+
   // Move legend below the chart
   const legendData = [
-    { label: 'Actual Data', opacity: 0.5 },
-    { label: 'Interpolations/Projections', opacity: 0.2 }
+    { label: 'Actual Data', opacity: 0.5, type: 'circle' },
+    { label: 'Interpolations/Projections', opacity: 0.2, type: 'circle' },
+    { label: 'Past/Future Boundary', type: 'line', style: 'separator' },
+    { label: 'Theoretical PUE Limit', type: 'line', style: 'theoretical' }
   ];
 
   const legend = chartContainer.append('div')
@@ -166,14 +218,25 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .append('div')
     .attr('class', 'legend-item');
 
-  legendItems.append('div')
-    .attr('class', 'legend-color-box')
-    .style('background-color', '#31a354')
-    .style('opacity', d => d.opacity);
-
-  legendItems.append('div')
-    .attr('class', 'legend-label')
-    .text(d => d.label);
+  legendItems.each(function(d) {
+    const item = d3.select(this);
+    if (d.type === 'circle') {
+      item.append('div')
+        .attr('class', 'legend-color-box')
+        .style('background-color', '#31a354')
+        .style('opacity', d.opacity);
+    } else if (d.type === 'line') {
+      item.append('div')
+        .attr('class', 'legend-line-box')
+        .style('border-bottom', d.style === 'separator' ? '2px dashed #ffffff' : '2px dashed #74c476')
+        .style('width', '20px')
+        .style('height', '0px')
+        .style('margin-right', '5px');
+    }
+    item.append('div')
+      .attr('class', 'legend-label')
+      .text(d.label);
+  });
 
   // Add Reset button below the chart inside the chart container
   chartContainer.append('button')
