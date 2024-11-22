@@ -199,7 +199,7 @@ export async function loadCountryData() {
       d["Internet Users (% of Population)"] = d["Internet Users (% of Population)"] ? +d["Internet Users (% of Population)"] : NaN;
       d["Data Centers"] = d["Data Centers"] ? +d["Data Centers"] : NaN;
       d["Supercomputer Cores"] = d["Supercomputer Cores"] ? +d["Supercomputer Cores"] : NaN;
-      d["Internet Connection Speed (Average Download Speed, Mbit/s)"] = d["Internet Connection Speed (Average Download Speed, Mbit/s)"] ? +d["Internet Connection Speed (Average Download Speed, Mbit/s)"] : NaN;
+      d["Internet Connection Speed (Average Download Speed in Mbit Per Second)"] = d["Internet Connection Speed (Average Download Speed in Mbit Per Second)"] ? +d["Internet Connection Speed (Average Download Speed in Mbit Per Second)"] : NaN;
 
       // Calculate Supercomputer Cores Per Million Inhabitants
       if (!isNaN(d["Supercomputer Cores"]) && !isNaN(d.Population) && d.Population !== 0) {

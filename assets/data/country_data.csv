@@ -1,4 +1,4 @@
-﻿Country,Population,Human Development Index,GDP (Nominal),GDP Per Capita,Electricity Consumption,Internet Users (% of Population),Data Centers,Supercomputer Cores,Internet Connection Speed (Average Download Speed in Mbit/s)
+﻿Country,Population,Human Development Index,GDP (Nominal),GDP Per Capita,Electricity Consumption,Internet Users (% of Population),Data Centers,Supercomputer Cores,Internet Connection Speed (Average Download Speed in Mbit Per Second)
 Afghanistan,42647492,0.511,,,5.53,11,,,3
 Albania,2866374,0.791,,,7.05,66,,,61
 Algeria,46814308,0.748,,,77.79,58,,,14

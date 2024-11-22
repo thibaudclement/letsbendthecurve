@@ -29,9 +29,9 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     },
     {
       title: "Human Development Index vs. Internet Connection Speed",
-      xLabel: "Internet Connection Speed (Average Download Speed, Mbit/s)",
+      xLabel: "Internet Connection Speed (Average Download Speed in Mbit Per Second)",
       yLabel: "Human Development Index",
-      xKey: "Internet Connection Speed (Average Download Speed, Mbit/s)",
+      xKey: "Internet Connection Speed (Average Download Speed in Mbit Per Second)",
       yKey: "Human Development Index",
       xScaleType: "linear",
       yScaleType: "linear"
