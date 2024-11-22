@@ -122,7 +122,7 @@ export async function loadPueData() {
         pue,
         pueSource: d['PUE Source'],
         energyConsumption,
-        computingUnitsNeed, // Add this property
+        computingUnitsNeed,
         isProjection: d['PUE Source'] === 'Projection',
         isInterpolation: d['PUE Source'] === 'Interpolation',
       };

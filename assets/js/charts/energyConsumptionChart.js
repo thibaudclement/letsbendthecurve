@@ -3,7 +3,7 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
   const margin = { top: 70, right: 30, bottom: 80, left: 80 };
   const containerWidth = d3.select(containerSelector).node().getBoundingClientRect().width;
   const width = containerWidth - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom; // Increased height
+  const height = 500 - margin.top - margin.bottom;
 
   // Create SVG container
   const svg = d3.select(containerSelector)
@@ -46,7 +46,6 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
 
   const yAxis = d3.axisLeft(y)
     .ticks(5);
-    // Removed tickFormat to eliminate "TWh" from labels
 
   // Add horizontal gridlines
   chartArea.append('g')
@@ -142,7 +141,7 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
       tooltip.html(`Year: ${d.year}<br>Consumption: ${d.energyConsumption.toFixed(2)} TWh`)
         .style('left', (event.pageX + 10) + 'px')
         .style('top', (event.pageY - 28) + 'px')
-        .style('max-width', '200px'); // Adjusted tooltip width
+        .style('max-width', '200px');
     })
     .on('mouseout', function(d) {
       tooltip.transition()
@@ -165,7 +164,10 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
       .call(d3.axisLeft(y)
         .ticks(5)
         .tickSize(-width)
-        .tickFormat(''));
+        .tickFormat(''))
+      .selectAll('line')
+      .attr('stroke', '#58595b')
+      .attr('stroke-width', 0.5);
 
     // Update y-axis labels
     chartArea.select('.y-axis')
