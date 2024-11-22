@@ -965,25 +965,23 @@ header img {
   z-index: 10;
 }
 
+/* fortune500-emissions-chart Styles */
 
-/* Chart Title */
-.chart-title {
+#fortune500-emissions-chart .chart-title {
   font-size: 18px;
   text-align: center;
   margin-bottom: 10px;
   color: #ffffff;
 }
 
-/* Chart Caption */
-.chart-caption {
+#fortune500-emissions-chart .chart-caption {
   font-size: 14px;
   text-align: center;
   margin-bottom: 20px;
   color: #ffffff;
 }
 
-/* Tooltip Styles */
-.tooltip {
+#fortune500-emissions-chart .tooltip {
   position: absolute;
   text-align: left;
   width: 250px;
@@ -999,8 +997,7 @@ header img {
   transition: opacity 0.3s;
 }
 
-/* Legend Styles */
-.legend-container {
+#fortune500-emissions-chart .legend-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -1008,176 +1005,222 @@ header img {
   margin-bottom: 20px;
 }
 
-.legend-item {
+#fortune500-emissions-chart .legend-item {
   display: flex;
   align-items: center;
   margin-right: 15px;
 }
 
-.legend-color-box {
+#fortune500-emissions-chart .legend-color-box {
   width: 20px;
   height: 20px;
   margin-right: 5px;
   border: 1px solid #ffffff;
 }
 
-.legend-label {
+#fortune500-emissions-chart .legend-label {
   font-size: 14px;
   color: #ffffff;
 }
 
-/* Company Name Text */
-.company-name {
+#fortune500-emissions-chart .company-name {
   font-size: 12px;
   fill: #ffffff;
   text-anchor: middle;
   pointer-events: none;
 }
 
-/* Industry Label */
-.industry-label {
-  font-size: 16px;
-  fill: #ffffff;
-  text-anchor: middle;
-  pointer-events: none;
+/* Remove industry and sector labels */
+#fortune500-emissions-chart .industry-label,
+#fortune500-emissions-chart .sector-label {
+  display: none;
 }
 
-/* Sector Label */
-.sector-label {
-  font-size: 20px;
-  fill: #ffffff;
-  font-weight: bold;
-  text-anchor: middle;
-  pointer-events: none;
-}
-
-/* Control Container */
-.control-container {
+#fortune500-emissions-chart .control-container {
+  background-color: #414042;
+  padding: 25px;
+  border-radius: 15px;
   margin-top: 20px;
-  margin-bottom: 20px;
   color: #ffffff;
 }
 
-.control-container label {
+#fortune500-emissions-chart .control-container label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
 }
 
-.search-input {
+#fortune500-emissions-chart .search-input {
   width: 100%;
   border-radius: 25px;
   padding: 8px;
-  color: #000000;
+  color: #ffffff;
+  background-color: #000000;
   border: none;
 }
 
-.checkbox-group,
-.radio-group,
-.checkbox-dropdown {
+#fortune500-emissions-chart .search-input::placeholder {
+  color: #414042;
+}
+
+#fortune500-emissions-chart .checkbox-group,
+#fortune500-emissions-chart .radio-group,
+#fortune500-emissions-chart .checkbox-dropdown {
   margin-bottom: 20px;
 }
 
-.options-container {
+#fortune500-emissions-chart .options-container {
   display: flex;
   flex-wrap: wrap;
 }
 
-.options-container label {
+#fortune500-emissions-chart .options-container label {
   display: flex;
   align-items: center;
   margin-right: 15px;
   margin-bottom: 5px;
   font-weight: normal;
+  text-transform: capitalize;
 }
 
-.options-container input {
+#fortune500-emissions-chart .options-container input[type="checkbox"],
+#fortune500-emissions-chart .options-container input[type="radio"] {
+  accent-color: #74c476;
   margin-right: 5px;
 }
 
-.checkbox-dropdown details {
-  background-color: #ffffff;
-  color: #000000;
-  padding: 8px;
-  border-radius: 5px;
+#fortune500-emissions-chart .reset-button-container {
+  text-align: center;
+}
+
+#fortune500-emissions-chart .reset-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #31a354;
+  color: #ffffff;
+  border: none;
   cursor: pointer;
-  position: relative;
   border-radius: 25px;
 }
 
-.checkbox-dropdown summary {
-  font-weight: bold;
-  outline: none;
-  list-style: none;
+#fortune500-emissions-chart .reset-button:hover {
+  background-color: #2a923f;
 }
 
-.checkbox-dropdown summary::-webkit-details-marker {
-  display: none;
-}
-
-.checkbox-dropdown::after {
-  position: absolute;
-  right: 10px;
-  top: 14px;
-}
-
-.checkbox-list {
+#fortune500-emissions-chart .toggle-button-container {
+  text-align: center;
   margin-top: 10px;
-  max-height: 200px;
-  overflow-y: auto;
 }
 
-.checkbox-list label {
+#fortune500-emissions-chart .toggle-controls-button {
+  padding: 8px 16px;
+  font-size: 14px;
+  background-color: #31a354;
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+#fortune500-emissions-chart .toggle-controls-button:hover {
+  background-color: #2a923f;
+}
+
+#fortune500-emissions-chart .toggle-message {
+  text-align: center;
+}
+
+#fortune500-emissions-chart .slider-container {
+  margin-bottom: 20px;
+}
+
+#fortune500-emissions-chart .slider-container label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+#fortune500-emissions-chart .dual-slider {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#fortune500-emissions-chart .dual-slider input[type="range"] {
+  -webkit-appearance: none;
+  width: 48%;
+  background: transparent;
+}
+
+#fortune500-emissions-chart .dual-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+#fortune500-emissions-chart .dual-slider input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: #000000;
+}
+
+#fortune500-emissions-chart .dual-slider input[type="range"]::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #ffffff;
+  cursor: pointer;
+  border-radius: 50%;
+  border: none;
+}
+
+#fortune500-emissions-chart .dual-slider input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  background: #000000;
+}
+
+#fortune500-emissions-chart .dual-slider input[type="range"] {
+  accent-color: #74c476;
+}
+
+#fortune500-emissions-chart .slider-values {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+#fortune500-emissions-chart .slider-value {
+  font-size: 12px;
+}
+
+/* Sector Checkboxes Layout */
+#fortune500-emissions-chart .sector-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+#fortune500-emissions-chart .sector-checkboxes .checkbox-column {
+  flex: 1 1 25%;
+}
+
+#fortune500-emissions-chart .sector-checkboxes .checkbox-column label {
   display: flex;
   align-items: center;
   margin-bottom: 5px;
   font-weight: normal;
 }
 
-.checkbox-list input {
+#fortune500-emissions-chart .sector-checkboxes .checkbox-column input[type="checkbox"] {
+  accent-color: #74c476;
   margin-right: 5px;
-}
-
-.reset-button-container {
-  text-align: center;
-}
-
-.reset-button {
-  margin-top: 10px;
-  padding: 8px 16px;
-  font-size: 14px;
-  background-color: #31a354;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  border-radius: 25px;
-}
-
-.reset-button:hover {
-  background-color: #2a923f;
-}
-
-.toggle-button-container {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.toggle-controls-button {
-  padding: 8px 16px;
-  font-size: 14px;
-  background-color: #31a354;
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  border-radius: 25px;
-}
-
-.toggle-controls-button:hover {
-  background-color: #2a923f;
-}
-
-.toggle-message {
-  text-align: center;
 }
 
 /* Styles for the Digital Prosperity Chart */

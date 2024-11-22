@@ -68,7 +68,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     .attr('width', d => d.x1 - d.x0)
     .attr('height', d => d.y1 - d.y0)
     .attr('fill', d => colorScale(d.data.data.wcGrade))
-    .attr('stroke', '#ffffff')
+    .attr('stroke', '#414042') // Updated border color
     .attr('stroke-width', 1)
     .on('mouseover', showTooltip)
     .on('mouseout', hideTooltip);
@@ -87,47 +87,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       const textWidth = getTextWidth(d.data.name, '12px sans-serif');
       const textHeight = 12;
       if (boxWidth > textWidth && boxHeight > textHeight) {
-        return d.data.name;
-      } else {
-        return '';
-      }
-    });
-
-  // Add labels for industry nodes (depth 2)
-  nodesGroup.filter(d => d.depth === 2)
-    .append('text')
-    .attr('class', 'industry-label')
-    .attr('x', d => (d.x1 - d.x0) / 2)
-    .attr('y', 20)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#ffffff')
-    .attr('font-size', '16px')
-    .text(d => {
-      const boxWidth = d.x1 - d.x0;
-      const boxHeight = d.y1 - d.y0;
-      const textWidth = getTextWidth(d.data.name, '16px sans-serif');
-      if (boxWidth > textWidth && boxHeight > 20) {
-        return d.data.name;
-      } else {
-        return '';
-      }
-    });
-
-  // Add labels for sector nodes (depth 1)
-  nodesGroup.filter(d => d.depth === 1)
-    .append('text')
-    .attr('class', 'sector-label')
-    .attr('x', d => (d.x1 - d.x0) / 2)
-    .attr('y', 40)
-    .attr('text-anchor', 'middle')
-    .attr('fill', '#ffffff')
-    .attr('font-size', '20px')
-    .attr('font-weight', 'bold')
-    .text(d => {
-      const boxWidth = d.x1 - d.x0;
-      const boxHeight = d.y1 - d.y0;
-      const textWidth = getTextWidth(d.data.name, '20px sans-serif');
-      if (boxWidth > textWidth && boxHeight > 40) {
         return d.data.name;
       } else {
         return '';
@@ -310,7 +269,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       totalEmissionsMin: null,
       totalEmissionsMax: null,
       sectors: [],
-      industries: [],
       companyType: null,
       wcGrades: [],
       profitableRaw: null,
@@ -332,6 +290,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       .attr('type', 'text')
       .attr('class', 'search-input')
       .attr('id', 'search-input')
+      .attr('placeholder', 'Enter a company name, ticker, or CEO...')
       .on('input', function () {
         filters.searchQuery = this.value.toLowerCase();
         applyFilters();
@@ -340,13 +299,12 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // 2. Min/Max Sliders
     addMinMaxSlider(controlContainer, 'Rank', 'rank', data, filters, applyFilters, 1);
     addMinMaxSlider(controlContainer, 'Number of Employees', 'numberOfEmployees', data, filters, applyFilters, 100);
-    addMinMaxSlider(controlContainer, 'WC CO₂ per Visit', 'wcCO2PerVisit', data, filters, applyFilters, 1);
-    addMinMaxSlider(controlContainer, 'Monthly Traffic (K)', 'monthlyTrafficK', data, filters, applyFilters, 1000);
-    addMinMaxSlider(controlContainer, 'Total Yearly Emissions', 'totalEmissions', data, filters, applyFilters, 1000);
+    addMinMaxSlider(controlContainer, 'WC CO₂ per Visit', 'wcCO2PerVisit', data, filters, applyFilters, 0.01);
+    addMinMaxSlider(controlContainer, 'Monthly Traffic (K)', 'monthlyTrafficK', data, filters, applyFilters, 10);
+    addMinMaxSlider(controlContainer, 'Total Yearly Emissions', 'totalEmissions', data, filters, applyFilters, 1);
 
-    // 3. Checkboxes with Dropdown (Sectors and Industries)
-    addCheckboxDropdown(controlContainer, 'Sector', 'sector', data, filters, applyFilters);
-    addCheckboxDropdown(controlContainer, 'Industry', 'industry', data, filters, applyFilters);
+    // 3. Sector Checkboxes
+    addSectorCheckboxes(controlContainer, 'Sector', 'sector', data, filters, applyFilters);
 
     // 4. Radio Buttons for Company Type
     addRadioButtons(controlContainer, 'Company Type', 'companyType', data, filters, applyFilters);
@@ -371,7 +329,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       .style('text-align', 'center') // Center the reset button
       .append('button')
       .attr('class', 'reset-button')
-      .text('Reset')
+      .text('Reset Filters') // Updated button text
       .on('click', function () {
         // Reset filters
         resetFilters();
@@ -381,16 +339,29 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
         controlContainer.selectAll('input[type="radio"]').property('checked', false);
         // By default, check all checkboxes
         controlContainer.selectAll('.checkbox-group input[type="checkbox"]').property('checked', true);
-        controlContainer.selectAll('.checkbox-dropdown input[type="checkbox"]').property('checked', true);
+        controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
         // Select 'All' for radio buttons
         controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
+        // Update slider labels
+        controlContainer.selectAll('.slider-container').each(function () {
+          const sliderContainer = d3.select(this);
+          const label = sliderContainer.select('label').text();
+          const dataKey = label.toLowerCase().replace(/ /g, '');
+          const values = data.map(d => +d[dataKey]).filter(v => v !== null && !isNaN(v));
+          const min = Math.min(...values);
+          const max = Math.max(...values);
+          sliderContainer.select(`.${dataKey}-min-slider`).property('value', min);
+          sliderContainer.select(`.${dataKey}-max-slider`).property('value', max);
+          sliderContainer.select('.min-value').text(`Min: ${min}`);
+          sliderContainer.select('.max-value').text(`Max: ${max}`);
+        });
         // Apply filters
         applyFilters();
       });
 
     // By default, check all checkboxes
     controlContainer.selectAll('.checkbox-group input[type="checkbox"]').property('checked', true);
-    controlContainer.selectAll('.checkbox-dropdown input[type="checkbox"]').property('checked', true);
+    controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
     // Select 'All' for radio buttons
     controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
 
@@ -427,7 +398,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       filteredData = filteredData.filter(d => {
         return (
           (filters.sectors.length === 0 || filters.sectors.includes(d.sector)) &&
-          (filters.industries.length === 0 || filters.industries.includes(d.industry)) &&
           (filters.wcGrades.length === 0 || filters.wcGrades.includes(d.wcGrade))
         );
       });
@@ -455,7 +425,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Initialize filters with all values for checkboxes
     function initializeFilters() {
       filters.sectors = Array.from(new Set(data.map(d => d.sector)));
-      filters.industries = Array.from(new Set(data.map(d => d.industry)));
       filters.wcGrades = Array.from(new Set(data.map(d => d.wcGrade)));
     }
 
@@ -560,21 +529,28 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     });
   }
 
-  function addCheckboxDropdown(container, labelText, dataKey, data, filters, applyFilters) {
+  function addSectorCheckboxes(container, labelText, dataKey, data, filters, applyFilters) {
     const values = Array.from(new Set(data.map(d => d[dataKey]))).sort();
+    const numColumns = 4;
+    const numRows = Math.ceil(values.length / numColumns);
 
-    const dropdownContainer = container.append('div').attr('class', 'checkbox-dropdown');
+    const groupContainer = container.append('div').attr('class', 'sector-checkboxes');
 
-    // Use details/summary for the dropdown effect
-    const details = dropdownContainer.append('details');
+    // Label above the checkboxes
+    groupContainer.append('label').text(`${labelText}: `);
 
-    details.append('summary').text(`${labelText}`);
+    // Create columns
+    for (let i = 0; i < numColumns; i++) {
+      groupContainer.append('div').attr('class', 'checkbox-column');
+    }
 
-    const checkboxList = details.append('div').attr('class', 'checkbox-list');
+    // Distribute checkboxes into columns
+    values.forEach((value, index) => {
+      const columnIndex = index % numColumns;
+      const column = groupContainer.select(`.checkbox-column:nth-child(${columnIndex + 2})`); // +2 to skip label and zero-based index
 
-    values.forEach(value => {
       const id = `${dataKey}-${value}`;
-      const checkboxLabel = checkboxList.append('label').attr('for', id);
+      const checkboxLabel = column.append('label').attr('for', id);
       checkboxLabel.append('input')
         .attr('type', 'checkbox')
         .attr('id', id)
@@ -584,7 +560,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
           if (this.checked) {
             filters[`${dataKey}s`].push(this.value);
           } else {
-            filters[`${dataKey}s`].splice(filters[`${dataKey}s`].indexOf(this.value), 1);
+            filters[`${dataKey}s`] = filters[`${dataKey}s`].filter(v => v !== this.value);
           }
           applyFilters();
         });
@@ -675,7 +651,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       .attr('width', d => d.x1 - d.x0)
       .attr('height', d => d.y1 - d.y0)
       .attr('fill', d => colorScale(d.data.data.wcGrade))
-      .attr('stroke', '#ffffff')
+      .attr('stroke', '#414042') // Updated border color
       .attr('stroke-width', 1)
       .on('mouseover', showTooltip)
       .on('mouseout', hideTooltip);
@@ -694,47 +670,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
         const textWidth = getTextWidth(d.data.name, '12px sans-serif');
         const textHeight = 12;
         if (boxWidth > textWidth && boxHeight > textHeight) {
-          return d.data.name;
-        } else {
-          return '';
-        }
-      });
-
-    // Add labels for industry nodes (depth 2)
-    nodesGroup.filter(d => d.depth === 2)
-      .append('text')
-      .attr('class', 'industry-label')
-      .attr('x', d => (d.x1 - d.x0) / 2)
-      .attr('y', 20)
-      .attr('text-anchor', 'middle')
-      .attr('fill', '#ffffff')
-      .attr('font-size', '16px')
-      .text(d => {
-        const boxWidth = d.x1 - d.x0;
-        const boxHeight = d.y1 - d.y0;
-        const textWidth = getTextWidth(d.data.name, '16px sans-serif');
-        if (boxWidth > textWidth && boxHeight > 20) {
-          return d.data.name;
-        } else {
-          return '';
-        }
-      });
-
-    // Add labels for sector nodes (depth 1)
-    nodesGroup.filter(d => d.depth === 1)
-      .append('text')
-      .attr('class', 'sector-label')
-      .attr('x', d => (d.x1 - d.x0) / 2)
-      .attr('y', 40)
-      .attr('text-anchor', 'middle')
-      .attr('fill', '#ffffff')
-      .attr('font-size', '20px')
-      .attr('font-weight', 'bold')
-      .text(d => {
-        const boxWidth = d.x1 - d.x0;
-        const boxHeight = d.y1 - d.y0;
-        const textWidth = getTextWidth(d.data.name, '20px sans-serif');
-        if (boxWidth > textWidth && boxHeight > 40) {
           return d.data.name;
         } else {
           return '';
