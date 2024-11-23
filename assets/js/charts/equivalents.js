@@ -9,7 +9,7 @@ export function displayEquivalentsInList(listSelector, yearlyEmissions, nonDigit
   const closestDistance = findClosestDistance(milesDriven, drivingDistances);
 
   const drivingItem = list.append('li');
-  drivingItem.html(`Driving <span class="data-point">${milesDriven.toFixed(0)}</span> in a gas-powered car.`);
+  drivingItem.html(`Driving <span class="data-point">${milesDriven.toFixed(0)}</span> miles in a gas-powered car.`);
 
   // Beef servings equivalent
   const beefTask = nonDigitalTasks.find(d => d.task === 'beef_serving');
