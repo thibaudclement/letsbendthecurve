@@ -148,7 +148,7 @@
       <h2>Where Are Emissions Coming From?</h2>
       <p>To bend the curve of emissions from the ICT sector, we first need to understand what is causing 
         these emissions. Estimates of emissions in the ICT sector vary according to methodology, but experts converge 
-        towards the idea that the main sources of emissions are user devices, networks, and data centers.</p>
+        towards the idea that the main sources of emissions are data centers, networks, and user devices.</p>
       <p>These three pillars of modern digital ecosystems interact to deliver digital services, enabling data 
         transmission and processing:</p>
       <ul>
@@ -169,9 +169,9 @@
     <section class="text-block">
       <p>Within each segment, we need to distinguish between two categories of emissions:</p>
       <ul>
-        <li>Embodied emissions refer to the greenhouse gases produced during the manufacturing, transportation, and 
+        <li><strong>Embodied emissions</strong> refer to the greenhouse gases produced during the manufacturing, transportation, and 
           installation of digital hardware, such as servers, devices, and network equipment.</li>
-        <li>Operational emissions are generated during the daily use of digital systems, including powering data centers, 
+        <li><strong>Operational emissions</strong> are generated during the daily use of digital systems, including powering data centers, 
           networks, and user devices.</li>
       </ul>
       <p>According to the <a href="https://sustainablewebdesign.org/estimating-digital-emissions/">Sustainable Web Design Model</a>, 
@@ -182,7 +182,7 @@
       <!-- Sustainable web design model chart will be inserted here -->
     </section>
     <section class="text-block">
-      <p>As the charts above suggest, addressing embodied emissions is crucial, as these emissions are essentially "built into" 
+      <p>As the charts above suggest, addressing embodied emissions is crucial, since these emissions are essentially "built into" 
         the physical infrastructure before it is used. However, as this pertains to the field of hardware manufacturing, it is outside 
         the direct scope of this article.</p>
         <p>In sustainable computing and software engineering, the focus is often on 
@@ -197,7 +197,7 @@
         reduce the emissions of data centers is to power them with renewable energy sources. Fortunately, the trend
         is already moving in this direction. The largest cloud providers, such as Amazon Web Services, Google Cloud,
         and Microsoft Azure, have committed to powering their data centers with <a href="https://www.cedara.io/post/tracking-the-transition-to-renewable-energy-in-the-data-center-industry">100%</a> 
-        renewable energy between 2025 and 2030.</p>
+        renewable energy between 2025 and 2030:</p>
         <ul>
           <li>In 2020, AWS reached <a href="https://aws.amazon.com/energy/transition1/">65%</a> of 
             renewable energy usage, and as of 2023, the company was matching 
@@ -217,7 +217,7 @@
         <p>Until all data centers are completely powered by renewable energy, sustainable software engineering practices
           can help product development teams maximize the reliance of the cloud applications they build on renewable energy sources.
           To that effect, the Linux Foundation's <a href="https://training.linuxfoundation.org/training/green-software-for-practitioners-lfc131/">Green Software for Practitioners</a>
-          certification advocates two fundamental approaches to make software do more when the carbon intensity of computing is lower.</p>
+          certification advocates two fundamental carbon-awareness approaches, to make software do more when the carbon intensity of computing is lower.</p>
         <p class="image-title">Computational Load Optimization Based on Carbon Intensity</p>
         <img src="assets/images/computational_load_optimization.svg" alt="Computational Load Optimization.svg">
         <p><strong>Demand shifting</strong>, on the one hand, involves rescheduling or relocating computational tasks to take advantage of lower carbon 
@@ -253,58 +253,57 @@
         with no additional overhead for cooling or power distribution. For instance, if an application consumes 10 kWh 
         of energy and the data center’s PUE is 1.5, the actual energy drawn from the grid is 15 kWh—10 kWh for computing 
         and 5 kWh for operational overhead like cooling and power delivery.</p>
-      <p>Fortunately, PUE has improved significantly over the years. In 2007, the global average PUE was around 2.5, 
+      <p>Fortunately, PUE has <a href="https://www.statista.com/statistics/1229367/data-center-average-annual-pue-worldwide/">improved significantly</a> over the years. In 2007, the global average PUE was around 2.5, 
         meaning that data centers consumed 1.5 watts in overhead for every watt used by computing equipment. By 2020, 
         global PUE had dropped to under 1.6, thanks to advancements in IT hardware, more efficient cooling technologies, 
         and a shift towards hyperscale cloud data centers that are far more efficient than smaller enterprise facilities.</p>
-        <p>This progress has been instrumental in keeping global data center electricity consumption relatively flat despite 
-        the exponential growth of internet traffic and workloads. For example, while internet traffic grew by a factor of 
+        <p>This progress has been instrumental in keeping global data center electricity consumption 
+          <a href="https://www.iea.org/data-and-statistics/charts/global-trends-in-internet-traffic-data-centres-workloads-and-data-centre-energy-use-2010-2020">relatively flat</a>
+           despite the exponential growth of internet traffic and workloads. For example, while internet traffic grew by a factor of 
         20 between 2010 and 2020, data center electricity use only increased moderately, stabilizing at an estimated 
         240-340 TWh in 2022, or roughly 1-1.3% of global electricity demand.</p>
-      <p>To understand the impact of PUE on energy consumption more deeply, explore the interactive charts below. The first chart 
+      <p><span class="guideline">To understand the impact of PUE on energy consumption more deeply, explore the interactive charts below. The first chart 
         illustrates the worldwide average annual PUE of data centers from 2010 to 2050, while the second shows global data center 
         electricity consumption over the same period, including the energy used by blockchains and AI. By adjusting the PUE values in the first chart, you can see how future efficiency 
-        improvements could shape energy consumption in the coming decades. These visualizations highlight both the achievements made 
-        so far and the potential for further efficiency gains as the ICT sector continues to grow.</p>
+        improvements could shape energy consumption in the coming decades.</span></p>
     </section>
     <section class="asset-block" id="pue-chart">
       <!-- PUE chart will be inserted here -->
-    </section>
-    <section class="text-block">
-      <p>Adjust the PUE values in the chart above to see how changes in Power Usage Effectiveness impact the energy consumption of data centers over time.</p>
     </section>
     <section class="asset-block" id="energy-consumption-chart">
       <!-- Energy consumption chart will be inserted here -->
     </section>
     <section class="text-block">
-      <p>These charts clearly highlight the critical importance of further reducing PUE over the long term to limit energy consumption as the ICT sector 
-        continues to grow. To achieve this, let's consider the factors that influence PUE, including how data centers manage energy-intensive processes 
-        like cooling.</p>
+      <p>These visualizations highlight both the achievements made so far and the critical importance of further reducing PUE over 
+        the long term to limit energy consumption as the ICT sector continues to grow. To achieve this, let's consider the factors 
+        that influence PUE, including how data centers manage energy-intensive processes like cooling.</p>
     </section>
     <section class="text-block">
       <hr>
       <h2>Taking The Heat—And Giving It Back</h2>
-      <p>At its core, a data center functions as a vast collection of information processing engines—servers—designed to perform complex computational tasks. 
-        Each server takes in electromagnetic energy as electricity, which powers its operations. This energy is then transformed into two outputs: 
-        information processing, the intended result, and heat energy, an inevitable byproduct.</p>
+      <p>A data center functions as a vast collection of information processing engines—servers—designed to perform complex computational tasks. 
+        Fundamentally, computing is the act of flipping bits—a physical process that requires and converts energy. Each server takes in electromagnetic energy 
+        as electricity, which powers its operations. This energy is then transformed into two outputs: information processing, the intended result, and heat energy, 
+        an inevitable byproduct.</p>
         <p class="image-title">Energy Conversion Flow of an Information Processing Engine</p>
       <img src="assets/images/information_processing_engine.svg" alt="Information processing Engine">
       <p>Innovation in overhead efficiency, particularly in cooling systems, plays a critical role in improving PUE by ensuring a larger proportion 
         of a data center's energy consumption is allocated to computing rather than managing heat. Cutting-edge solutions such as advanced liquid cooling, 
-        optimized airflow designs, and energy-efficient pumps have already demonstrated their potential to reduce cooling demands significantly. For instance, 
-        technologies like immersion cooling eliminate the need for traditional air conditioning. As organizations aim to lower their PUE, such innovations 
-        represent a vital path forward for sustainable operations.</p>
-      <p>But what about the heat that data centers inevitably produce? Waste heat, rather than being discarded, can become a valuable resource. For instance, 
+        optimized airflow designs, and energy-efficient pumps have already demonstrated their potential to reduce cooling demands significantly. As organizations 
+        aim to lower their PUE, such innovations represent a vital path forward for sustainable operations.</p>
+      <p>But what about the heat that data centers inescapably produce? Waste heat, rather than being discarded, can become a valuable resource. For instance, 
         data centers can <a href="https://www.iea.org/energy-system/buildings/data-centres-and-data-transmission-networks">repurpose excess heat</a> to warm nearby 
         residential or commercial buildings or support industrial processes, reducing reliance on other energy sources. 
-        If implemented effectively, waste heat management could even contribute to a dramatic reduction in Power Usage Effectiveness (PUE). In theory, a data center that makes 
-        full use of its waste heat could achieve a PUE below 1.0, as the energy consumed would serve dual purposes: powering computing operations and providing useful heat for 
-        external needs. This underscores the transformative potential of waste heat as a key element in building more sustainable digital infrastructure.</p>
+        If implemented effectively, waste heat management could even contribute to a dramatic reduction in Power Usage Effectiveness (PUE).</p>
+      <p>In theory, a data center that makes full use of its waste heat could achieve a PUE closer to—if not below—the <a href="https://en.wikipedia.org/wiki/Power_usage_effectiveness">theoretical threshold</a>
+         of 1.0, as the energy consumed would serve dual purposes: powering computing operations and providing useful heat for external needs. Although such an idea would 
+         require additional innovation, notably to reduce the noise of server cooling systems through adequate materials and technology, this underscores the transformative potential 
+         of waste heat as a key element in building more sustainable digital infrastructure.</p>
       <p>Looking beyond hardware, optimizing the software that powers data centers offers another critical avenue for improvement. Rust, for example, is a programming 
         language known for its efficiency, with <a href="https://greenlab.di.uminho.pt/wp-content/uploads/2017/10/sleFinal.pdf">studies</a> showing it can halve electricity 
         consumption compared to Java, a common language in cloud computing. Shane Miller, 
-        a leader in the Rust community, notes that this level of efficiency could enable <a href="https://www.technologyreview.com/2023/02/14/1067869/rust-worlds-fastest-growing-programming-language/">smaller data centers</a> 
-        to handle the same workloads as larger ones.</p>
+        a leader in the Rust community, notes that this <a href="https://www.technologyreview.com/2023/02/14/1067869/rust-worlds-fastest-growing-programming-language/">level of efficiency</a> 
+        could enable data centers to double their current workloads or perform the same tasks in facilities half the size.</p>
       <p>This creates a dual opportunity: by locating these mini data centers in urban areas—such as in the basements of residential or commercial buildings—they may be positioned closer to both heat consumers 
         and data consumers. This proximity allows for more practical reuse of waste heat, while also reducing the network footprint—by minimizing the resources required to transmit 
         heat and data, respectively, over long distances. These combined benefits hint at the transformative potential of sustainable software practices in addressing energy challenges.</p>
@@ -312,19 +311,18 @@
     <section class="text-block">
       <hr>
       <h2>The Immense Potential of Sustainable Software Engineering</h2>
-      <p>In February 2020, Danny Van Kooten, a software developer, published a <a href="https://www.dannyvankooten.com/blog/2020/website-carbon-emissions/">blog post</a> 
+      <p>In February 2020, Danny van Kooten, a software developer, published a <a href="https://www.dannyvankooten.com/blog/2020/website-carbon-emissions/">blog post</a> 
         highlighting how a small change in sustainable web design could deliver remarkable environmental benefits. While refactoring his popular Mailchimp for WordPress plugin, 
-        he reduced the amount of data sent to the browser on every visit by just 20 KB.</p>
+        he reduced the amount of data sent to the browser on every visit by <em>just</em> 20 KB.</p>
       <p>Given that over two million websites use the plugin, this seemingly minor update led to 
         an estimated reduction of the world’s monthly CO₂ output by 59,000 kilograms—roughly the 
         equivalent of 85 transatlantic flights from New York to Amsterdam and back. This story 
         underscores how thoughtful, data-driven design choices can have an outsized positive impact, 
-        serving as a model for building greener digital systems. In the words of Mr. Van Kooten:</p>
+        serving as a model for building greener digital systems. In the words of Mr. van Kooten:</p>
         <blockquote>
           "There's no way I can have that kind of effect in other areas of my life."
         </blockquote>
-      <p>Mr. Van Kooten’s story demonstrates how thoughtful design choices can create substantial environmental gains, 
-        offering a compelling model for building greener digital systems. It also reflects the broader principles of sustainable web design, which focus on minimizing the energy and resources 
+      <p>Mr. van Kooten’s story also reflects the broader principles of sustainable web design, which focus on minimizing the energy and resources 
         required to build, run, and access digital services. Experts like <a href="https://abookapart.com/products/sustainable-web-design.html">Tom Greenwood</a>, 
         <a href="https://www.oreilly.com/library/view/designing-for-sustainability/9781491935767/">Tim Frick</a>, 
         and <a href="https://www.oreilly.com/library/view/building-green-software/9781098150617/">Anne Currie</a> have outlined key practices 
@@ -343,6 +341,11 @@
         <li><strong>Measure and optimize continuously:</strong> Tools to measure the environmental impact of digital services enable improvements across 
           data centers, networks, and user devices, ensuring a holistic approach to sustainability.</li>
       </ul>
+      <p>While building the website for this article, I aimed to follow sustainable web design best practices wherever possible. For example, 
+        I chose a black background and green accents, as these colors consume less energy on user devices by minimizing screen pixel illumination. 
+        I also opted for lightweight visuals in SVG format, which require less data transmission than larger file types, and limited the imported libraries 
+        to essentials like D3 for charts. However, this is a work in progress—I could further optimize by compacting the CSS stylesheet and switching to a 
+        hosting provider powered by renewable energy, as GitHub Pages currently does not offer this option.</p>
       <p>These principles highlight how sustainable web design can reduce emissions at every stage of digital infrastructure. 
         Whether through optimizing software or selecting renewable-powered data centers, these strategies empower developers to make a meaningful 
         impact on the environment. But how can we start assessing emissions from software, and how do we measure progress toward long-term sustainability?</p>

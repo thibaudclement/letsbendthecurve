@@ -7,7 +7,7 @@ export function drawIctEmissionCategoriesBreakdownCharts(containerSelector, data
   // Define the color scale for the slices
   const colorScale = d3.scaleOrdinal()
     .domain(['Operational Emissions', 'Embodied Emissions'])
-    .range(['#6d6e71', '#939598']);
+    .range(['#58595b', '#bcbec0']);
 
   // Insert main title into the #sustainable-web-design-model-title div
   d3.select('#sustainable-web-design-model-title')
@@ -117,8 +117,8 @@ export function drawIctEmissionCategoriesBreakdownCharts(containerSelector, data
 
   // Add legend for the emission categories
   const legendData = [
-    { category: 'Operational Emissions', color: '#6d6e71' },
-    { category: 'Embodied Emissions', color: '#939598' },
+    { category: 'Operational Emissions', color: '#58595b' },
+    { category: 'Embodied Emissions', color: '#bcbec0' },
   ];
 
   const legend = d3.select(containerSelector)
