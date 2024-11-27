@@ -82,6 +82,8 @@ header img {
 /* Guidelines */
 .guideline {
   font-style: italic;
+  padding-left: 10px;
+  border-left: 3px dotted #58595b;
 }
 
 /* Asset Blocks */
