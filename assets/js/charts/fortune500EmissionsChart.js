@@ -118,13 +118,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
   // Call the legend function
   addLegend(containerSelector, colorScale);
 
-  // Add toggle message and button below the legend
-  d3.select(containerSelector)
-    .append('p')
-    .attr('class', 'toggle-message')
-    .style('text-align', 'center') // Center the message
-    .text('If you would like to interact with this chart, please click on the "Show Filters" button below.');
-
   d3.select(containerSelector)
     .append('div')
     .attr('class', 'toggle-button-container')
