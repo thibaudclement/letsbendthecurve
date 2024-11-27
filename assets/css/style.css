@@ -39,6 +39,12 @@ header img {
   margin: 50px auto;
 }
 
+#publishing-details {
+  text-align: center;
+  margin: 20px 0 40px 0;
+  color: #58595b;
+}
+
 /* Text Blocks */
 .text-block {
   max-width: 640px;
