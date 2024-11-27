@@ -39,7 +39,7 @@ export function displayEquivalentsInList(listSelector, yearlyEmissions, nonDigit
 
   // Add images as bullets
   list.selectAll('li')
-    .data(['assets/images/driving_distance.svg', 'assets/images/smartphone_charging.svg', 'assets/images/beef_serving.svg'])
+    .data(['assets/images/driving_distance.svg', 'assets/images/beef_serving.svg', 'assets/images/smartphone_charging.svg'])
     .style('background-image', d => `url(${d})`);
 }
 

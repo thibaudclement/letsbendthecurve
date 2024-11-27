@@ -73,6 +73,11 @@ header img {
   border-bottom: 2px dotted #bcbec0;
 }
 
+/* Guidelines */
+.guideline {
+  font-style: italic;
+}
+
 /* Asset Blocks */
 .asset-block {
   width: 100%;

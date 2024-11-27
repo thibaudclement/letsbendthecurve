@@ -266,12 +266,12 @@ export function drawInternetTrafficChart(containerSelector, data) {
       // Correct guess
       feedbackSection
         .style('display', 'block')
-        .html('<p><strong>That’s correct!</strong> While the number of internet users has grown linearly between 2000 and 2024, global internet traffic has followed an exponential growth trend. This reflects the dramatic increase in the average data consumption per user, driven by the growing reliance on digital services and the rise of data-intensive technologies like streaming, artificial intelligence, and blockchain. Let’s explore what this means for emissions.</p>');
+        .html('<p><strong>That’s correct!</strong> While the number of internet users has grown linearly between 2000 and 2024, global internet traffic has followed an exponential growth trend. This reflects the dramatic increase in the average data consumption per user, driven by our growing reliance on digital services and the rise of data-intensive technologies like streaming, artificial intelligence, and blockchain. Let’s explore what this means for emissions.</p>');
     } else if (selectedOption === 'linearSimulation'){
       // Incorrect guess
       feedbackSection
         .style('display', 'block')
-        .html('<p><strong>Close, but not quite.</strong> A linear growth pattern for internet traffic might seem reasonable, given the steady increase in the number of internet users over the same period. However, this would suggest that the amount of data each user consumes has stayed relatively constant—which is not the case. As digital services have become central to daily life and new technologies like streaming, AI, and blockchain have emerged, data consumption per user has risen significantly. Give it another shot!</p>');
+        .html('<p><strong>Close, but not quite.</strong> A linear growth pattern for internet traffic might seem reasonable, given the steady increase in the number of internet users over the same period. However, this would suggest that the amount of data each user consumes has stayed relatively constant—which is not the case. As digital services have become central to daily life, and as new technologies like streaming, AI, and blockchain have emerged, data consumption per user has risen significantly. Give it another shot!</p>');
     } else if (selectedOption === 'logarithmicSimulation'){
       // Incorrect guess
       feedbackSection
