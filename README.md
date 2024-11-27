@@ -7,6 +7,18 @@
 ## Target Audience
 
 ## Data Sources
+- [Streaming’s dirty secret: how viewing Netflix top 10 creates vast quantity of CO2](https://www.theguardian.com/tv-and-radio/2021/oct/29/streamings-dirty-secret-how-viewing-netflix-top-10-creates-vast-quantity-of-co2)
+- [Gen AI’s Environmental Ledger: A Closer Look at the Carbon Footprint of ChatGPT](https://piktochart.com/blog/carbon-footprint-of-chatgpt/)
+- [I still don't understand how openAI is able to provide access to chatgpt for free.](https://www.reddit.com/r/ChatGPT/comments/18fb5uw/i_still_dont_understand_how_openai_is_able_to/)
+- [The Carbon Footprint of Search](https://salience.co.uk/insight/magazine/the-carbon-footprint-of-search/)
+- [How Many People Use Google? Statistics & Facts (2024)](https://seo.ai/blog/how-many-people-use-google)
+- [Mail’s carbon footprint: How much CO2 does an email produce?](https://www.fortomorrow.eu/en/blog/carbon-email)
+- [Must-know email statistics and trends for 2024 (Updated September 2024)](https://www.mailbutler.io/blog/email/email-statistics-trends/)
+- [Digital carbon footprint: what is involved in sending an email?](https://www.biospheresustainable.com/en/blog/65/digital-carbon-footprint-what-is-involved-in-sending-an-email)
+- [1 air mile](https://blueskymodel.org/air-mile)
+- [Greenhouse Gas Emissions from a Typical Passenger Vehicle](https://nepis.epa.gov/Exe/ZyNET.exe/P100JPPH.TXT?ZyActionD=ZyDocument&Client=EPA&Index=2011+Thru+2015&Docs=&Query=&Time=&EndTime=&SearchMethod=1&TocRestrict=n&Toc=&TocEntry=&QField=&QFieldYear=&QFieldMonth=&QFieldDay=&IntQFieldOp=0&ExtQFieldOp=0&XmlQuery=&File=D%3A%5Czyfiles%5CIndex%20Data%5C11thru15%5CTxt%5C00000011%5CP100JPPH.txt&User=ANONYMOUS&Password=anonymous&SortMethod=h%7C-&MaximumDocuments=1&FuzzyDegree=0&ImageQuality=r75g8/r75g8/x150y150g16/i425&Display=hpfr&DefSeekPage=x&SearchBack=ZyActionL&Back=ZyActionS&BackDesc=Results%20page&MaximumPages=1&ZyEntry=1&SeekPage=x&ZyPURL)
+- [Greenhouse Gas Equivalencies Calculator - Calculations and References](https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator-calculations-and-references)
+- [What is the lowest-carbon protein?](https://www.bbc.com/future/article/20221214-what-is-the-lowest-carbon-protein)
 - [Internet Traffic Volume](https://www.ibisworld.com/us/bed/internet-traffic-volume/88089/)
 - [Electricity domestic consumption](https://yearbook.enerdata.net/electricity/electricity-domestic-consumption-data.html)
 - [What is the energy consumption of the internet?](https://thundersaidenergy.com/2023/04/20/what-is-the-energy-consumption-of-the-internet/)
