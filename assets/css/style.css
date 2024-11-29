@@ -723,6 +723,29 @@ header img {
   fill: #ffffff;
 }
 
+#ict-emissions .chart-tooltip {
+  position: absolute;
+  text-align: left;
+  width: auto;
+  max-width: 200px;
+  padding: 8px;
+  font-size: 12px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
+#ict-emissions .ict-invisible-dot {
+  fill: none !important;
+  stroke: none !important;
+}
+
+
 /* Important Statement */
 .important-statement {
   color: #74c476;

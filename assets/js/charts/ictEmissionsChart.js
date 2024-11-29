@@ -27,6 +27,9 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
       .nice()
       .range([height, 0]);
 
+    // Number formatter for percentages with two decimal places
+    const formatPercentage = d3.format(".2f");
+
     // Create SVG container
     const svg = d3.select(containerSelector)
       .append('svg')
@@ -39,6 +42,12 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
     // Create chart area
     const chartArea = svg.append('g')
       .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    // Create a tooltip div and append it to the container
+    const tooltip = d3.select(containerSelector)
+      .append('div')
+      .attr('class', 'chart-tooltip')
+      .style('opacity', 0);
 
     // Add gridlines before plotting data
     // Vertical gridlines
@@ -126,18 +135,83 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
         .x(d => x(d.year))
         .y0(d => y(d.minEstimate))
         .y1(d => y(d.maxEstimate))
-      );
+      )
+      .style('pointer-events', 'none'); // Prevent area from capturing mouse events
 
     // Append lines
     chartArea.append('path')
       .datum(chartData)
       .attr('class', 'line line-min')
-      .attr('d', lineMin);
+      .attr('d', lineMin)
+      .style('pointer-events', 'none'); // Prevent line from capturing mouse events
 
     chartArea.append('path')
       .datum(chartData)
       .attr('class', 'line line-max')
-      .attr('d', lineMax);
+      .attr('d', lineMax)
+      .style('pointer-events', 'none'); // Prevent line from capturing mouse events
+
+    // Add invisible circles for minEstimate
+    chartArea.selectAll('.ict-invisible-dot-min')
+      .data(chartData.filter(d => !isNaN(d.minEstimate)))
+      .enter()
+      .append('circle')
+      .attr('class', 'ict-invisible-dot ict-invisible-dot-min')
+      .attr('cx', d => x(d.year))
+      .attr('cy', d => y(d.minEstimate))
+      .attr('r', 8) // Increased radius for easier interaction
+      .style('fill', '#000000')
+      .style('fill-opacity', 0)
+      .style('stroke', 'none')
+      .style('pointer-events', 'all') // Ensure pointer events are captured
+      .on('mouseover', function(event, d) {
+        tooltip.transition()
+          .duration(200)
+          .style('opacity', 1);
+        tooltip.html(`<strong>Year:</strong> ${d.year}<br/><strong>Estimate:</strong> Minimum<br/><strong>Percentage:</strong> ${formatPercentage(d.minEstimate)}%`)
+          .style('left', (event.pageX + 10) + 'px')
+          .style('top', (event.pageY - 28) + 'px');
+      })
+      .on('mousemove', function(event) {
+        tooltip.style('left', (event.pageX + 10) + 'px')
+          .style('top', (event.pageY - 28) + 'px');
+      })
+      .on('mouseout', function() {
+        tooltip.transition()
+          .duration(500)
+          .style('opacity', 0);
+      });
+
+    // Add invisible circles for maxEstimate
+    chartArea.selectAll('.ict-invisible-dot-max')
+      .data(chartData.filter(d => !isNaN(d.maxEstimate)))
+      .enter()
+      .append('circle')
+      .attr('class', 'ict-invisible-dot ict-invisible-dot-max')
+      .attr('cx', d => x(d.year))
+      .attr('cy', d => y(d.maxEstimate))
+      .attr('r', 8) // Increased radius for easier interaction
+      .style('fill', '#000000')
+      .style('fill-opacity', 0)
+      .style('stroke', 'none')
+      .style('pointer-events', 'all') // Ensure pointer events are captured
+      .on('mouseover', function(event, d) {
+        tooltip.transition()
+          .duration(200)
+          .style('opacity', 1);
+        tooltip.html(`<strong>Year:</strong> ${d.year}<br/><strong>Estimate:</strong> Maximum<br/><strong>Percentage:</strong> ${formatPercentage(d.maxEstimate)}%`)
+          .style('left', (event.pageX + 10) + 'px')
+          .style('top', (event.pageY - 28) + 'px');
+      })
+      .on('mousemove', function(event) {
+        tooltip.style('left', (event.pageX + 10) + 'px')
+          .style('top', (event.pageY - 28) + 'px');
+      })
+      .on('mouseout', function() {
+        tooltip.transition()
+          .duration(500)
+          .style('opacity', 0);
+      });
 
     // Add chart subtitle
     svg.append('text')
