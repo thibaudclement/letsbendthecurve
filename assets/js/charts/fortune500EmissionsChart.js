@@ -43,16 +43,17 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
   // Add title
-  d3.select(containerSelector)
+  const title = d3.select(containerSelector)
     .insert('h2', ':first-child')
     .attr('class', 'chart-title')
-    .text('Annual CO₂ Emissions From The Websites of The Fortune 500 Companies');
+    .text(getTitleText(data));
 
-  // Add dynamic caption
-  const caption = d3.select(containerSelector)
-    .insert('p', 'svg')
-    .attr('class', 'chart-caption')
-    .text(getCaptionText(data));
+  function getTitleText(data) {
+    const numCompanies = data.length;
+    const totalEmissions = data.reduce((sum, d) => sum + d.totalEmissions, 0);
+    const formattedTotalEmissions = d3.format(',')(Math.round(totalEmissions));
+    return `Once a Year, the Websites of These ${numCompanies} Fortune 500 Companies Emit Approximately ${formattedTotalEmissions} Tonnes of CO₂`;
+  }
 
   // Create a group for each node
   let nodesGroup = svg.selectAll('g')
@@ -179,8 +180,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     if (!str) return '';
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
   }
-
-
 
   function getTooltipContent(d) {
     if (!d) return '';
@@ -633,10 +632,13 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
         .attr('fill', '#ffffff')
         .attr('font-size', '24px')
         .text('No companies match the selected filters.');
-      // Update caption
-      caption.text('No companies match the selected filters.');
+      // Update title
+      title.text('No companies match the selected filters.');
       return;
     }
+
+    // Update title
+    title.text(getTitleText(filteredData));
 
     // Clear existing chart
     svg.selectAll('*').remove();
