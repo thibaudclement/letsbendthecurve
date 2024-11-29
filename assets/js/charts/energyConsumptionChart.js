@@ -126,7 +126,7 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
     .attr('y', d => y(d.energyConsumption))
     .attr('width', x.bandwidth())
     .attr('height', d => height - y(d.energyConsumption))
-    .attr('fill', '#74c476');
+    .attr('fill', '#78c679');
 
   // Add tooltip
   const tooltip = d3.select(containerSelector)

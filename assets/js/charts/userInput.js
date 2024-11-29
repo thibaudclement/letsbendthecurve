@@ -58,7 +58,7 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
     const value = slider.value;
     const percentage = ((value - min) / (max - min)) * 100;
 
-    slider.style.background = `linear-gradient(to right, #74c476 0%, #74c476 ${percentage}%, #000000 ${percentage}%, #000000 100%)`;
+    slider.style.background = `linear-gradient(to right, #78c679 0%, #78c679 ${percentage}%, #000000 ${percentage}%, #000000 100%)`;
   }
 
   // Initial calculation and rendering

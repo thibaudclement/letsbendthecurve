@@ -136,8 +136,8 @@ export function drawInternetUsersChart(containerSelector, data) {
     .attr('cx', d => x(d.year))
     .attr('cy', d => y(d.internetUsers))
     .attr('r', 5)
-    .attr('fill', '#74c476')
-    .attr('stroke', '#74c476')
+    .attr('fill', '#78c679')
+    .attr('stroke', '#78c679')
     .attr('stroke-opacity', 1)
     .attr('fill-opacity', 0.5)
     .on('mouseover', function(event, d) {

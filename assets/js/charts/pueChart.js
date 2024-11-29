@@ -198,7 +198,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('y1', y(1.0))
     .attr('x2', width)
     .attr('y2', y(1.0))
-    .attr('stroke', '#74c476')
+    .attr('stroke', '#78c679')
     .attr('stroke-dasharray', '4');
 
   // Move legend below the chart
@@ -228,7 +228,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     } else if (d.type === 'line') {
       item.append('div')
         .attr('class', 'legend-line-box')
-        .style('border-bottom', d.style === 'separator' ? '2px dashed #ffffff' : '2px dashed #74c476')
+        .style('border-bottom', d.style === 'separator' ? '2px dashed #ffffff' : '2px dashed #78c679')
         .style('width', '20px')
         .style('height', '0px')
         .style('margin-right', '5px');

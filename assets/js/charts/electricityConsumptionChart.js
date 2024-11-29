@@ -141,7 +141,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       .attr('y', d => y(d.country))
       .attr('width', d => x(d.powerConsumption))
       .attr('height', y.bandwidth())
-      .style('fill', d => d.country === 'Internet' ? '#74c476' : '#006837'); // Updated color for countries
+      .style('fill', d => d.country === 'Internet' ? '#78c679' : '#006837'); // Updated color for countries
 
     // **Updated color for countries to '#006837'**
 
@@ -153,7 +153,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       .attr('y', d => y(d.country))
       .attr('height', y.bandwidth())
       .attr('width', 0)
-      .style('fill', d => d.country === 'Internet' ? '#74c476' : '#006837') // Updated color for countries
+      .style('fill', d => d.country === 'Internet' ? '#78c679' : '#006837') // Updated color for countries
       .transition().duration(500)
       .attr('width', d => x(d.powerConsumption));
 

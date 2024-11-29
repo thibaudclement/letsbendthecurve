@@ -128,7 +128,7 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
     // Append area between lines
     chartArea.append('path')
       .datum(chartData)
-      .attr('fill', '#74c476')
+      .attr('fill', '#78c679')
       .attr('opacity', 0.3)
       .attr('d', d3.area()
         .defined(d => !isNaN(d.minEstimate) && !isNaN(d.maxEstimate))
@@ -252,7 +252,7 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
       // Add the text
       const annotationText = annotationGroup.append('text')
         .attr('class', 'annotation')
-        .attr('fill', '#74c476')
+        .attr('fill', '#78c679')
         .text('This is the curve we want to bend.')
         .style('font-size', '16px')
         .attr('x', 0)
@@ -272,7 +272,7 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
         .attr('width', bbox.width + padding.left + padding.right)
         .attr('height', bbox.height + padding.top + padding.bottom)
         .attr('fill', 'none')
-        .attr('stroke', '#74c476')
+        .attr('stroke', '#78c679')
         .attr('stroke-width', 2);
     }
   }
@@ -321,8 +321,8 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
 
   // Legend items
   const legendData = [
-    { label: 'Estimate Range', type: 'area', color: '#74c476' },
-    { label: 'Min Estimate', type: 'line', color: '#74c476' },
+    { label: 'Estimate Range', type: 'area', color: '#78c679' },
+    { label: 'Min Estimate', type: 'line', color: '#78c679' },
     { label: 'Max Estimate', type: 'line', color: '#31a354' },
   ];
 
