@@ -7,6 +7,10 @@ body {
   color: #bcbec0;
 }
 
+body p, ul, li {
+  font-size: 18px;
+}
+
 /* Link Styles */
 a {
   color: #78c679;
@@ -83,7 +87,7 @@ header img {
 .guideline {
   font-style: italic;
   padding-left: 10px;
-  border-left: 3px dotted #58595b;
+  border-left: 3px dotted #78c679;
 }
 
 /* Asset Blocks */

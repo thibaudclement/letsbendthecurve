@@ -696,8 +696,5 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Ensure labels don't capture pointer events
     svg.selectAll('text')
       .style('pointer-events', 'none');
-
-    // Update caption
-    caption.text(getCaptionText(filteredData));
   }
 }
