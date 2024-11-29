@@ -175,30 +175,37 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     return metrics.width;
   }
 
+  function capitalize(str) {
+    if (!str) return '';
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+
+
   function getTooltipContent(d) {
     if (!d) return '';
+    const formatNumber = d3.format(','); // For thousands separator
+
     return `
       <strong>${d.company}</strong><br/>
-      <ul>
-        <li>Rank: ${d.rank}</li>
-        <li>Ticker: ${d.ticker}</li>
-        <li>Sector: ${d.sector}</li>
-        <li>Industry: ${d.industry}</li>
-        <li>Profitable: ${d.profitableRaw}</li>
-        <li>CEO: ${d.ceo}</li>
-        <li>Founder is CEO: ${d.founderIsCEORaw}</li>
-        <li>Female CEO: ${d.femaleCEORaw}</li>
-        <li>Company Type: ${d.companyType}</li>
-        <li>World's Most Admired Companies: ${d.worldsMostAdmiredCompaniesRaw}</li>
-        <li>Best Companies to Work For: ${d.bestCompaniesToWorkForRaw}</li>
-        <li>Number of Employees: ${d.numberOfEmployees}</li>
-        <li>Website: <a href="${d.website}" target="_blank">${d.website}</a></li>
-        <li>WC Grade: ${d.wcGrade}</li>
-        <li>Sustainable Energy: ${d.sustainableEnergy}</li>
-        <li>WC CO₂ per Visit: ${d.wcCO2PerVisit}</li>
-        <li>Monthly Traffic (K): ${d.monthlyTrafficK}</li>
-        <li>Total Yearly Emissions (tonnes CO₂): ${d3.format(',')(Math.round(d.totalEmissions))}</li>
-      </ul>
+      Rank: ${d.rank}<br/>
+      Ticker: ${d.ticker}<br/>
+      Sector: ${d.sector}<br/>
+      Industry: ${d.industry}<br/>
+      Profitable: ${capitalize(d.profitableRaw)}<br/>
+      CEO: ${d.ceo}<br/>
+      Founder is CEO: ${capitalize(d.founderIsCEORaw)}<br/>
+      Female CEO: ${capitalize(d.femaleCEORaw)}<br/>
+      Company Type: ${d.companyType}<br/>
+      World's Most Admired Companies: ${capitalize(d.worldsMostAdmiredCompaniesRaw)}<br/>
+      Best Companies to Work For: ${capitalize(d.bestCompaniesToWorkForRaw)}<br/>
+      Number of Employees: ${formatNumber(d.numberOfEmployees)}<br/>
+      Website: <a href="${d.website}" target="_blank">${d.website}</a><br/>
+      Website Carbon Grade: ${d.wcGrade}<br/>
+      Sustainable Energy: ${capitalize(d.sustainableEnergy)}<br/>
+      WC CO₂ per Visit: ${d.wcCO2PerVisit}<br/>
+      Monthly Traffic (K): ${formatNumber(d.monthlyTrafficK)}<br/>
+      Total Yearly Emissions (tonnes CO₂): ${formatNumber(Math.round(d.totalEmissions))}<br/>
     `;
   }
 
