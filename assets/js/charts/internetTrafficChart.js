@@ -59,6 +59,13 @@ export function drawInternetTrafficChart(containerSelector, data) {
   const chartGroup = svg.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
+  // Tooltip
+    const tooltip = d3.select(containerSelector)
+    .append('div')
+    .attr('class', 'chart-tooltip')
+    .style('opacity', 0);
+
+
   // Adjust data for Zettabytes
   data.forEach(d => {
     d.internetTrafficZB = d.internetTraffic / 1000;
@@ -202,7 +209,27 @@ export function drawInternetTrafficChart(containerSelector, data) {
       .attr('stroke', '#74c476')
       .attr('stroke-opacity', 1)
       .attr('fill-opacity', 0.5)
-      .style('display', 'none'); // Hide dots initially
+      .style('display', 'none')
+      .on('mouseover', function(event, d) {
+        // Show the tooltip
+        tooltip.transition()
+          .duration(200)
+          .style('opacity', 1);
+        tooltip.html(`<strong>Year:</strong> ${d.year}<br/><strong>Internet Traffic:</strong> ${d3.format('.2f')(d[key])} ZB`)
+          .style('left', (event.pageX + 10) + 'px')
+          .style('top', (event.pageY - 28) + 'px');
+      })
+      .on('mousemove', function(event) {
+        // Update the tooltip position
+        tooltip.style('left', (event.pageX + 10) + 'px')
+          .style('top', (event.pageY - 28) + 'px');
+      })
+      .on('mouseout', function() {
+        // Hide the tooltip
+        tooltip.transition()
+          .duration(500)
+          .style('opacity', 0);
+      });
   });
 
   // Show the hint data point at all times
@@ -214,7 +241,27 @@ export function drawInternetTrafficChart(containerSelector, data) {
     .attr('fill', '#74c476')
     .attr('stroke', '#74c476')
     .attr('stroke-opacity', 1)
-    .attr('fill-opacity', 0.5);
+    .attr('fill-opacity', 0.5)
+    .on('mouseover', function(event) {
+      // Show the tooltip
+      tooltip.transition()
+        .duration(200)
+        .style('opacity', 1);
+      tooltip.html(`<strong>Year:</strong> ${annotationYear}<br/><strong>Internet Traffic:</strong> ${d3.format('.2f')(annotationData.internetTrafficZB)} ZB`)
+        .style('left', (event.pageX + 10) + 'px')
+        .style('top', (event.pageY - 28) + 'px');
+    })
+    .on('mousemove', function(event) {
+      // Update the tooltip position
+      tooltip.style('left', (event.pageX + 10) + 'px')
+        .style('top', (event.pageY - 28) + 'px');
+    })
+    .on('mouseout', function() {
+      // Hide the tooltip
+      tooltip.transition()
+        .duration(500)
+        .style('opacity', 0);
+    });
 
   // Function to update chart based on selected option
   function updateChart() {
