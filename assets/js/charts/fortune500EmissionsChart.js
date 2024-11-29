@@ -44,7 +44,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
 
   // Add title
   const title = d3.select(containerSelector)
-    .insert('h2', ':first-child')
+    .insert('div', ':first-child')
     .attr('class', 'chart-title')
     .text(getTitleText(data));
 
@@ -333,43 +333,43 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
 
     // Reset Button
     controlContainer.append('div')
-      .attr('class', 'reset-button-container')
-      .style('text-align', 'center') // Center the reset button
-      .append('button')
-      .attr('class', 'reset-button')
-      .text('Reset Filters') // Updated button text
-      .on('click', function () {
-        // Reset filters
-        resetFilters();
-        // Reset inputs
-        controlContainer.selectAll('input').property('value', '');
-        controlContainer.selectAll('input[type="checkbox"]').property('checked', true);
-        controlContainer.selectAll('input[type="radio"]').property('checked', false);
-        // By default, check all checkboxes
-        controlContainer.selectAll('.checkbox-group input[type="checkbox"]').property('checked', true);
-        controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
-        // Select 'All' for radio buttons
-        controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
-        // Update slider labels and positions
-        controlContainer.selectAll('.slider-container').each(function () {
-          const sliderContainer = d3.select(this);
-          const dataKey = sliderContainer.attr('data-key');
-          const values = data.map(d => +d[dataKey]).filter(v => v !== null && !isNaN(v));
-          const min = Math.min(...values);
-          const max = Math.max(...values);
-          sliderContainer.select(`.${dataKey}-min-slider`).property('value', min);
-          sliderContainer.select(`.${dataKey}-max-slider`).property('value', max);
-          sliderContainer.select('.min-value').text(`Min: ${min}`);
-          sliderContainer.select('.max-value').text(`Max: ${max}`);
-          // Reset filters for sliders
-          filters[`${dataKey}Min`] = min;
-          filters[`${dataKey}Max`] = max;
-        });
-        // Re-initialize filters
-        initializeFilters();
-        // Apply filters
-        applyFilters();
+    .attr('class', 'reset-button-container')
+    .append('button')
+    .attr('class', 'reset-button')
+    .text('Reset Filters')
+    .on('click', function () {
+      // Reset filters
+      resetFilters();
+      // Reset inputs
+      controlContainer.selectAll('input').property('value', '');
+      controlContainer.selectAll('input[type="checkbox"]').property('checked', true);
+      controlContainer.selectAll('input[type="radio"]').property('checked', false);
+      // By default, check all checkboxes
+      controlContainer.selectAll('.checkbox-group input[type="checkbox"]').property('checked', true);
+      controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
+      // Select 'All' for radio buttons
+      controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
+      // Update slider labels and positions
+      controlContainer.selectAll('.slider-container').each(function () {
+        const sliderContainer = d3.select(this);
+        const dataKey = sliderContainer.attr('data-key');
+        const values = data.map(d => +d[dataKey]).filter(v => v !== null && !isNaN(v));
+        const min = Math.min(...values);
+        const max = Math.max(...values);
+        sliderContainer.select(`.${dataKey}-min-slider`).property('value', min);
+        sliderContainer.select(`.${dataKey}-max-slider`).property('value', max);
+        sliderContainer.select('.min-value').text(`Min: ${min}`);
+        sliderContainer.select('.max-value').text(`Max: ${max}`);
+        // Reset filters for sliders
+        filters[`${dataKey}Min`] = min;
+        filters[`${dataKey}Max`] = max;
       });
+      // Re-initialize filters
+      initializeFilters();
+      // Apply filters
+      applyFilters();
+    });
+
 
     // Apply filters and update chart
     function applyFilters() {
@@ -542,37 +542,39 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
 
   function addSectorCheckboxes(container, labelText, dataKey, data, filters, applyFilters) {
     const values = Array.from(new Set(data.map(d => d[dataKey]))).sort();
-    const numColumns = 3; // Changed to 3 columns
-    const numRows = Math.ceil(values.length / numColumns);
-
+    const numColumns = 3;
+  
     const groupContainer = container.append('div').attr('class', 'sector-checkboxes');
-
+  
     // Label above the checkboxes
-    groupContainer.append('label').text(`${labelText}: `).style('display', 'block'); // Ensure label is on its own line
-
+    groupContainer.append('label').text(`${labelText}: `);
+  
+    // Create a wrapper for the columns
+    const columnsWrapper = groupContainer.append('div').attr('class', 'columns-wrapper');
+  
     // Create columns
     for (let i = 0; i < numColumns; i++) {
-      groupContainer.append('div').attr('class', 'checkbox-column');
+      columnsWrapper.append('div').attr('class', 'checkbox-column');
     }
-
+  
     // Distribute checkboxes into columns
     values.forEach((value, index) => {
       const columnIndex = index % numColumns;
-      const column = groupContainer.selectAll('.checkbox-column').nodes()[columnIndex];
+      const column = columnsWrapper.selectAll('.checkbox-column').nodes()[columnIndex];
       const columnSelection = d3.select(column);
-
+  
       const id = `${dataKey}-${value}`;
       const checkboxLabel = columnSelection.append('label').attr('for', id);
       checkboxLabel.append('input')
         .attr('type', 'checkbox')
         .attr('id', id)
         .attr('value', value)
-        .property('checked', true) // Check all by default
+        .property('checked', true)
         .on('change', function () {
           if (this.checked) {
             filters[`${dataKey}s`].push(this.value);
           } else {
-            filters[`${dataKey}s`] = filters[`${dataKey}s`].filter(v => v !== this.value);
+            filters[`${dataKey}s`]= filters[`${dataKey}s`].filter(v => v !== this.value);
           }
           applyFilters();
         });

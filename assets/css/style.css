@@ -1045,15 +1045,6 @@ header img {
 #fortune500-emissions-chart .chart-title {
   font-size: 18px;
   text-align: center;
-  margin-bottom: 10px;
-  color: #ffffff;
-}
-
-/* Chart Caption */
-#fortune500-emissions-chart .chart-caption {
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 20px;
   color: #ffffff;
 }
 
@@ -1124,6 +1115,11 @@ header img {
   color: #ffffff;
 }
 
+#fortune500-emissions-chart .control-container {
+  display: flex;
+  flex-direction: column;
+}
+
 #fortune500-emissions-chart .control-container label {
   display: block;
   margin-bottom: 5px;
@@ -1136,6 +1132,7 @@ header img {
 
 #fortune500-emissions-chart .search-input {
   width: 100%;
+  box-sizing: border-box; /* Include padding in width calculation */
   border-radius: 25px;
   padding: 8px;
   color: #ffffff;
@@ -1183,10 +1180,10 @@ header img {
 /* Reset Button Styles */
 #fortune500-emissions-chart .reset-button-container {
   text-align: center;
+  margin-top: 20px; /* Add margin to separate it from other controls */
 }
 
 #fortune500-emissions-chart .reset-button {
-  margin-top: 10px;
   padding: 8px 16px;
   font-size: 14px;
   background-color: #31a354;
@@ -1204,6 +1201,7 @@ header img {
 #fortune500-emissions-chart .toggle-button-container {
   text-align: center;
   margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 #fortune500-emissions-chart .toggle-controls-button {
@@ -1310,8 +1308,6 @@ header img {
 
 /* Sector Checkboxes Layout */
 #fortune500-emissions-chart .sector-checkboxes {
-  display: flex;
-  flex-wrap: wrap;
   margin-bottom: 20px;
 }
 
@@ -1321,8 +1317,13 @@ header img {
   margin-bottom: 5px;
 }
 
+#fortune500-emissions-chart .sector-checkboxes .columns-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 #fortune500-emissions-chart .sector-checkboxes .checkbox-column {
-  flex: 1 1 33%; /* Adjusted to three columns */
+  flex: 1 1 33%;
 }
 
 #fortune500-emissions-chart .sector-checkboxes .checkbox-column label {
