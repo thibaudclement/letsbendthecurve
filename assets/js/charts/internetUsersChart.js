@@ -121,6 +121,12 @@ export function drawInternetUsersChart(containerSelector, data) {
     .attr('fill', '#ffffff')
     .text('Global Internet Users from 2000 to 2024');
 
+  // Tooltip
+  const tooltip = d3.select(containerSelector)
+    .append('div')
+    .attr('class', 'chart-tooltip')
+    .style('opacity', 0);
+
   // Dots
   chartGroup.selectAll('.dot')
     .data(data)
@@ -133,5 +139,25 @@ export function drawInternetUsersChart(containerSelector, data) {
     .attr('fill', '#74c476')
     .attr('stroke', '#74c476')
     .attr('stroke-opacity', 1)
-    .attr('fill-opacity', 0.5);
+    .attr('fill-opacity', 0.5)
+    .on('mouseover', function(event, d) {
+      // Show the tooltip
+      tooltip.transition()
+        .duration(200)
+        .style('opacity', 1);
+      tooltip.html(`<strong>Year:</strong> ${d.year}<br/><strong>Internet Users:</strong> ${d3.format('.2s')(d.internetUsers).replace('G', 'B')}`)
+        .style('left', (event.pageX + 10) + 'px')
+        .style('top', (event.pageY - 28) + 'px');
+    })
+    .on('mousemove', function(event) {
+      // Update the tooltip position
+      tooltip.style('left', (event.pageX + 10) + 'px')
+        .style('top', (event.pageY - 28) + 'px');
+    })
+    .on('mouseout', function() {
+      // Hide the tooltip
+      tooltip.transition()
+        .duration(500)
+        .style('opacity', 0);
+    });
 }
