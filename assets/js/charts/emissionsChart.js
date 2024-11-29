@@ -89,6 +89,12 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .text('CO₂ Equivalents (grams)')
     .attr('fill', '#ffffff');
 
+  // Tooltip
+  const tooltip = d3.select(containerSelector)
+    .append('div')
+    .attr('class', 'chart-tooltip')
+    .style('opacity', 0);
+
   // Bars
   chartGroup.selectAll('.bar')
     .data(taskEmissions)
@@ -99,7 +105,27 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('width', x.bandwidth())
     .attr('y', d => y(d.emissions))
     .attr('height', d => height - y(d.emissions))
-    .attr('fill', isUserChart ? '#ffffcc' : '#41ab5d');
+    .attr('fill', isUserChart ? '#ffffcc' : '#41ab5d')
+    .on('mouseover', function(event, d) {
+      // Show the tooltip
+      tooltip.transition()
+        .duration(200)
+        .style('opacity', 1);
+      tooltip.html(`<strong>${d.originalTask}</strong><br/>Emissions: ${d.emissions.toFixed(0)} grams`)
+        .style('left', (event.pageX + 10) + 'px')
+        .style('top', (event.pageY - 28) + 'px');
+    })
+    .on('mousemove', function(event, d) {
+      // Update the tooltip position
+      tooltip.style('left', (event.pageX + 10) + 'px')
+        .style('top', (event.pageY - 28) + 'px');
+    })
+    .on('mouseout', function() {
+      // Hide the tooltip
+      tooltip.transition()
+        .duration(500)
+        .style('opacity', 0);
+    });
 
   // Labels above bars
   chartGroup.selectAll('.label')

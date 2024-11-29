@@ -173,6 +173,24 @@ header img {
   font-size: 10px;
 }
 
+#weekly-emissions-author .chart-tooltip,
+#weekly-emissions-viewer .chart-tooltip {
+  position: absolute;
+  text-align: left;
+  width: auto;
+  max-width: 200px;
+  padding: 8px;
+  font-size: 12px;
+  background: #ffffff;
+  color: #000000;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 10;
+}
+
 /* Control Block */
 .control-block {
   max-width: 800px;
