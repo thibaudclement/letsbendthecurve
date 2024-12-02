@@ -21,6 +21,9 @@ This visual explainer is designed to be accessible to a general audience, requir
 3. **Government Officials and Policymakers:** The explainer provides insights into the sources of emissions in the digital technology sector. It outlines how strategic nudges, incentives, and regulations can shape the industry’s future toward a lower carbon footprint.
 
 ## Data Sources
+
+The following data sources provided the foundation for the datasets used to create the charts and inform the content of this visual explainer:
+
 - [Streaming’s dirty secret: how viewing Netflix top 10 creates vast quantity of CO2](https://www.theguardian.com/tv-and-radio/2021/oct/29/streamings-dirty-secret-how-viewing-netflix-top-10-creates-vast-quantity-of-co2)
 - [Gen AI’s Environmental Ledger: A Closer Look at the Carbon Footprint of ChatGPT](https://piktochart.com/blog/carbon-footprint-of-chatgpt/)
 - [I still don't understand how openAI is able to provide access to chatgpt for free.](https://www.reddit.com/r/ChatGPT/comments/18fb5uw/i_still_dont_understand_how_openai_is_able_to/)
@@ -47,9 +50,11 @@ This visual explainer is designed to be accessible to a general audience, requir
 - [Top500 Supercomputers Installations by Countries/Regions](https://www.top500.org/lists/top500/2024/06/highs/)
 - [List of countries by Internet connection speeds](https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds)
 
-## Design Choices
+## Platform Choice
 
-## Visualization Inspiration
+## Design Decisions
+
+## Visualizations Inspiration
 - [Hugo Romat's Interactive Comics](https://hugoromat.github.io/interactiveComics/library/dist/C02.html)
 - [You Draw It: How Family Income Predicts Children’s College Chances](https://www.nytimes.com/interactive/2015/05/28/upshot/you-draw-it-how-family-income-affects-childrens-college-chances.html)
 - [Tech Companies' Market Cap Over The Last 23 years](https://www.reddit.com/r/dataisbeautiful/comments/b1rgt9/market_capitalization_of_tech_companies_over_the/)
@@ -57,3 +62,5 @@ This visual explainer is designed to be accessible to a general audience, requir
 - [Standard and Poor's 500 index stocks categorized by sectors and industries. Size represents market cap.](https://finviz.com/map.ashx)
 
 ## Development Process
+
+## Future Developments
