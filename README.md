@@ -124,10 +124,19 @@ The project required approximately 120 hours to complete and involved the follow
 - **GitHub Pages Setup (3 hours):** Purchased domain names (`letsbendthecurve.com` and `computingsustainability.com`), initialized this GitHub [repository](https://github.com/thibaudclement/letsbendthecurve), and configured GitHub Pages with custom domains.
 - **Website Design (6 hours):** Established the project’s basic repository structure, made key design decisions (e.g. font and color palette), and built the main page layout.
 - **Chart Design (40 hours):** Designed and implemented 18 charts using D3, along with interactive controls where appropriate.
-- **Writing (8 hours):** Refined the article’s narrative, created a detailed outline, and drafted the content based on insights from charts and interviews.
-- **Testing & Debugging (4 hours):** Performed quality assurance and fixed bugs, particularly in the Fortune 500 chart’s filtering system, which posed significant challenges.
+- **Writing (8 hours):** Refined the article’s narrative, created a detailed outline, and drafted the text based on insights from charts and interviews.
+- **Testing & Debugging (4 hours):** Performed quality assurance and fixed bugs to ensure the project functioned as intended. Most of the debugging and fixing time was spent resolving challenges in the controls and filtering systems of the Fortune 500 chart.
 - **Final Touches (7 hours):** Proofread the text, updated colors for consistency, and made minor adjustments to charts.
 - **Video Recording (5 hours):** Produced a 2-minute video demo featuring a voiceover to explain the project, showcase interactions in the visualizations, and describe key findings.
 - **README Draft (2 hours):** Documented the project in this README file.
 
 ## Future Developments
+
+This project is due on December 8, 2024, after which all development efforts will pause until grading is complete. Once the project has been evaluated, I plan to explore the following improvements:
+- **Responsive Design:** Adapt the layout for mobile devices and optimize user interactions for touchscreen interfaces, improving the experience on smartphones and tablets where mouse hovering is unavailable.
+- **Tooltip Refinement:** Replace native tooltips in in-text data points with CSS-based tooltips for faster and smoother display of additional information.
+- **Text-Chart Interactions:** Introduce synchronized hover effects between text and charts, enabling users to highlight related elements in the text and visualizations simultaneously.
+- **Lazy Loading:** Implement lazy loading of sections to make the explainer more dynamic and improve performance as users scroll through the page.
+- **Reference Section:** Add a comprehensive list of relevant resources at the bottom of the article for reference and further reading.
+- **Real-Time Data Integration:** Connect the project to the [Website Carbon API](https://www.websitecarbon.com/api/) and live data about Fortune 500 companies to ensure the article stays up to date with the latest information.
+- **User Guide:** Include a simple, collapsible guide to help users navigate the article, such as explanations of color coding and interactive features.
