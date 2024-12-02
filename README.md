@@ -106,7 +106,9 @@ Additional design elements include:
 - Stylized quotes from experts in sustainable computing to highlight key insights.
 
 
-## Visualizations Inspiration
+## Visualization Inspiration
+
+The following visualizations served as creative inspiration for the charts in this project:
 - [Hugo Romat's Interactive Comics](https://hugoromat.github.io/interactiveComics/library/dist/C02.html)
 - [You Draw It: How Family Income Predicts Children’s College Chances](https://www.nytimes.com/interactive/2015/05/28/upshot/you-draw-it-how-family-income-affects-childrens-college-chances.html)
 - [Tech Companies' Market Cap Over The Last 23 years](https://www.reddit.com/r/dataisbeautiful/comments/b1rgt9/market_capitalization_of_tech_companies_over_the/)
@@ -114,5 +116,18 @@ Additional design elements include:
 - [Standard and Poor's 500 index stocks categorized by sectors and industries. Size represents market cap.](https://finviz.com/map.ashx)
 
 ## Development Process
+
+The project required approximately 120 hours to complete and involved the following phases:
+- **Project Proposal (6 hours):** Conducted initial research on available datasets related to computing, benchmarked inspiring visualization projects, outlined the article, and drafted the project proposal.
+- **Data Sourcing & Wrangling (32 hours):** Performed detailed research on datasets and wrangled data for the project. Enriching an existing dataset about Fortune 500 companies (containing public information) with data from Website Carbon and Similarweb to create the `fortune_500_websites_emissions.csv` dataset was particularly time-consuming, requiring two full-time days of work.
+- **Expert Interviews (7 hours):** Reached out to experts in the field (Dr. Sadasivan Shankar, Tim Frick, Asim Hussain, Anne Currie, and Tom Greenwood), prepared and conducted interviews, and processed the resulting notes.
+- **GitHub Pages Setup (3 hours):** Purchased domain names (`letsbendthecurve.com` and `computingsustainability.com`), initialized this GitHub [repository](https://github.com/thibaudclement/letsbendthecurve), and configured GitHub Pages with custom domains.
+- **Website Design (6 hours):** Established the project’s basic repository structure, made key design decisions (e.g. font and color palette), and built the main page layout.
+- **Chart Design (40 hours):** Designed and implemented 18 charts using D3, along with interactive controls where appropriate.
+- **Writing (8 hours):** Refined the article’s narrative, created a detailed outline, and drafted the content based on insights from charts and interviews.
+- **Testing & Debugging (4 hours):** Performed quality assurance and fixed bugs, particularly in the Fortune 500 chart’s filtering system, which posed significant challenges.
+- **Final Touches (7 hours):** Proofread the text, updated colors for consistency, and made minor adjustments to charts.
+- **Video Recording (5 hours):** Produced a 2-minute video demo featuring a voiceover to explain the project, showcase interactions in the visualizations, and describe key findings.
+- **README Draft (2 hours):** Documented the project in this README file.
 
 ## Future Developments
