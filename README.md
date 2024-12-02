@@ -4,7 +4,21 @@
 
 ## Project Background
 
+In 2021, the software startup I had co-founded six years earlier was experiencing exponential growth. This required scaling up our cloud infrastructure, which, in turn, increased its environmental footprint. Concerned about the ecological impact of our work, I began exploring ways to mitigate this effect and discovered the emerging field of sustainable computing and software engineering. This interest has since become a focus of my professional and academic journey.
+
+Although I am a self-taught programmer, my formal academic background is in management. To bridge the gap and contribute effectively to sustainable solutions for the growing demands of the Information and Communication Technology (ICT) sector, I started pursuing foundational computer science coursework at Stanford. This quarter, alongside _CS448B: Data Visualization_, I attended the _Stanford Energy Seminar_ to deepen my understanding of sustainability challenges and opportunities in technology. This project integrates my prior experience with additional research and interviews conducted specifically for this visual explainer.
+
+_Let’s Bend the Curve_ draws its name from the exponential trajectory of the ICT sector’s environmental impact, which we aim to curb. The article, _Sustainability in the Computing Age: Addressing the Environmental Impact of Digital Technology_, seeks to raise awareness of the unsustainable trends in digital technology while presenting actionable solutions and fostering innovation in sustainable computing to meet industry demands in an environmentally responsible way.
+
 ## Target Audience
+
+This visual explainer is designed to be accessible to a general audience, requiring no prior technical knowledge. While it aims to engage a broad readership, it also targets three specific sub-audiences, each with complementary goals:
+
+1. **End Users:** The explainer seeks to raise awareness among digital service users about the environmental footprint of technology. The goal is not to discourage usage but to foster an understanding that manipulating digital information carries an environmental cost, even if it is not immediately visible.
+
+2. **Software Engineers:** The explainer aims to highlight the significant impact technical decisions can have on sustainability. It identifies low-hanging fruit and illustrates how the scalability of software and the power of innovation can play an effective role in the energy transition and combating climate change.
+
+3. **Government Officials and Policymakers:** The explainer provides insights into the sources of emissions in the digital technology sector. It outlines how strategic nudges, incentives, and regulations can shape the industry’s future toward a lower carbon footprint.
 
 ## Data Sources
 - [Streaming’s dirty secret: how viewing Netflix top 10 creates vast quantity of CO2](https://www.theguardian.com/tv-and-radio/2021/oct/29/streamings-dirty-secret-how-viewing-netflix-top-10-creates-vast-quantity-of-co2)
