@@ -52,7 +52,59 @@ The following data sources provided the foundation for the datasets used to crea
 
 ## Platform Choice
 
+Building on the experience gained during _Assignment 3_, this project was developed as a custom static site using HTML, SVG, CSS, and JavaScript, hosted on GitHub Pages. This approach provided the flexibility needed to design the desired user experience and interface, streamlined code versioning, and enabled the use of custom domain names (`letsbendthecurve.com` and `computingsustainability.com`).
+
 ## Design Decisions
+
+### Background & Text Colors
+
+The most immediately striking design decision in this project is the use of a dark background—specifically black. This choice is not a "dark mode" feature but rather an application of sustainable web design principles outlined in the article. A black background with green accents reduces energy consumption on user devices by minimizing screen pixel illumination.
+
+To complement the dark background, I selected a light gray text color (`#bcbec0`) instead of white, as it improves readability and reduces eye strain for readers.
+
+### Color Palette
+
+The initial color palette drew inspiration from Color Brewer, utilizing a sequential, multi-hue scheme:
+- `#ffffcc`
+- `#c2e699`
+- `#78c679`
+- `#31a354`
+- `#006837`
+
+This palette was extended for the Fortune 500 chart to include seven distinct shades representing Website Carbon grades (A+ to F), ranging from green to black:
+- `#78c679`
+- `#41ab5d`
+- `#238443`
+- `#006837`
+- `#004529`
+- `#002a18`
+- `#000000`
+
+Additionally, the following shades of gray were used throughout the article where necessary:
+- `#ffffff`
+- `#f1f2f2`
+- `#e6e7e8`
+- `#d1d3d4`
+- `#bcbec0`
+- `#a7a9ac`
+- `#939598`
+- `#808285`
+- `#6d6e71`
+- `#58595b`
+- `#414042`
+- `#000000`
+
+### Layout and Typography
+
+Inspired by the formatting and aspect ratio of this _New York Times_ [visualization](https://www.nytimes.com/interactive/2016/04/29/upshot/money-race-and-success-how-your-school-district-compares.html), I opted for full-width charts as they are central to the explainer. In contrast, the text is presented in a narrow, centered column for readability. The font size is set at `18px` with a line height of `1.6` to enhance legibility.
+
+### Interactive and Styling Features
+
+Additional design elements include:
+- Hover effects for in-text data points to display supplementary information.
+- Clear guidelines for using the interactive charts included in the article.
+- Stylized quotes from experts in sustainable computing to highlight key insights.
+
 
 ## Visualizations Inspiration
 - [Hugo Romat's Interactive Comics](https://hugoromat.github.io/interactiveComics/library/dist/C02.html)
