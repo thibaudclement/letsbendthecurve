@@ -300,7 +300,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       y: d._yValue
     }));
 
-    // Compute regression coefficients
+    // Compute regression coefficients and correlation coefficient
     const regressionResult = linearRegression(regressionData);
 
     // Generate points for the trendline
@@ -331,28 +331,45 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       .attr("y1", yScale(chartConfig.yScaleType === "log" ? Math.exp(trendlineData[0].y) : trendlineData[0].y))
       .attr("x2", xScale(trendlineData[1].x))
       .attr("y2", yScale(chartConfig.yScaleType === "log" ? Math.exp(trendlineData[1].y) : trendlineData[1].y))
-      .attr("stroke", "#006837")
+      .attr("stroke", "#c2e699")
       .attr("stroke-width", 2);
+
+    // **Add Correlation Coefficient Annotation**
+    chartGroup.append("text")
+      .attr("class", "correlation-coefficient")
+      .attr("x", width - 10) // Position near the right edge
+      .attr("y", height - 10) // Position near the bottom edge
+      .attr("text-anchor", "end") // Align text to the end (right)
+      .attr("fill", "#c2e699")
+      .text(`r = ${regressionResult.r.toFixed(2)}`);
+
   }
 
   // **Linear Regression Function**
   function linearRegression(data) {
     const n = data.length;
-    let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+    let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0;
 
     data.forEach(d => {
       sumX += d.x;
       sumY += d.y;
       sumXY += d.x * d.y;
       sumX2 += d.x * d.x;
+      sumY2 += d.y * d.y;
     });
 
     const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
     const intercept = (sumY - slope * sumX) / n;
 
+    // Compute correlation coefficient (Pearson's r)
+    const numerator = n * sumXY - sumX * sumY;
+    const denominator = Math.sqrt((n * sumX2 - sumX * sumX) * (n * sumY2 - sumY * sumY));
+    const r = numerator / denominator;
+
     return {
       slope: slope,
       intercept: intercept,
+      r: r,
       predict: function(x) { return slope * x + intercept; }
     };
   }
