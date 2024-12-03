@@ -74,8 +74,8 @@ export function drawInternetTrafficChart(containerSelector, data) {
   });
 
   // Scales with padding
-  const xPadding = 10;
-  const yPadding = 10;
+  const xPadding = 0;
+  const yPadding = 0;
 
   const x = d3.scaleLinear()
     .domain(d3.extent(data, d => d.year))
@@ -124,6 +124,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
       d3.axisBottom(x)
         .tickFormat(d3.format('d'))
         .tickSize(0)
+        .tickPadding(10)
     )
     .selectAll('text')
     .attr('fill', '#ffffff');
@@ -139,6 +140,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
       d3.axisLeft(y)
         .ticks(10)
         .tickSize(0)
+        .tickPadding(10)
         .tickFormat(d => `${d} ZB`)
     )
     .selectAll('text')
