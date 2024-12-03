@@ -110,8 +110,8 @@ export function drawDigitalProsperityChart(containerSelector, data) {
 
     // Filter data to remove entries with missing or invalid values
     const filteredData = data.filter(d => {
-      const xValue = d[chartConfig.xKey];
-      const yValue = d[chartConfig.yKey];
+      let xValue = d[chartConfig.xKey];
+      let yValue = d[chartConfig.yKey];
 
       // Check for missing or invalid data
       if (
@@ -121,13 +121,19 @@ export function drawDigitalProsperityChart(containerSelector, data) {
         return false;
       }
 
-      // For log scales, exclude non-positive values
-      if (chartConfig.xScaleType === "log" && xValue <= 0) {
-        return false;
+      // For log scales, exclude non-positive values and apply log transformation
+      if (chartConfig.xScaleType === "log") {
+        if (xValue <= 0) return false;
+        xValue = Math.log(xValue);
       }
-      if (chartConfig.yScaleType === "log" && yValue <= 0) {
-        return false;
+      if (chartConfig.yScaleType === "log") {
+        if (yValue <= 0) return false;
+        yValue = Math.log(yValue);
       }
+
+      // Attach transformed values for regression calculation
+      d._xValue = xValue;
+      d._yValue = yValue;
 
       return true;
     });
@@ -286,5 +292,68 @@ export function drawDigitalProsperityChart(containerSelector, data) {
         return d3.format(",.2f")(value);
       }
     }
+
+    // **Compute and Add Trendline**
+    // Prepare data for regression
+    const regressionData = filteredData.map(d => ({
+      x: d._xValue,
+      y: d._yValue
+    }));
+
+    // Compute regression coefficients
+    const regressionResult = linearRegression(regressionData);
+
+    // Generate points for the trendline
+    let xMin = d3.min(filteredData, d => d[chartConfig.xKey]);
+    let xMax = d3.max(filteredData, d => d[chartConfig.xKey]);
+
+    // For log scales, adjust xMin and xMax to avoid negative or zero values
+    if (chartConfig.xScaleType === "log") {
+      xMin = xScale.domain()[0];
+      xMax = xScale.domain()[1];
+    }
+
+    const trendlineData = [
+      {
+        x: xMin,
+        y: regressionResult.predict(chartConfig.xScaleType === "log" ? Math.log(xMin) : xMin)
+      },
+      {
+        x: xMax,
+        y: regressionResult.predict(chartConfig.xScaleType === "log" ? Math.log(xMax) : xMax)
+      }
+    ];
+
+    // **Plot the trendline**
+    chartGroup.append("line")
+      .attr("class", "trendline")
+      .attr("x1", xScale(trendlineData[0].x))
+      .attr("y1", yScale(chartConfig.yScaleType === "log" ? Math.exp(trendlineData[0].y) : trendlineData[0].y))
+      .attr("x2", xScale(trendlineData[1].x))
+      .attr("y2", yScale(chartConfig.yScaleType === "log" ? Math.exp(trendlineData[1].y) : trendlineData[1].y))
+      .attr("stroke", "#006837")
+      .attr("stroke-width", 2);
+  }
+
+  // **Linear Regression Function**
+  function linearRegression(data) {
+    const n = data.length;
+    let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+
+    data.forEach(d => {
+      sumX += d.x;
+      sumY += d.y;
+      sumXY += d.x * d.y;
+      sumX2 += d.x * d.x;
+    });
+
+    const slope = (n * sumXY - sumX * sumY) / (n * sumX2 - sumX * sumX);
+    const intercept = (sumY - slope * sumX) / n;
+
+    return {
+      slope: slope,
+      intercept: intercept,
+      predict: function(x) { return slope * x + intercept; }
+    };
   }
 }
