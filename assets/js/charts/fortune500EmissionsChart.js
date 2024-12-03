@@ -331,46 +331,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Apply filters on initial load
     applyFilters();
 
-    // Reset Button
-    controlContainer.append('div')
-    .attr('class', 'reset-button-container')
-    .append('button')
-    .attr('class', 'reset-button')
-    .text('Reset Filters')
-    .on('click', function () {
-      // Reset filters
-      resetFilters();
-      // Reset inputs
-      controlContainer.selectAll('input').property('value', '');
-      controlContainer.selectAll('input[type="checkbox"]').property('checked', true);
-      controlContainer.selectAll('input[type="radio"]').property('checked', false);
-      // By default, check all checkboxes
-      controlContainer.selectAll('.checkbox-group input[type="checkbox"]').property('checked', true);
-      controlContainer.selectAll('.sector-checkboxes input[type="checkbox"]').property('checked', true);
-      // Select 'All' for radio buttons
-      controlContainer.selectAll('.radio-group input[value=""]').property('checked', true);
-      // Update slider labels and positions
-      controlContainer.selectAll('.slider-container').each(function () {
-        const sliderContainer = d3.select(this);
-        const dataKey = sliderContainer.attr('data-key');
-        const values = data.map(d => +d[dataKey]).filter(v => v !== null && !isNaN(v));
-        const min = Math.min(...values);
-        const max = Math.max(...values);
-        sliderContainer.select(`.${dataKey}-min-slider`).property('value', min);
-        sliderContainer.select(`.${dataKey}-max-slider`).property('value', max);
-        sliderContainer.select('.min-value').text(`Min: ${min}`);
-        sliderContainer.select('.max-value').text(`Max: ${max}`);
-        // Reset filters for sliders
-        filters[`${dataKey}Min`] = min;
-        filters[`${dataKey}Max`] = max;
-      });
-      // Re-initialize filters
-      initializeFilters();
-      // Apply filters
-      applyFilters();
-    });
-
-
     // Apply filters and update chart
     function applyFilters() {
       let filteredData = data;
@@ -432,29 +392,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     function initializeFilters() {
       filters.sectors = Array.from(new Set(data.map(d => d.sector)));
       filters.wcGrades = Array.from(new Set(data.map(d => d.wcGrade)));
-    }
-
-    // Reset filters to default values
-    function resetFilters() {
-      filters.searchQuery = '';
-      filters.rankMin = null;
-      filters.rankMax = null;
-      filters.numberOfEmployeesMin = null;
-      filters.numberOfEmployeesMax = null;
-      filters.wcCO2PerVisitMin = null;
-      filters.wcCO2PerVisitMax = null;
-      filters.monthlyTrafficKMin = null;
-      filters.monthlyTrafficKMax = null;
-      filters.totalEmissionsMin = null;
-      filters.totalEmissionsMax = null;
-      filters.companyType = null;
-      filters.profitableRaw = null;
-      filters.founderIsCEORaw = null;
-      filters.femaleCEORaw = null;
-      filters.worldsMostAdmiredCompaniesRaw = null;
-      filters.bestCompaniesToWorkForRaw = null;
-      filters.sustainableEnergy = null;
-      initializeFilters();
     }
   }
 
