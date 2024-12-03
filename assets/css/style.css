@@ -1399,9 +1399,11 @@ header img {
   width: auto;
   padding: 10px;
   font-size: 12px;
-  background: rgba(0, 0, 0, 0.8);
-  color: #ffffff;
-  border: 0px;
+  background: #ffffff;
+  color: #000000;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border: 1px solid #cccccc;
   border-radius: 5px;
   pointer-events: none;
   z-index: 10;
