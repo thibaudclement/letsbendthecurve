@@ -44,8 +44,8 @@ export function drawInternetTrafficChart(containerSelector, data) {
   });
 
   // Create SVG element
-  const margin = { top: 70, right: 50, bottom: 50, left: 70 }; // Set left margin to 70 for consistency
-  const width = 960 - margin.left - margin.right; // Adjusted for full width
+  const margin = { top: 70, right: 50, bottom: 50, left: 70 };
+  const width = 960 - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
 
   const svg = container.append('svg')
@@ -79,13 +79,13 @@ export function drawInternetTrafficChart(containerSelector, data) {
 
   const x = d3.scaleLinear()
     .domain(d3.extent(data, d => d.year))
-    .range([xPadding, width - xPadding]); // Add padding to x-range
+    .range([xPadding, width - xPadding]);
 
   const yMax = d3.max(data, d => Math.max(d.internetTrafficZB, d.linearSimulationZB, d.logarithmicSimulationZB));
   const y = d3.scaleLinear()
     .domain([0, yMax])
     .nice()
-    .range([height - yPadding, yPadding]); // Add padding to y-range
+    .range([height - yPadding, yPadding]);
 
   // Horizontal grid lines
   chartGroup.append('g')
@@ -93,19 +93,19 @@ export function drawInternetTrafficChart(containerSelector, data) {
     .call(
       d3.axisLeft(y)
         .ticks(10)
-        .tickSize(-width + xPadding * 2) // Adjust tick size for x-padding
+        .tickSize(-width + xPadding * 2)
         .tickFormat('')
     )
-    .attr('transform', `translate(${xPadding},0)`); // Shift grid lines right by xPadding
+    .attr('transform', `translate(${xPadding},0)`);
 
   // Vertical grid lines
   chartGroup.append('g')
     .attr('class', 'grid vertical-grid')
-    .attr('transform', `translate(0, ${height - yPadding})`) // Shift grid lines up by yPadding
+    .attr('transform', `translate(0, ${height - yPadding})`)
     .call(
       d3.axisBottom(x)
         .ticks(10)
-        .tickSize(-height + yPadding * 2) // Adjust tick size for y-padding
+        .tickSize(-height + yPadding * 2)
         .tickFormat('')
     );
 
@@ -119,7 +119,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
   // X-axis (ticks and labels only)
   chartGroup.append('g')
     .attr('class', 'x-axis')
-    .attr('transform', `translate(0,${height - yPadding})`) // Adjust for y-padding
+    .attr('transform', `translate(0,${height - yPadding})`)
     .call(
       d3.axisBottom(x)
         .tickFormat(d3.format('d'))
@@ -135,7 +135,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
   // Y-axis (labels only)
   chartGroup.append('g')
     .attr('class', 'y-axis')
-    .attr('transform', `translate(${xPadding},0)`) // Adjust for x-padding
+    .attr('transform', `translate(${xPadding},0)`)
     .call(
       d3.axisLeft(y)
         .ticks(10)
@@ -192,7 +192,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
     .attr('x1', x(annotationYear))
     .attr('y1', y(annotationData.internetTrafficZB))
     .attr('x2', x(annotationYear) - 100)
-    .attr('y2', y(annotationData.internetTrafficZB) - 60) // Adjusted Y2 to match text position
+    .attr('y2', y(annotationData.internetTrafficZB) - 60)
     .attr('stroke', '#ffffff');
 
   // Plot all data series, but hide them initially
@@ -302,7 +302,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
   // Function to handle guess submission
   function submitGuess() {
     const feedbackSection = d3.select('#guess-feedback');
-    feedbackSection.html(''); // Clear previous feedback
+    feedbackSection.html('');
 
     if (!selectedOption) {
       feedbackSection

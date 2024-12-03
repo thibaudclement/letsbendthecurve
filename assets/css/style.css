@@ -785,7 +785,7 @@ header img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-top: 20px; /* Adjust as needed */
+  margin-top: 20px;
 }
 
 /* Sustainable Web Design Model Styles */
@@ -894,7 +894,7 @@ header img {
 
 #pue-chart .axis path,
 #pue-chart .axis line {
-  stroke: none; /* Remove axis lines */
+  stroke: none;
 }
 
 #pue-chart .axis text {
@@ -990,7 +990,6 @@ header img {
 }
 
 /* Energy Consumption Chart Styles */
-
 #energy-consumption-chart .energy-chart-container {
   width: 100%;
   height: auto;
@@ -1006,7 +1005,7 @@ header img {
 
 #energy-consumption-chart .axis path,
 #energy-consumption-chart .axis line {
-  stroke: none; /* Remove axis lines */
+  stroke: none;
 }
 
 #energy-consumption-chart .axis text {
@@ -1036,7 +1035,7 @@ header img {
   position: absolute;
   text-align: left;
   width: auto;
-  max-width: 200px; /* Limited tooltip width */
+  max-width: 200px;
   padding: 8px;
   font-size: 12px;
   background: #ffffff;
@@ -1140,7 +1139,7 @@ header img {
 
 #fortune500-emissions-chart .search-input {
   width: 100%;
-  box-sizing: border-box; /* Include padding in width calculation */
+  box-sizing: border-box;
   border-radius: 25px;
   padding: 8px;
   color: #ffffff;
@@ -1188,7 +1187,7 @@ header img {
 /* Reset Button Styles */
 #fortune500-emissions-chart .reset-button-container {
   text-align: center;
-  margin-top: 20px; /* Add margin to separate it from other controls */
+  margin-top: 20px;
 }
 
 #fortune500-emissions-chart .reset-button {
@@ -1420,7 +1419,7 @@ header img {
   background-color: #31a354;
   color: #ffffff;
   border: none;
-  border-radius: 25px; /* Pill-shaped buttons */
+  border-radius: 25px;
   cursor: pointer;
   font-size: 14px;
 }

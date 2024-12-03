@@ -42,7 +42,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .range([0, width]);
 
   const y = d3.scaleLinear()
-    .domain([0, 3.0]) // Changed to 0 - 3.0 for more amplitude
+    .domain([0, 3.0])
     .range([height, 0]);
 
   // Define axes
@@ -131,7 +131,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
     .attr('cy', d => y(d.pue))
     .attr('r', 6)
     .attr('fill', '#31a354')
-    .attr('fill-opacity', d => d.pueSource === 'Actual' ? 0.5 : 0.2) // Adjusted fill opacity
+    .attr('fill-opacity', d => d.pueSource === 'Actual' ? 0.5 : 0.2)
     .attr('stroke', '#31a354')
     .attr('stroke-width', 1)
     .style('pointer-events', 'all')
@@ -157,7 +157,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
       tooltip.html(`Year: ${d.year}<br>PUE: ${d.pue.toFixed(2)}`)
         .style('left', (event.pageX + 10) + 'px')
         .style('top', (event.pageY - 28) + 'px')
-        .style('max-width', '200px'); // Adjusted tooltip width
+        .style('max-width', '200px');
     })
     .on('mouseout', function(d) {
       tooltip.transition()
@@ -259,7 +259,7 @@ export function drawPueChart(containerSelector, data, updateEnergyConsumptionCha
 
   function dragged(event, d) {
     const newY = y.invert(event.y);
-    d.pue = Math.max(0, Math.min(newY, 3.0)); // Limit PUE between 0 and 3.0
+    d.pue = Math.max(0, Math.min(newY, 3.0));
     d3.select(this)
       .attr('cy', y(d.pue));
 

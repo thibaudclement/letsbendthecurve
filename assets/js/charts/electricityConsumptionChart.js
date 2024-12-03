@@ -19,9 +19,9 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
   const svg = d3.select(containerSelector)
     .append('svg')
     .attr('class', 'chart-container')
-    .attr('width', '100%') // Make SVG full width
+    .attr('width', '100%')
     .attr('height', height + margin.top + margin.bottom)
-    .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`) // Responsive
+    .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
     .attr('preserveAspectRatio', 'xMidYMid meet');
 
   // Add chart title
@@ -62,7 +62,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
   // Add year label
   const yearLabel = svg.append('text')
     .attr('class', 'year-label')
-    .attr('x', width + margin.left - 10) // Adjusted x position
+    .attr('x', width + margin.left - 10)
     .attr('y', height + margin.top - 10)
     .attr('text-anchor', 'end')
     .attr('font-size', '48px')
@@ -86,7 +86,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
     chartArea.selectAll('.vertical-grid').remove();
 
     // Add vertical grid lines (underlay)
-    chartArea.insert('g', ':first-child') // Insert before bars to make gridlines underlays
+    chartArea.insert('g', ':first-child')
       .attr('class', 'grid vertical-grid')
       .call(
         d3.axisBottom(x)
@@ -113,14 +113,14 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       d3.axisBottom(x)
         .tickFormat(d => `${d3.format(',')(d)} TWh`)
         .ticks(5)
-        .tickSize(0) // Remove tick marks
+        .tickSize(0)
     )
       .selectAll('text').attr('fill', '#ffffff');
 
     // Remove x-axis line
     xAxisGroup.select('.domain').remove();
 
-    yAxisGroup.call(d3.axisLeft(y).tickSize(0)) // Remove tick marks
+    yAxisGroup.call(d3.axisLeft(y).tickSize(0))
       .selectAll('text').attr('fill', '#ffffff');
 
     // Remove y-axis line
@@ -141,9 +141,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       .attr('y', d => y(d.country))
       .attr('width', d => x(d.powerConsumption))
       .attr('height', y.bandwidth())
-      .style('fill', d => d.country === 'Internet' ? '#78c679' : '#006837'); // Updated color for countries
-
-    // **Updated color for countries to '#006837'**
+      .style('fill', d => d.country === 'Internet' ? '#78c679' : '#006837');
 
     // ENTER new elements
     bars.enter()
@@ -153,7 +151,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       .attr('y', d => y(d.country))
       .attr('height', y.bandwidth())
       .attr('width', 0)
-      .style('fill', d => d.country === 'Internet' ? '#78c679' : '#006837') // Updated color for countries
+      .style('fill', d => d.country === 'Internet' ? '#78c679' : '#006837')
       .transition().duration(500)
       .attr('width', d => x(d.powerConsumption));
 
@@ -170,7 +168,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
     labels.transition().duration(500)
       .attr('x', d => {
         const labelX = x(d.powerConsumption) + 5;
-        return labelX > width - 60 ? x(d.powerConsumption) - 65 : labelX; // Adjust label position if it exceeds chart width
+        return labelX > width - 60 ? x(d.powerConsumption) - 65 : labelX;
       })
       .attr('y', d => y(d.country) + y.bandwidth() / 2 + 5)
       .tween('text', function(d) {
@@ -188,7 +186,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       .attr('class', 'label')
       .attr('x', d => {
         const labelX = x(d.powerConsumption) + 5;
-        return labelX > width - 60 ? x(d.powerConsumption) - 65 : labelX; // Adjust label position if it exceeds chart width
+        return labelX > width - 60 ? x(d.powerConsumption) - 65 : labelX;
       })
       .attr('y', d => y(d.country) + y.bandwidth() / 2 + 5)
       .attr('fill', '#ffffff')
@@ -201,7 +199,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
   // Function to play the animation
   function play() {
     if (currentYearIndex >= years.length - 1) {
-      currentYearIndex = -1; // Reset to start before the first year
+      currentYearIndex = -1;
     }
     isPlaying = true;
     playButton.textContent = 'Pause';
@@ -209,11 +207,11 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
       currentYearIndex++;
       if (currentYearIndex >= years.length) {
         pause();
-        currentYearIndex = years.length - 1; // Set to last year
+        currentYearIndex = years.length - 1;
         return;
       }
       updateChart(years[currentYearIndex]);
-    }, 1000); // Reduced interval to speed up
+    }, 1000);
   }
 
   // Function to pause the animation
@@ -228,7 +226,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
 
   // Create controls
   const controlsContainer = d3.select('#electricity-consumption-controls')
-    .attr('class', 'controls-container'); // Added class for styling
+    .attr('class', 'controls-container');
 
   // Controls title and checkboxes (inside controls panel)
   // Add title to controls

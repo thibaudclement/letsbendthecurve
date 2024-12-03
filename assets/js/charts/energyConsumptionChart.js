@@ -9,7 +9,7 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
   const svg = d3.select(containerSelector)
     .append('svg')
     .attr('class', 'energy-chart-container')
-    .attr('width', '100%') // Full width
+    .attr('width', '100%')
     .attr('height', height + margin.top + margin.bottom)
     .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
     .attr('preserveAspectRatio', 'xMidYMid meet');
@@ -28,7 +28,7 @@ export function drawEnergyConsumptionChart(containerSelector, data) {
   const chartArea = svg.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
-  // X scale for years (band scale for bar chart)
+  // X scale for years
   const x = d3.scaleBand()
     .domain(data.map(d => d.year))
     .range([0, width])

@@ -14,13 +14,13 @@ export function drawIctEmissionsBreakdownChart(containerSelector, data) {
     .append('svg')
     .attr('class', 'pie-chart-container')
     .attr('width', width)
-    .attr('height', height + margin); // Increase height to add space for title
+    .attr('height', height + margin);
 
   // Add chart title with adjusted vertical position
   svg.append('text')
     .attr('class', 'pie-chart-title')
     .attr('x', width / 2)
-    .attr('y', margin / 2) // Adjusted to position title higher
+    .attr('y', margin / 2)
     .attr('text-anchor', 'middle')
     .attr('fill', '#ffffff')
     .attr('font-size', '18px')
@@ -32,9 +32,9 @@ export function drawIctEmissionsBreakdownChart(containerSelector, data) {
 
   // Create pie generator with adjusted start angle and sorted data
   const pie = d3.pie()
-    .sort((a, b) => b.proportionalImpact - a.proportionalImpact) // Sort in decreasing order
+    .sort((a, b) => b.proportionalImpact - a.proportionalImpact)
     .value(d => d.proportionalImpact)
-    .startAngle(-Math.PI / 2); // Start at the top left
+    .startAngle(-Math.PI / 2);
 
   // Create arc generator
   const radius = Math.min(width, height) / 2 - margin;

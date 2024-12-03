@@ -88,9 +88,9 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
     // Create axes
     let tickValues;
     if (chartId === 'chart1') {
-      tickValues = d3.range(2008, 2021, 2); // Even years from 2008 to 2020
+      tickValues = d3.range(2008, 2021, 2);
     } else if (chartId === 'chart2') {
-      tickValues = [2025, 2030, 2035, 2040]; // Every five years
+      tickValues = [2025, 2030, 2035, 2040];
     }
 
     // Add x-axis
@@ -136,20 +136,20 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
         .y0(d => y(d.minEstimate))
         .y1(d => y(d.maxEstimate))
       )
-      .style('pointer-events', 'none'); // Prevent area from capturing mouse events
+      .style('pointer-events', 'none');
 
     // Append lines
     chartArea.append('path')
       .datum(chartData)
       .attr('class', 'line line-min')
       .attr('d', lineMin)
-      .style('pointer-events', 'none'); // Prevent line from capturing mouse events
+      .style('pointer-events', 'none');
 
     chartArea.append('path')
       .datum(chartData)
       .attr('class', 'line line-max')
       .attr('d', lineMax)
-      .style('pointer-events', 'none'); // Prevent line from capturing mouse events
+      .style('pointer-events', 'none');
 
     // Add invisible circles for minEstimate
     chartArea.selectAll('.ict-invisible-dot-min')
@@ -159,11 +159,11 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
       .attr('class', 'ict-invisible-dot ict-invisible-dot-min')
       .attr('cx', d => x(d.year))
       .attr('cy', d => y(d.minEstimate))
-      .attr('r', 8) // Increased radius for easier interaction
+      .attr('r', 8)
       .style('fill', '#000000')
       .style('fill-opacity', 0)
       .style('stroke', 'none')
-      .style('pointer-events', 'all') // Ensure pointer events are captured
+      .style('pointer-events', 'all')
       .on('mouseover', function(event, d) {
         tooltip.transition()
           .duration(200)
@@ -190,11 +190,11 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
       .attr('class', 'ict-invisible-dot ict-invisible-dot-max')
       .attr('cx', d => x(d.year))
       .attr('cy', d => y(d.maxEstimate))
-      .attr('r', 8) // Increased radius for easier interaction
+      .attr('r', 8)
       .style('fill', '#000000')
       .style('fill-opacity', 0)
       .style('stroke', 'none')
-      .style('pointer-events', 'all') // Ensure pointer events are captured
+      .style('pointer-events', 'all')
       .on('mouseover', function(event, d) {
         tooltip.transition()
           .duration(200)

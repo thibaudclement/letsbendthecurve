@@ -4,7 +4,7 @@ import { displayEquivalentsInList } from './equivalents.js';
 
 export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistances) {
   const container = d3.select('#user-input-section');
-  container.html(''); // Clear previous content
+  container.html('');
 
   const usage = {};
   digitalTasks.forEach(task => {
@@ -70,13 +70,13 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
 
     // Update the viewer's yearly emissions
     const viewerYearlyEmissions = userEmissions.totalEmissions * 52;
-    document.getElementById('viewer-yearly-emissions').textContent = (viewerYearlyEmissions / 1000).toFixed(0); // Convert to kg
+    document.getElementById('viewer-yearly-emissions').textContent = (viewerYearlyEmissions / 1000).toFixed(0);
 
     // Draw chart
     drawEmissionsChart(
       '#weekly-emissions-viewer',
       userEmissions.taskEmissions,
-      null, // Remove US average emissions
+      null,
       'One Week Worth of Emissions from Your Digital Activity',
       true
     );

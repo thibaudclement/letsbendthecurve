@@ -8,7 +8,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
   // Set up dimensions and margins
   const margin = { top: 20, right: 10, bottom: 20, left: 10 };
   const width = containerWidth - margin.left - margin.right;
-  const height = 800 - margin.top - margin.bottom; // Adjust as needed
+  const height = 800 - margin.top - margin.bottom;
 
   // Create color scale for WC Grade
   const colorScale = d3.scaleOrdinal()
@@ -25,7 +25,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
   // Create treemap layout
   const treemapLayout = d3.treemap()
     .size([width, height])
-    .paddingInner(2) // Adjust padding between nodes
+    .paddingInner(2)
     .round(true);
 
   treemapLayout(root);
@@ -69,7 +69,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     .attr('width', d => d.x1 - d.x0)
     .attr('height', d => d.y1 - d.y0)
     .attr('fill', d => colorScale(d.data.data.wcGrade))
-    .attr('stroke', '#414042') // Updated border color
+    .attr('stroke', '#414042')
     .attr('stroke-width', 1)
     .on('mouseover', showTooltip)
     .on('mouseout', hideTooltip);
@@ -122,7 +122,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
   d3.select(containerSelector)
     .append('div')
     .attr('class', 'toggle-button-container')
-    .style('text-align', 'center') // Center the button
+    .style('text-align', 'center')
     .append('button')
     .attr('class', 'toggle-controls-button')
     .text('Show Filters')
@@ -183,7 +183,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
 
   function getTooltipContent(d) {
     if (!d) return '';
-    const formatNumber = d3.format(','); // For thousands separator
+    const formatNumber = d3.format(',');
 
     return `
       <strong>${d.company}</strong><br/>
@@ -246,9 +246,9 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     const controlBlock = d3.select(containerSelector)
       .append('div')
       .attr('class', 'control-block')
-      .style('display', 'none') // Initially hidden
-      .style('max-width', '600px') // Adjust width as needed
-      .style('margin', '0 auto'); // Center the control-block
+      .style('display', 'none')
+      .style('max-width', '600px')
+      .style('margin', '0 auto');
 
     const controlContainer = controlBlock
       .append('div')
@@ -465,7 +465,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     const max = Math.max(...values);
 
     const sliderContainer = container.append('div').attr('class', 'slider-container')
-      .attr('data-key', dataKey); // Store dataKey for reset
+      .attr('data-key', dataKey);
 
     // Initialize filters for sliders
     filters[`${dataKey}Min`] = min;
@@ -527,7 +527,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
         .attr('type', 'checkbox')
         .attr('id', id)
         .attr('value', value)
-        .property('checked', true) // Check all by default
+        .property('checked', true)
         .on('change', function () {
           if (this.checked) {
             filters[`${dataKey}s`].push(this.value);
@@ -599,7 +599,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       .attr('name', dataKey)
       .attr('id', clearId)
       .attr('value', '')
-      .property('checked', true) // Select 'All' by default
+      .property('checked', true)
       .on('change', function () {
         filters[dataKey] = null;
         applyFilters();
@@ -668,7 +668,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       .attr('width', d => d.x1 - d.x0)
       .attr('height', d => d.y1 - d.y0)
       .attr('fill', d => colorScale(d.data.data.wcGrade))
-      .attr('stroke', '#414042') // Updated border color
+      .attr('stroke', '#414042')
       .attr('stroke-width', 1)
       .on('mouseover', showTooltip)
       .on('mouseout', hideTooltip);

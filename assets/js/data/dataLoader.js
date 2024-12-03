@@ -2,8 +2,8 @@ export async function loadDigitalTasks() {
   try {
     const data = await d3.csv('assets/data/digital_task_emissions.csv');
     return data.map(d => ({
-      task: d.task.toLowerCase(), // Convert task names to lowercase
-      originalTask: d.task, // Store the original task name
+      task: d.task.toLowerCase(),
+      originalTask: d.task,
       platform: d.platform,
       emissions_per_unit: +d.emissions_per_unit,
       unit: d.unit,
@@ -42,7 +42,7 @@ export async function loadInternetUsageData() {
       internetUsers: +d['Internet Users'].replace(/,/g, ''),
       internetTraffic: +d['Internet Traffic (Exabytes per Year)'],
       linearSimulation: +d['Internet Traffic - Linear Simulation (Exabytes per Year)'],
-      logarithmicSimulation: +d['Internet Traffic - Logarithmic Simulation (Exabytes per Year)'], // Convert GB to EB
+      logarithmicSimulation: +d['Internet Traffic - Logarithmic Simulation (Exabytes per Year)'],
     }));
   } catch (error) {
     console.error('Error loading internet usage data:', error);
@@ -71,7 +71,7 @@ export async function loadIctEmissionsData() {
       year: +d.Year,
       minEstimate: +d.MinEstimate,
       maxEstimate: +d.MaxEstimate,
-      isProjection: +d.Year >= 2018, // True if year >= 2018
+      isProjection: +d.Year >= 2018,
     }));
   } catch (error) {
     console.error('Error loading ICT emissions data:', error);
@@ -115,7 +115,7 @@ export async function loadPueData() {
       const year = +d.Year;
       const pue = +d.PUE;
       const energyConsumption = +d['Energy Consumption'];
-      const computingUnitsNeed = energyConsumption / pue; // Compute Computing Units Need
+      const computingUnitsNeed = energyConsumption / pue;
 
       return {
         year,
@@ -141,7 +141,7 @@ export async function loadFortune500EmissionsData() {
     const processedData = data.map(d => {
       const wcCO2PerVisit = parseFloat(d['WC CO2 per Visit']);
       const monthlyTrafficK = parseFloat(d['Monthly traffic in K']);
-      const totalEmissions = wcCO2PerVisit * monthlyTrafficK * 12 / 1000; // in tonnes of CO2 per year
+      const totalEmissions = wcCO2PerVisit * monthlyTrafficK * 12 / 1000;
 
       return {
         rank: parseInt(d.Rank),

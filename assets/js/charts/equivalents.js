@@ -46,10 +46,10 @@ export function displayEquivalentsInList(listSelector, yearlyEmissions, nonDigit
 // Ensure the findClosestDistance function is included
 function findClosestDistance(miles, distances) {
   let closest = distances[0];
-  let minDiff = Math.abs(miles - (closest.distance * 2)); // Multiply by 2 for round trip
+  let minDiff = Math.abs(miles - (closest.distance * 2));
 
   distances.forEach(d => {
-    const totalDistance = d.distance * 2; // Round trip
+    const totalDistance = d.distance * 2;
     const diff = Math.abs(miles - totalDistance);
     if (diff < minDiff) {
       minDiff = diff;

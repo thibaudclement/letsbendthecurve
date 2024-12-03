@@ -1,7 +1,7 @@
 export function drawDigitalProsperityChart(containerSelector, data) {
   // Set up the chart dimensions and margins
   const margin = { top: 60, right: 50, bottom: 70, left: 70 };
-  const width = 960 - margin.left - margin.right; // Adjusted for full width
+  const width = 960 - margin.left - margin.right;
   const height = 500 - margin.top - margin.bottom;
 
   // Create the SVG container
@@ -293,7 +293,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       }
     }
 
-    // **Compute and Add Trendline**
+    // Compute and Add Trendline
     // Prepare data for regression
     const regressionData = filteredData.map(d => ({
       x: d._xValue,
@@ -324,7 +324,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       }
     ];
 
-    // **Plot the trendline**
+    // Plot the trendline
     chartGroup.append("line")
       .attr("class", "trendline")
       .attr("x1", xScale(trendlineData[0].x))
@@ -334,18 +334,18 @@ export function drawDigitalProsperityChart(containerSelector, data) {
       .attr("stroke", "#c2e699")
       .attr("stroke-width", 2);
 
-    // **Add Correlation Coefficient Annotation**
+    // Add Correlation Coefficient Annotation
     chartGroup.append("text")
       .attr("class", "correlation-coefficient")
-      .attr("x", width - 10) // Position near the right edge
-      .attr("y", height - 10) // Position near the bottom edge
-      .attr("text-anchor", "end") // Align text to the end (right)
+      .attr("x", width - 10)
+      .attr("y", height - 10)
+      .attr("text-anchor", "end")
       .attr("fill", "#c2e699")
       .text(`r = ${regressionResult.r.toFixed(2)}`);
 
   }
 
-  // **Linear Regression Function**
+  // Linear Regression Function
   function linearRegression(data) {
     const n = data.length;
     let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0;

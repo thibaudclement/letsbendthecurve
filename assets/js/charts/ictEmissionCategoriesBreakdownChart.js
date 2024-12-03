@@ -83,10 +83,7 @@ export function drawIctEmissionCategoriesBreakdownCharts(containerSelector, data
     const pie = d3.pie()
       .sort(null)
       .value(d => d.value)
-      .startAngle(-Math.PI / 2); // Start at top
-
-    // Ensure "Operational Emissions" comes first in the data array
-    // (Already arranged accordingly in pieData)
+      .startAngle(-Math.PI / 2);
 
     // Create arc generator
     const radius = Math.min(width, height) / 2 - margin;

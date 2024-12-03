@@ -1,6 +1,6 @@
-﻿task,platform,emissions_per_unit,unit,thibaud_weekly_tasks,us_weekly_tasks,reference_1,reference_2
-Streaming,netflix,55,Hours,20,22,https://www.theguardian.com/tv-and-radio/2021/oct/29/streamings-dirty-secret-how-viewing-netflix-top-10-creates-vast-quantity-of-co2,"https://www.forbes.com/home-improvement/internet/streaming-stats/#:~:text=In%20today's%20digital%20age%2C%20streaming%20media%20has,minutes%20each%20day%20to%20streaming%20digital%20media."
-Generative AI,chatgpt,4.32,Queries,50,21,https://www.reddit.com/r/ChatGPT/comments/18fb5uw/i_still_dont_understand_how_openai_is_able_to/
-Search,google,0.11,Requests,532,28,https://salience.co.uk/insight/magazine/the-carbon-footprint-of-search/,https://seo.ai/blog/how-many-people-use-google
-Email,gmail,0.3,Emails Sent,25,168,https://www.fortomorrow.eu/en/blog/carbon-email,https://www.mailbutler.io/blog/email/email-statistics-trends/
-Messaging,whatsapp,0.2,Messages Sent,325,525,"https://www.biospheresustainable.com/en/blog/65/digital-carbon-footprint-what-is-involved-in-sending-an-email#:~:text=Finally%2C%20a%20WhatsApp%20message%20produces,audios%20can%20pollute%20much%20more.",https://www.demandsage.com/whatsapp-statistics/
+﻿task,platform,emissions_per_unit,unit,thibaud_weekly_tasks,us_weekly_tasks
+Streaming,netflix,55,Hours,20,22
+Generative AI,chatgpt,4.32,Queries,50,21
+Search,google,0.11,Requests,532,28
+Email,gmail,0.3,Emails Sent,25,168
+Messaging,whatsapp,0.2,Messages Sent,325,525
