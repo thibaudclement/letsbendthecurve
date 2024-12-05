@@ -101,7 +101,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('x', -height / 2)
     .attr('dy', '1em')
     .style('text-anchor', 'middle')
-    .text('CO₂ Equivalents (Grams, Log Scale)')
+    .text('CO₂ Equivalents (Grams, Log scale)')
     .attr('fill', '#ffffff');
 
   // Tooltip

@@ -48,7 +48,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     {
       title: "GDP Per Capita vs. Internet Users (% of Population)",
       xLabel: "Internet Users (% of Population)",
-      yLabel: "GDP Per Capita (Log scale)",
+      yLabel: "GDP Per Capita (Dollars, Log scale)",
       xKey: "Internet Users (% of Population)",
       yKey: "GDP Per Capita",
       xScaleType: "linear",
@@ -57,7 +57,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     {
       title: "GDP (Nominal) vs. Electricity Consumption",
       xLabel: "Electricity Consumption (Log scale)",
-      yLabel: "GDP (Nominal) (Log scale)",
+      yLabel: "GDP (Dollars, Log scale)",
       xKey: "Electricity Consumption",
       yKey: "GDP (Nominal)",
       xScaleType: "log",
@@ -66,7 +66,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
     {
       title: "GDP (Nominal) vs. Supercomputer Cores",
       xLabel: "Supercomputer Cores (Log scale)",
-      yLabel: "GDP (Nominal) (Log scale)",
+      yLabel: "GDP (Dollars, Log scale)",
       xKey: "Supercomputer Cores",
       yKey: "GDP (Nominal)",
       xScaleType: "log",
