@@ -2,7 +2,7 @@ export function drawDigitalProsperityChart(containerSelector, data) {
   // Set up the chart dimensions and margins
   const margin = { top: 60, right: 50, bottom: 70, left: 70 };
   const width = 960 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const height = 400 - margin.top - margin.bottom;
 
   // Create the SVG container
   const svg = d3.select(containerSelector)

@@ -8,7 +8,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
   // Set up dimensions and margins
   const margin = { top: 20, right: 10, bottom: 20, left: 10 };
   const width = containerWidth - margin.left - margin.right;
-  const height = 800 - margin.top - margin.bottom;
+  const height = 600 - margin.top - margin.bottom;
 
   // Create color scale for WC Grade
   const colorScale = d3.scaleOrdinal()
