@@ -232,7 +232,11 @@
           shifting. Spatial shifting means moving computations to regions where energy is cleaner, such as data centers powered by 
           renewable energy. Temporal shifting involves delaying tasks to times when the grid is less carbon-intensive, such as during 
           sunny or windy periods. Training machine learning models at night when wind energy is abundant or relocating workloads 
-          to another hemisphere during peak solar seasons are both examples of demand shifting.</p>
+          to another hemisphere during peak solar seasons are both examples of demand shifting. Anne Currie, co-author of 
+          <em><a href="https://www.oreilly.com/library/view/building-green-software/9781098150617/">Building Green Software</a></em>, 
+          and a leading voice in sustainable computing, told me:</p>
+          <blockquote>LLM training is a great example of what the Texan grid refers to as a Large Flexible Load, i.e. a load that is latency insensitive 
+            and could therefore be aligned with solar or wind generation. Even inference could be done in this way using pre-calculation and caching.</blockquote>
         <p><strong>Demand shaping</strong>, on the other hand, refers to adapting computational workloads to align with the availability of low-carbon energy sources. 
           Instead of moving tasks to a different time or location, demand shaping involves increasing or decreasing application activities in 
           response to the current carbon intensity of the electricity grid. For instance, when the grid is powered predominantly by renewable energy, 
@@ -363,6 +367,10 @@
     <section class="text-block">
       <hr>
       <h2>What Gets Measured, Gets Managed</h2>
+      <p>Advances in measurement tools are essential for driving change, as Ms. Currie emphasizes the importance of incorporating performance testing into software development practices. 
+        She highlights the need to understand what aspects of an application are fast or slow and the reasons behind their performance. In particular, 
+        she urges developers to evaluate the value of API calls, noting that they are CPU-intensive and represent an investment in energy and, often, carbon. 
+        By questioning the necessity and efficiency of these operations, engineers can make more sustainable choices in their designs.</p>
       <p>For those with technical expertise, the <a href="https://if.greensoftware.foundation/">Impact Framework</a> from the Green Software Foundation 
         provides an <a href="https://github.com/Green-Software-Foundation/if">open-source toolkit</a>
         to measure and manage the environmental impact of software. Designed for software engineering teams, this framework offers 
