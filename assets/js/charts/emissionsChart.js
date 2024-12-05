@@ -23,7 +23,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
   // **Adjust emissions to avoid zeros (since log(0) is undefined)**
   const adjustedTaskEmissions = taskEmissions.map(d => ({
     ...d,
-    emissionsAdjusted: d.emissions <= 0 ? 1 : d.emissions // Replace zero or negative emissions with 1
+    emissionsAdjusted: d.emissions <= 0 ? 1 : d.emissions
   }));
 
   // X-axis scale

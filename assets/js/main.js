@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   document.getElementById('author-weekly-emissions').textContent = authorEmissions.totalEmissions.toLocaleString(undefined, { maximumFractionDigits: 0 });
 
   // Draw author's weekly emissions chart
-  drawEmissionsChart('#weekly-emissions-author', authorEmissions.taskEmissions, null, 'One Week Worth of Emissions from a Sample of My Own Digital Activity');
+  drawEmissionsChart('#weekly-emissions-author', authorEmissions.taskEmissions, null, 'One Week Worth of Emissions from a Sample of My Digital Activity');
 
   // Calculate and display author's yearly equivalents
   const authorYearlyEmissions = authorEmissions.totalEmissions * 52;

@@ -77,7 +77,7 @@ export function initializeUserInput(digitalTasks, nonDigitalTasks, drivingDistan
       '#weekly-emissions-viewer',
       userEmissions.taskEmissions,
       null,
-      'One Week Worth of Emissions from Your Digital Activity',
+      'One Week Worth of Emissions from a Sample of Your Digital Activity',
       true
     );
 
