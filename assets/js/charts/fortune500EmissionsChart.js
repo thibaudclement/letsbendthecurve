@@ -51,7 +51,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     const numCompanies = data.length;
     const totalEmissions = data.reduce((sum, d) => sum + d.totalEmissions, 0);
     const formattedTotalEmissions = d3.format(',')(Math.round(totalEmissions));
-    return `Once a Year, the Websites of These ${numCompanies} Fortune 500 Companies Emit Approximately ${formattedTotalEmissions} Tonnes of CO₂`;
+    return `Over a Year, the Websites of These ${numCompanies} Fortune 500 Companies Emit Approximately ${formattedTotalEmissions} Tonnes of CO₂`;
   }
 
   // Create a group for each node
