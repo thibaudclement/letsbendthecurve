@@ -202,7 +202,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
       Website: <a href="${d.website}" target="_blank">${d.website}</a><br/>
       Website Carbon Grade: ${d.wcGrade}<br/>
       Sustainable Energy: ${capitalize(d.sustainableEnergy)}<br/>
-      WC CO₂ per Visit: ${d.wcCO2PerVisit}<br/>
+      Website Carbon CO₂ per Visit: ${d.wcCO2PerVisit}<br/>
       Monthly Traffic (K): ${formatNumber(d.monthlyTrafficK)}<br/>
       Total Yearly Emissions (tonnes CO₂): ${formatNumber(Math.round(d.totalEmissions))}<br/>
     `;
@@ -298,7 +298,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // 2. Min/Max Sliders
     addMinMaxSlider(controlContainer, 'Rank', 'rank', data, filters, applyFilters, 1);
     addMinMaxSlider(controlContainer, 'Number of Employees', 'numberOfEmployees', data, filters, applyFilters, 100);
-    addMinMaxSlider(controlContainer, 'WC CO₂ per Visit', 'wcCO2PerVisit', data, filters, applyFilters, 0.01);
+    addMinMaxSlider(controlContainer, 'Website Carbon CO₂ per Visit', 'wcCO2PerVisit', data, filters, applyFilters, 0.01);
     addMinMaxSlider(controlContainer, 'Monthly Traffic (K)', 'monthlyTrafficK', data, filters, applyFilters, 10);
     addMinMaxSlider(controlContainer, 'Total Yearly Emissions', 'totalEmissions', data, filters, applyFilters, 1);
 
@@ -309,7 +309,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     addRadioButtons(controlContainer, 'Company Type', 'companyType', data, filters, applyFilters);
 
     // 5. Checkboxes for WC Grade
-    addCheckboxGroup(controlContainer, 'WC Grade', 'wcGrade', data, filters, applyFilters);
+    addCheckboxGroup(controlContainer, 'Website Carbon Grade', 'wcGrade', data, filters, applyFilters);
 
     // 6. Radio Buttons
     addRadioButtons(controlContainer, 'Profitable', 'profitableRaw', data, filters, applyFilters);
