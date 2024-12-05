@@ -20,17 +20,23 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
   const chartGroup = svg.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
+  // **Adjust emissions to avoid zeros (since log(0) is undefined)**
+  const adjustedTaskEmissions = taskEmissions.map(d => ({
+    ...d,
+    emissionsAdjusted: d.emissions <= 0 ? 1 : d.emissions // Replace zero or negative emissions with 1
+  }));
+
   // X-axis scale
   const x = d3.scaleBand()
-    .domain(taskEmissions.map(d => d.task))
+    .domain(adjustedTaskEmissions.map(d => d.task))
     .range([0, width])
     .padding(0.2);
 
-  // Y-axis scale
-  const maxEmission = d3.max(taskEmissions, d => d.emissions);
-  const y = d3.scaleLinear()
-    .domain([0, maxEmission])
-    .nice()
+  // **Y-axis scale (Changed from linear to logarithmic)**
+  const minEmission = d3.min(adjustedTaskEmissions, d => d.emissionsAdjusted);
+  const maxEmission = d3.max(adjustedTaskEmissions, d => d.emissionsAdjusted);
+  const y = d3.scaleLog()
+    .domain([1, maxEmission])
     .range([height, 0]);
 
   // Horizontal grid lines
@@ -38,7 +44,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('class', 'grid horizontal-grid')
     .call(
       d3.axisLeft(y)
-        .ticks(5)
+        .ticks(5, "~s") // **Adjusted tick format for log scale**
         .tickSize(-width)
         .tickFormat('')
     )
@@ -69,7 +75,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('class', 'y-axis')
     .call(
       d3.axisLeft(y)
-        .ticks(5)
+        .ticks(5, "~s") // **Adjusted tick format for log scale**
         .tickSize(0)
     )
     .selectAll('text')
@@ -97,14 +103,14 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
 
   // Bars
   chartGroup.selectAll('.bar')
-    .data(taskEmissions)
+    .data(adjustedTaskEmissions)
     .enter()
     .append('rect')
     .attr('class', 'bar')
     .attr('x', d => x(d.task))
     .attr('width', x.bandwidth())
-    .attr('y', d => y(d.emissions))
-    .attr('height', d => height - y(d.emissions))
+    .attr('y', d => y(d.emissionsAdjusted))
+    .attr('height', d => height - y(d.emissionsAdjusted))
     .attr('fill', isUserChart ? '#ffffcc' : '#41ab5d')
     .on('mouseover', function(event, d) {
       // Show the tooltip
@@ -129,12 +135,12 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
 
   // Labels above bars
   chartGroup.selectAll('.label')
-    .data(taskEmissions)
+    .data(adjustedTaskEmissions)
     .enter()
     .append('text')
     .attr('class', 'label')
     .attr('x', d => x(d.task) + x.bandwidth() / 2)
-    .attr('y', d => y(d.emissions) - 5)
+    .attr('y', d => y(d.emissionsAdjusted) - 5)
     .attr('text-anchor', 'middle')
     .style('fill', '#ffffff')
     .style('font-size', '10px')
