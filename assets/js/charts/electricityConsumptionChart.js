@@ -59,6 +59,25 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
     .attr('class', 'axis y-axis')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
+  // X-axis label
+  svg.append('text')
+    .attr('class', 'axis-label')
+    .attr('x', margin.left + width / 2)
+    .attr('y', height + margin.top + 40)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .text('Electricity Consumption (TWh)');
+
+  // Y-axis label
+  svg.append('text')
+    .attr('class', 'axis-label')
+    .attr('transform', `rotate(-90)`)
+    .attr('x', - (margin.top + height / 2))
+    .attr('y', margin.left - 110)
+    .attr('text-anchor', 'middle')
+    .attr('fill', '#ffffff')
+    .text('Countries');
+
   // Add year label
   const yearLabel = svg.append('text')
     .attr('class', 'year-label')
