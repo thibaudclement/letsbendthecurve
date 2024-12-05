@@ -308,7 +308,8 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     addRadioButtons(controlContainer, 'Company Type', 'companyType', data, filters, applyFilters);
 
     // 5. Checkboxes for WC Grade
-    addCheckboxGroup(controlContainer, 'Website Carbon Grade', 'wcGrade', data, filters, applyFilters);
+    const wcGradeOrder = ['A+', 'A', 'B', 'C', 'D', 'E', 'F'];
+    addCheckboxGroup(controlContainer, 'Website Carbon Grade', 'wcGrade', data, filters, applyFilters, wcGradeOrder);
 
     // 6. Radio Buttons
     addRadioButtons(controlContainer, 'Profitable', 'profitableRaw', data, filters, applyFilters);
@@ -390,7 +391,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     // Initialize filters with all values for checkboxes
     function initializeFilters() {
       filters.sectors = Array.from(new Set(data.map(d => d.sector)));
-      filters.wcGrades = Array.from(new Set(data.map(d => d.wcGrade)));
+      filters.wcGrades = wcGradeOrder.slice();
     }
   }
 
@@ -447,15 +448,21 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     const maxOutput = valuesContainer.append('span').attr('class', 'slider-value max-value').text(`Max: ${max}`);
   }
 
-  function addCheckboxGroup(container, labelText, dataKey, data, filters, applyFilters) {
-    const values = Array.from(new Set(data.map(d => d[dataKey]))).sort();
+  function addCheckboxGroup(container, labelText, dataKey, data, filters, applyFilters, order = null) {
+    let values;
+    if (order) {
+      values = order;
+    } else {
+      values = Array.from(new Set(data.map(d => d[dataKey]))).sort();
+    }
+  
     const groupContainer = container.append('div').attr('class', 'checkbox-group');
-
+  
     // Label above the checkboxes
     groupContainer.append('label').text(`${labelText}: `);
-
+  
     const optionsContainer = groupContainer.append('div').attr('class', 'options-container');
-
+  
     values.forEach(value => {
       const id = `${dataKey}-${value}`;
       const checkboxLabel = optionsContainer.append('label').attr('for', id);
@@ -474,7 +481,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
         });
       checkboxLabel.append('span').text(value);
     });
-  }
+  }  
 
   function addSectorCheckboxes(container, labelText, dataKey, data, filters, applyFilters) {
     const values = Array.from(new Set(data.map(d => d[dataKey]))).sort();
