@@ -4,136 +4,171 @@
   <defs>
     <style>
       .st0 {
-        font-size: 8.1px;
+        font-size: 15.6px;
       }
 
-      .st0, .st1, .st2 {
-        font-family: Helvetica, Helvetica;
+      .st0, .st1, .st2, .st3, .st4 {
+        isolation: isolate;
       }
 
-      .st0, .st1, .st2, .st3 {
+      .st0, .st1, .st5, .st4 {
         fill: #fff;
       }
 
-      .st4 {
-        stroke-dasharray: 1.4 1.4 1.4 1.4;
+      .st0, .st1, .st4 {
+        font-family: Helvetica, Helvetica;
       }
 
-      .st4, .st5, .st6, .st7, .st8, .st9, .st10 {
+      .st6 {
+        stroke-dasharray: 1.4 1.4;
+      }
+
+      .st6, .st7, .st8, .st9, .st10, .st11, .st12 {
         fill: none;
         stroke-miterlimit: 10;
       }
 
-      .st4, .st5, .st7, .st8, .st9, .st10 {
+      .st6, .st7, .st9, .st10, .st11, .st12 {
         stroke-linecap: round;
       }
 
-      .st4, .st5, .st8, .st9 {
+      .st6, .st7, .st10, .st11 {
         stroke-width: .7px;
       }
 
-      .st4, .st7, .st8, .st9 {
+      .st6, .st9, .st10, .st11 {
         stroke: #fff;
       }
 
-      .st11 {
+      .st1 {
+        font-size: 8.1px;
+      }
+
+      .st13 {
         fill: #414042;
       }
 
-      .st5 {
+      .st7 {
         stroke: #414042;
       }
 
-      .st6, .st10 {
+      .st8, .st12 {
         stroke: #41ab5d;
         stroke-width: 1.4px;
       }
 
-      .st7 {
-        stroke-width: 1.3px;
-      }
-
-      .st12 {
+      .st2 {
         fill: #41ab5d;
         opacity: .5;
       }
 
-      .st1 {
+      .st9 {
+        stroke-width: 1.3px;
+      }
+
+      .st4 {
         font-size: 12px;
       }
 
-      .st2 {
-        font-size: 15.6px;
-      }
-
-      .st9 {
-        stroke-dasharray: 1.4 1.4;
+      .st11 {
+        stroke-dasharray: 1.4 1.4 1.4 1.4;
       }
     </style>
   </defs>
-  <rect x="0" y=".1" width="640" height="420"/>
+  <rect y=".1" width="640" height="420"/>
   <g>
     <g>
       <g>
-        <line class="st10" x1="190.7" y1="389" x2="211" y2="389"/>
-        <text class="st1" transform="translate(216 392.1)"><tspan x="0" y="0">Carbon Intensity</tspan></text>
+        <line class="st12" x1="190.7" y1="389" x2="211" y2="389"/>
+        <g class="st3">
+          <text class="st4" transform="translate(216 392.1)"><tspan x="0" y="0">Carbon Intensity</tspan></text>
+        </g>
       </g>
       <g>
-        <text class="st1" transform="translate(341.9 392.1)"><tspan x="0" y="0">Computational Load</tspan></text>
-        <rect class="st12" x="323.4" y="382.2" width="13.5" height="13.5"/>
+        <g class="st3">
+          <text class="st4" transform="translate(341.9 392.1)"><tspan x="0" y="0">Computational Load</tspan></text>
+        </g>
+        <rect class="st2" x="323.4" y="382.2" width="13.5" height="13.5"/>
       </g>
     </g>
     <g>
-      <path class="st6" d="M25.7,38s35.6,3,53.4,94c17.9,91.1,68.4,180.3,204.1,185.7,135.7,5.4,238.7-86.9,266-169.6,27.4-82.7,64.9-110.1,64.9-110.1"/>
-      <path class="st12" d="M505.3,264.8s-96.6-75.6-205.1-75.6-200.8,75.6-200.8,75.6H25.7v61.9h588.5v-61.9h-108.9Z"/>
+      <path class="st8" d="M25.7,38s35.6,3,53.4,94c17.9,91.1,68.4,180.3,204.1,185.7,135.7,5.4,238.7-86.9,266-169.6,27.4-82.7,64.9-110.1,64.9-110.1"/>
+      <path class="st2" d="M505.3,264.8s-96.6-75.6-205.1-75.6-200.8,75.6-200.8,75.6H25.7v61.9h588.5v-61.9h-108.9Z"/>
       <g>
-        <line class="st5" x1="25.7" y1="334.5" x2="25.7" y2="25.4"/>
-        <polygon class="st11" points="27.4 25.9 25.7 22.9 24 25.9 27.4 25.9"/>
+        <line class="st7" x1="25.7" y1="334.5" x2="25.7" y2="25.4"/>
+        <polygon class="st13" points="27.4 25.9 25.7 22.9 24 25.9 27.4 25.9"/>
       </g>
       <g>
-        <line class="st8" x1="99.4" y1="326.7" x2="99.4" y2="326"/>
-        <line class="st9" x1="99.4" y1="324.7" x2="99.4" y2="322.6"/>
-        <line class="st4" x1="99.4" y1="322" x2="99.4" y2="24.3"/>
-        <line class="st8" x1="99.4" y1="23.6" x2="99.4" y2="22.9"/>
+        <line class="st10" x1="99.4" y1="326.7" x2="99.4" y2="326"/>
+        <line class="st6" x1="99.4" y1="324.7" x2="99.4" y2="322.6"/>
+        <line class="st11" x1="99.4" y1="322" x2="99.4" y2="24.3"/>
+        <line class="st10" x1="99.4" y1="23.6" x2="99.4" y2="22.9"/>
       </g>
       <g>
-        <line class="st8" x1="505.3" y1="326.7" x2="505.3" y2="326"/>
-        <line class="st9" x1="505.3" y1="324.7" x2="505.3" y2="322.6"/>
-        <line class="st4" x1="505.3" y1="322" x2="505.3" y2="24.3"/>
-        <line class="st8" x1="505.3" y1="23.6" x2="505.3" y2="22.9"/>
+        <line class="st10" x1="505.3" y1="326.7" x2="505.3" y2="326"/>
+        <line class="st6" x1="505.3" y1="324.7" x2="505.3" y2="322.6"/>
+        <line class="st11" x1="505.3" y1="322" x2="505.3" y2="24.3"/>
+        <line class="st10" x1="505.3" y1="23.6" x2="505.3" y2="22.9"/>
       </g>
-      <line class="st5" x1="99.3" y1="334.5" x2="99.3" y2="326.7"/>
-      <line class="st5" x1="172.8" y1="334.5" x2="172.8" y2="326.7"/>
-      <line class="st5" x1="246.4" y1="334.5" x2="246.4" y2="326.7"/>
-      <line class="st5" x1="320" y1="334.5" x2="320" y2="326.7"/>
-      <line class="st5" x1="393.5" y1="334.5" x2="393.5" y2="326.7"/>
-      <line class="st5" x1="467.1" y1="334.5" x2="467.1" y2="326.7"/>
+      <line class="st7" x1="99.3" y1="334.5" x2="99.3" y2="326.7"/>
+      <line class="st7" x1="172.8" y1="334.5" x2="172.8" y2="326.7"/>
+      <line class="st7" x1="246.4" y1="334.5" x2="246.4" y2="326.7"/>
+      <line class="st7" x1="320" y1="334.5" x2="320" y2="326.7"/>
+      <line class="st7" x1="393.5" y1="334.5" x2="393.5" y2="326.7"/>
+      <line class="st7" x1="467.1" y1="334.5" x2="467.1" y2="326.7"/>
       <g>
-        <line class="st5" x1="19.3" y1="326.7" x2="626.9" y2="326.7"/>
-        <polygon class="st11" points="626.4 328.4 629.3 326.7 626.4 325 626.4 328.4"/>
+        <line class="st7" x1="19.3" y1="326.7" x2="626.9" y2="326.7"/>
+        <polygon class="st13" points="626.4 328.4 629.3 326.7 626.4 325 626.4 328.4"/>
       </g>
       <g>
-        <line class="st5" x1="614.2" y1="334.5" x2="614.2" y2="25.4"/>
-        <polygon class="st11" points="615.9 25.9 614.2 22.9 612.5 25.9 615.9 25.9"/>
+        <line class="st7" x1="614.2" y1="334.5" x2="614.2" y2="25.4"/>
+        <polygon class="st13" points="615.9 25.9 614.2 22.9 612.5 25.9 615.9 25.9"/>
       </g>
-      <text class="st0" transform="translate(9.9 344)"><tspan x="0" y="0">12:00am</tspan></text>
-      <text class="st0" transform="translate(85.8 344)"><tspan x="0" y="0">3:00am</tspan></text>
-      <text class="st0" transform="translate(159.3 344)"><tspan x="0" y="0">6:00am</tspan></text>
-      <text class="st0" transform="translate(232.9 344)"><tspan x="0" y="0">9:00am</tspan></text>
-      <text class="st0" transform="translate(304.1 344)"><tspan x="0" y="0">12:00am</tspan></text>
-      <text class="st0" transform="translate(380 344)"><tspan x="0" y="0">3:00am</tspan></text>
-      <text class="st0" transform="translate(453.5 344)"><tspan x="0" y="0">6:00am</tspan></text>
-      <text class="st0" transform="translate(527.1 344)"><tspan x="0" y="0">9:00am</tspan></text>
-      <line class="st5" x1="540.6" y1="334.5" x2="540.6" y2="326.7"/>
-      <text class="st0" transform="translate(598.4 344)"><tspan x="0" y="0">12:00am</tspan></text>
-      <text class="st2" transform="translate(13.4 235.5) rotate(-90)"><tspan x="0" y="0">Carbon Intensity</tspan></text>
-      <text class="st2" transform="translate(632.5 248.5) rotate(-90)"><tspan x="0" y="0">Computational Load</tspan></text>
-      <text class="st2" transform="translate(302.6 366.3)"><tspan x="0" y="0">Time</tspan></text>
-      <text class="st2" transform="translate(117.5 89.5)"><tspan x="0" y="0">Opportunity window: Period of lower carbon intensity </tspan><tspan x="42" y="18.7">suitable for increasing computationa load</tspan></text>
+      <g class="st3">
+        <text class="st1" transform="translate(9.9 344)"><tspan x="0" y="0">12:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st1" transform="translate(85.8 344)"><tspan x="0" y="0">3:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st1" transform="translate(159.3 344)"><tspan x="0" y="0">6:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st1" transform="translate(232.9 344)"><tspan x="0" y="0">9:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st1" transform="translate(304.1 344)"><tspan x="0" y="0">12:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st1" transform="translate(380 344)"><tspan x="0" y="0">3:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st1" transform="translate(453.5 344)"><tspan x="0" y="0">6:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st1" transform="translate(527.1 344)"><tspan x="0" y="0">9:00am</tspan></text>
+      </g>
+      <line class="st7" x1="540.6" y1="334.5" x2="540.6" y2="326.7"/>
+      <g class="st3">
+        <text class="st1" transform="translate(598.4 344)"><tspan x="0" y="0">12:00am</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st0" transform="translate(13.4 235.5) rotate(-90)"><tspan x="0" y="0">Carbon Intensity</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st0" transform="translate(632.5 248.5) rotate(-90)"><tspan x="0" y="0">Computational Load</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st0" transform="translate(302.6 366.3)"><tspan x="0" y="0">Time</tspan></text>
+      </g>
+      <g class="st3">
+        <text class="st0" transform="translate(117.5 89.5)"><tspan x="0" y="0">Opportunity window: Period of lower carbon intensity </tspan></text>
+        <text class="st0" transform="translate(159.5 108.2)"><tspan x="0" y="0">suitable for increasing computational load</tspan></text>
+      </g>
       <g>
-        <line class="st7" x1="496.3" y1="122.6" x2="107.4" y2="122.6"/>
-        <polygon class="st3" points="495.3 119.2 501.1 122.6 495.3 125.9 495.3 119.2"/>
-        <polygon class="st3" points="108.4 119.2 102.6 122.6 108.4 125.9 108.4 119.2"/>
+        <line class="st9" x1="496.3" y1="122.6" x2="107.4" y2="122.6"/>
+        <polygon class="st5" points="495.3 119.2 501.1 122.6 495.3 125.9 495.3 119.2"/>
+        <polygon class="st5" points="108.4 119.2 102.6 122.6 108.4 125.9 108.4 119.2"/>
       </g>
     </g>
   </g>
