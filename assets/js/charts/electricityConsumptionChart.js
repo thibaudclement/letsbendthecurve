@@ -2,7 +2,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
   // Set up initial parameters
   const margin = { top: 80, right: 100, bottom: 50, left: 150 };
   const width = 960 - margin.left - margin.right;
-  const height = 600 - margin.top - margin.bottom;
+  const height = 500 - margin.top - margin.bottom;
 
   // Get unique years and countries
   const years = Array.from(new Set(data.map(d => d.year))).sort((a, b) => a - b);
@@ -84,7 +84,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
     .attr('x', width + margin.left - 10)
     .attr('y', height + margin.top - 10)
     .attr('text-anchor', 'end')
-    .attr('font-size', '48px')
+    .attr('font-size', '40px')
     .attr('fill', '#ffffff')
     .text(years[currentYearIndex]);
 
@@ -189,7 +189,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
         const labelX = x(d.powerConsumption) + 5;
         return labelX > width - 60 ? x(d.powerConsumption) - 65 : labelX;
       })
-      .attr('y', d => y(d.country) + y.bandwidth() / 2 + 5)
+      .attr('y', d => y(d.country) + y.bandwidth() / 2 + 3)
       .tween('text', function(d) {
         const previous = this.textContent.replace(/,/g, '').split(' ')[0];
         const current = d.powerConsumption;
@@ -207,7 +207,7 @@ export function drawElectricityConsumptionChart(containerSelector, data) {
         const labelX = x(d.powerConsumption) + 5;
         return labelX > width - 60 ? x(d.powerConsumption) - 65 : labelX;
       })
-      .attr('y', d => y(d.country) + y.bandwidth() / 2 + 5)
+      .attr('y', d => y(d.country) + y.bandwidth() / 2 + 3)
       .attr('fill', '#ffffff')
       .text(d => `${d3.format(',')(d.powerConsumption)} TWh`);
 

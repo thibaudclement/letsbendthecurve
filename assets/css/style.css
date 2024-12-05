@@ -511,7 +511,7 @@ header img {
 #electricity-consumption .x-axis text,
 #electricity-consumption .y-axis text {
   fill: #ffffff;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 #electricity-consumption .grid line {
@@ -540,11 +540,11 @@ header img {
 
 #electricity-consumption .label {
   fill: #ffffff;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 #electricity-consumption .year-label {
-  font-size: 48px;
+  font-size: 40px;
   fill: #ffffff;
   text-anchor: end;
 }

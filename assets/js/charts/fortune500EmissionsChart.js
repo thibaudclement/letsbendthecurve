@@ -37,7 +37,6 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
     .attr('height', height + margin.top + margin.bottom)
     .attr('viewBox', `0 0 ${width + margin.left + margin.right} ${height + margin.top + margin.bottom}`)
     .attr('preserveAspectRatio', 'xMidYMid meet')
-    .style('margin-top', '20px')
     .style('margin-bottom', '20px')
     .append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
