@@ -46,7 +46,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
   // Create SVG element
   const margin = { top: 70, right: 50, bottom: 50, left: 70 };
   const width = 960 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const height = 400 - margin.top - margin.bottom;
 
   const svg = container.append('svg')
     .attr('class', 'chart-container')

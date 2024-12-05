@@ -5,7 +5,7 @@ export function drawInternetUsersChart(containerSelector, data) {
   // Set up dimensions and margins
   const margin = { top: 70, right: 50, bottom: 50, left: 70 };
   const width = 960 - margin.left - margin.right;
-  const height = 500 - margin.top - margin.bottom;
+  const height = 400 - margin.top - margin.bottom;
 
   // Create SVG element
   const svg = d3.select(containerSelector)
