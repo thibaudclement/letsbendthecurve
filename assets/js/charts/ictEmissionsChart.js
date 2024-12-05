@@ -300,6 +300,7 @@ export function drawIctEmissionsCharts(containerSelector1, containerSelector2, l
     .attr('class', 'main-title')
     .style('text-align', 'center')
     .style('color', '#ffffff')
+    .style('font-size', '22px')
     .text('ICT Sector Emissions as a Percentage of Global Emissions');
 
   // Adjust the margin-top of the charts-container to bring the charts closer to the title

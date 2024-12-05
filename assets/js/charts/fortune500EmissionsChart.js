@@ -45,6 +45,7 @@ export function drawFortune500EmissionsChart(containerSelector, data) {
   const title = d3.select(containerSelector)
     .insert('div', ':first-child')
     .attr('class', 'chart-title')
+    .style('font-size', '22px')
     .text(getTitleText(data));
 
   function getTitleText(data) {

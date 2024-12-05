@@ -15,6 +15,7 @@ export function drawIctEmissionCategoriesBreakdownCharts(containerSelector, data
     .attr('class', 'main-title')
     .style('text-align', 'center')
     .style('color', '#ffffff')
+    .style('font-size', '22px')
     .text('Operational vs. Embodied Emissions by ICT Sector Segment');
 
   // Create a container for the charts

@@ -764,7 +764,7 @@ header img {
 
 /* Pie Chart Title */
 #ict-emissions-breakdown .pie-chart-title {
-  font-size: 18px;
+  font-size: 22px;
   fill: #ffffff;
   text-anchor: middle;
   dominant-baseline: middle;
@@ -860,6 +860,7 @@ header img {
 
 #carbon-awareness p {
   margin-top: 20px;
+  font-size: 22px;
 }
 
 /* PUE Chart Styles */
@@ -999,6 +1000,11 @@ header img {
   opacity: 0;
   transition: opacity 0.3s;
   z-index: 10;
+}
+
+/* Energy Conversion Styles */
+#energy-conversion {
+  font-size: 22px;
 }
 
 /* Energy Consumption Chart Styles */
