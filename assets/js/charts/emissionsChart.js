@@ -20,7 +20,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
   const chartGroup = svg.append('g')
     .attr('transform', `translate(${margin.left},${margin.top})`);
 
-  // **Adjust emissions to avoid zeros (since log(0) is undefined)**
+  // Adjust emissions to avoid zeros
   const adjustedTaskEmissions = taskEmissions.map(d => ({
     ...d,
     emissionsAdjusted: d.emissions <= 0 ? 1 : d.emissions
@@ -32,7 +32,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .range([0, width])
     .padding(0.2);
 
-  // **Y-axis scale (Changed from linear to logarithmic)**
+  // Y-axis scale (Changed from linear to logarithmic)
   const minEmission = d3.min(adjustedTaskEmissions, d => d.emissionsAdjusted);
   const maxEmission = d3.max(adjustedTaskEmissions, d => d.emissionsAdjusted);
   const y = d3.scaleLog()
@@ -44,7 +44,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('class', 'grid horizontal-grid')
     .call(
       d3.axisLeft(y)
-        .ticks(5, "~s") // **Adjusted tick format for log scale**
+        .ticks(5, "~s")
         .tickSize(-width)
         .tickFormat('')
     )
@@ -70,12 +70,21 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
   // Remove x-axis line
   chartGroup.selectAll('.x-axis .domain').remove();
 
+  // X-axis label
+  chartGroup.append('text')
+  .attr('class', 'axis-label')
+  .attr('x', width / 2)
+  .attr('y', height + 40)
+  .style('text-anchor', 'middle')
+  .text('Digital Activities')
+  .attr('fill', '#ffffff');
+
   // Y-axis (labels only)
   chartGroup.append('g')
     .attr('class', 'y-axis')
     .call(
       d3.axisLeft(y)
-        .ticks(5, "~s") // **Adjusted tick format for log scale**
+        .ticks(5, "~s")
         .tickSize(0)
     )
     .selectAll('text')
@@ -92,7 +101,7 @@ export function drawEmissionsChart(containerSelector, taskEmissions, usTaskEmiss
     .attr('x', -height / 2)
     .attr('dy', '1em')
     .style('text-anchor', 'middle')
-    .text('CO₂ Equivalents (grams)')
+    .text('CO₂ Equivalents (Grams, Log Scale)')
     .attr('fill', '#ffffff');
 
   // Tooltip

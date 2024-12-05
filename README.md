@@ -36,6 +36,7 @@ The following data sources provided the foundation for the datasets used to crea
 - [Greenhouse Gas Emissions from a Typical Passenger Vehicle](https://nepis.epa.gov/Exe/ZyNET.exe/P100JPPH.TXT?ZyActionD=ZyDocument&Client=EPA&Index=2011+Thru+2015&Docs=&Query=&Time=&EndTime=&SearchMethod=1&TocRestrict=n&Toc=&TocEntry=&QField=&QFieldYear=&QFieldMonth=&QFieldDay=&IntQFieldOp=0&ExtQFieldOp=0&XmlQuery=&File=D%3A%5Czyfiles%5CIndex%20Data%5C11thru15%5CTxt%5C00000011%5CP100JPPH.txt&User=ANONYMOUS&Password=anonymous&SortMethod=h%7C-&MaximumDocuments=1&FuzzyDegree=0&ImageQuality=r75g8/r75g8/x150y150g16/i425&Display=hpfr&DefSeekPage=x&SearchBack=ZyActionL&Back=ZyActionS&BackDesc=Results%20page&MaximumPages=1&ZyEntry=1&SeekPage=x&ZyPURL)
 - [Greenhouse Gas Equivalencies Calculator - Calculations and References](https://www.epa.gov/energy/greenhouse-gas-equivalencies-calculator-calculations-and-references)
 - [What is the lowest-carbon protein?](https://www.bbc.com/future/article/20221214-what-is-the-lowest-carbon-protein)
+- [Number of people using the Internet](https://ourworldindata.org/grapher/number-of-internet-users)
 - [Number of internet users worldwide from 2005 to 2023](https://www.statista.com/statistics/273018/number-of-internet-users-worldwide/)
 - [Internet Traffic Volume](https://www.ibisworld.com/us/bed/internet-traffic-volume/88089/)
 - [What is the energy consumption of the internet?](https://thundersaidenergy.com/2023/04/20/what-is-the-energy-consumption-of-the-internet/)
@@ -52,7 +53,7 @@ The following data sources provided the foundation for the datasets used to crea
 
 ## Platform Choice
 
-Building on the experience gained during _Assignment 3_, this project was developed as a custom static site using HTML, SVG, CSS, and JavaScript, hosted on GitHub Pages. This approach provided the flexibility needed to design the desired user experience and interface, streamlined code versioning, and enabled the use of custom domain names (`letsbendthecurve.com` and `computingsustainability.com`).
+Building on the experience gained during _Assignment 3_, this project was developed as a custom static site using HTML, SVG, CSS, and JavaScript, hosted on GitHub Pages. This approach provided the flexibility needed to seamlessly integrate the chart and text elements of the article, streamlined code versioning, and enabled the use of custom domain names (`letsbendthecurve.com` and `computingsustainability.com`).
 
 ## Design Decisions
 
