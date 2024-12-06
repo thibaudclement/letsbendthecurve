@@ -547,6 +547,10 @@ header img {
   stroke: none;
 }
 
+#electricity-consumption .bar:hover {
+  opacity: 0.8;
+}
+
 #electricity-consumption .label {
   fill: #ffffff;
   font-size: 10px;
