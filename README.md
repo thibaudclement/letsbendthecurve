@@ -116,8 +116,8 @@ Several design decisions were made to enhance the clarity and effectiveness of s
   - In the __Electricity Consumption of The Internet vs. G20 Countries from 2010 to 2022__ chart, the bar representing the internet is colored differently from the others to draw attention to this specific data point.
   - In the _ICT Sector Emissions as a Percentage of Global Emissions_ duo of charts, the _Modeled Projections (2021-2040)_ chart features an annotation reading "Let’s Bend The Curve," reinforcing the article’s central call to action and highlighting this critical trend.
   - In the _Worldwide Data Center Average Annual Power Usage Effectiveness (2010-2050)_ chart, a vertical white dashed line separates past and projected data, while a horizontal green dashed line marks the theoretical 1.0 threshold for the PUE indicator. This threshold represents the ideal target, with the aim of eventually surpassing it through disruptive innovation.
-
-
+- **Exploration in the Fortune 500 Chart:** For the Fortune 500 chart, I intentionally avoided adding guides, adopting a "martini glass" approach. This encourages viewers to independently explore the extensive dataset, applying insights gained throughout the article to form their own hypotheses and conclusions. Additionally, the chart title is dynamic, updating in real time to reflect the number of companies and the total tonnes of CO2 based on the filters applied in the controls section.
+- **Trend Lines:** In the series of six charts on digital prosperity, towards the end of the article, trend lines were included to highlight the relationships being emphasized. While a straight trend line on a logarithmic scale indicates an exponential trend, I chose not to explicitly explain this to avoid introducing unnecessary noise in the charts' interpretation.
 
 ## Visualization Inspiration
 
