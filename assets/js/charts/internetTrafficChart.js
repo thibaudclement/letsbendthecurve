@@ -186,7 +186,7 @@ export function drawInternetTrafficChart(containerSelector, data) {
     .attr('y', y(annotationData.internetTrafficZB) - 65)
     .attr('fill', '#ffffff')
     .text('Hint: In 2020, the internet traffic amounted to 2.7 Zettabytes.')
-    .style('font-size', '14px');
+    .style('font-size', '12px');
 
   chartGroup.append('line')
     .attr('x1', x(annotationYear))
