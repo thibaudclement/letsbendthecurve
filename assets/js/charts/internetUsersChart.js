@@ -160,4 +160,33 @@ export function drawInternetUsersChart(containerSelector, data) {
         .duration(500)
         .style('opacity', 0);
     });
+
+  // Identify the annotation year and data point
+  const annotationYear = 2022;
+  const annotationData = data.find(d => d.year === annotationYear);
+
+  if (annotationData) {
+    // Draw a horizontal line pointing to the 2022 circle
+    chartGroup.append('line')
+      .attr('x1', x(annotationYear) - 100)
+      .attr('y1', y(annotationData.internetUsers))
+      .attr('x2', x(annotationYear))
+      .attr('y2', y(annotationData.internetUsers))
+      .attr('stroke', '#ffffff')
+      .attr('stroke-width', 1)
+
+    // Add annotation text
+    chartGroup.append('text')
+      .attr('x', x(annotationYear) - 110)
+      .attr('y', y(annotationData.internetUsers))
+      .attr('fill', '#ffffff')
+      .attr('text-anchor', 'end')
+      .attr('dy', '0.35em')
+      .style('font-size', '12px')
+      .text('As a large portion of the global population already has access to the internet,')
+      .append('tspan')
+      .attr('x', x(annotationYear) - 210)
+      .attr('y', y(annotationData.internetUsers) + 20)
+      .text('the growth rate of internet users is slowing down.');
+    }
 }
