@@ -417,6 +417,11 @@ header img {
   fill-opacity: 0.5;
 }
 
+#internet-users .dot:hover,
+#internet-traffic .dot:hover {
+  stroke-width: 2px;
+}
+
 #internet-users .chart-tooltip,
 #internet-traffic .chart-tooltip {
   position: absolute;
