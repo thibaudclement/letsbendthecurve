@@ -106,6 +106,18 @@ Additional design elements include:
 - Clear guidelines for using the interactive charts included in the article.
 - Stylized quotes from experts in sustainable computing to highlight key insights.
 
+### Charts
+
+Several design decisions were made to enhance the clarity and effectiveness of specific charts in the visual explainer:
+- **Weekly Emissions Chart:** After careful consideration, I opted for a logarithmic scale on the y-axis. While a linear scale might have been more straightforward for a general audience, the wide range of values made smaller data points difficult to distinguish. Since the chart's primary goal is to emphasize that the bars do not represent zero values rather than highlight the differences between them, a logarithmic scale better served this purpose by making smaller values more visible.
+- **Guiding User Attention:** Feedback from the Week 10 Review Session highlighted the importance of guiding viewers to understand the charts and focus on key elements. The following decisions align with this feedback:
+  - In the _Global Internet Users from 2000 to 2024_ chart, an annotation highlights the year when the curve begins to plateau.
+  - For the _Global Internet Traffic from 2000 to 2024_ chart, a hint is provided as an annotation to assist viewers in interpreting the data.
+  - In the __Electricity Consumption of The Internet vs. G20 Countries from 2010 to 2022__ chart, the bar representing the internet is colored differently from the others to draw attention to this specific data point.
+  - In the _ICT Sector Emissions as a Percentage of Global Emissions_ duo of charts, the _Modeled Projections (2021-2040)_ chart features an annotation reading "Let’s Bend The Curve," reinforcing the article’s central call to action and highlighting this critical trend.
+  - In the _Worldwide Data Center Average Annual Power Usage Effectiveness (2010-2050)_ chart, a vertical white dashed line separates past and projected data, while a horizontal green dashed line marks the theoretical 1.0 threshold for the PUE indicator. This threshold represents the ideal target, with the aim of eventually surpassing it through disruptive innovation.
+
+
 
 ## Visualization Inspiration
 
@@ -138,6 +150,6 @@ This project is due on December 8, 2024, after which all development efforts wil
 - **Tooltip Refinement:** Replace native tooltips in in-text data points with CSS-based tooltips for faster and smoother display of additional information.
 - **Text-Chart Interactions:** Introduce synchronized hover effects between text and charts, enabling users to highlight related elements in the text and visualizations simultaneously.
 - **Lazy Loading:** Implement lazy loading of sections to make the explainer more dynamic and improve performance as users scroll through the page.
-- **Reference Section:** Add a comprehensive list of relevant resources at the bottom of the article for reference and further reading.
+- **Reference Section:** Add a comprehensive list of relevant resources at the bottom of the article for reference and further reading—in addition to all links already included in the text of the article.
 - **Real-Time Data Integration:** Connect the project to the [Website Carbon API](https://www.websitecarbon.com/api/) and live data about Fortune 500 companies to ensure the article stays up to date with the latest information.
 - **User Guide:** Include a simple, collapsible guide to help users navigate the article, such as explanations of color coding and interactive features.
