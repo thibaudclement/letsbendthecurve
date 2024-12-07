@@ -1483,6 +1483,8 @@ header img {
   .text-block,
   .asset-block {
     max-width: 100%;
+    width: 100%;
+    padding: 0 10px;
   }
   .axis text {
     font-size: 10px;
